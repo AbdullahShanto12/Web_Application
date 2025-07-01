@@ -588,6 +588,20 @@ if (isset($_SESSION['error'])) {
 // Include the check for scheduled calls
 require_once 'check_scheduled_calls.php';
 ?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -659,6 +673,20 @@ require_once 'check_scheduled_calls.php';
     .form-control {
       margin-bottom: 10px;
     }
+
+    header {
+      background-color: var(--primary);
+      color: white;
+      padding: 1rem;
+      text-align: center;
+      font-size: 1.7rem;
+      font-weight: bold;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    
     .share-buttons {
       display: flex;
       flex-wrap: wrap;
@@ -722,18 +750,106 @@ require_once 'check_scheduled_calls.php';
     <div class="sidebar">
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" role="menu">
-          <li class="nav-item"><a href="dashboard.php" class="nav-link"><i class="nav-icon fas fa-tachometer-alt"></i><p>Dashboard</p></a></li>
-          <li class="nav-item"><a href="location_search.php" class="nav-link"><i class="nav-icon fas fa-map-marker-alt"></i><p>Basic Location Search</p></a></li>
-          <li class="nav-item"><a href="map_explore.php" class="nav-link"><i class="nav-icon fas fa-map"></i><p>Map Exploration</p></a></li>
-          <li class="nav-item"><a href="safety_ratings.php" class="nav-link"><i class="nav-icon fas fa-eye"></i><p>Visual Safety Ratings</p></a></li>
-          <li class="nav-item"><a href="check_safety.php" class="nav-link"><i class="nav-icon fas fa-shield-alt"></i><p>Check Before Going Out</p></a></li>
-          <li class="nav-item"><a href="identify_routes.php" class="nav-link"><i class="nav-icon fas fa-route"></i><p>Identifying Safer Routes</p></a></li>
-          <li class="nav-item"><a href="understand_factors.php" class="nav-link"><i class="nav-icon fas fa-info-circle"></i><p>Understanding Safety Factors</p></a></li>
-          <li class="nav-item"><a href="legend_info.php" class="nav-link"><i class="nav-icon fas fa-map-signs"></i><p>Using the Legend</p></a></li>
-          <li class="nav-item"><a href="send_notifications.php" class="nav-link"><i class="nav-icon fas fa-bell"></i><p>Send Notifications</p></a></li>
-          <li class="nav-item"><a href="emergency_calls.php" class="nav-link active"><i class="nav-icon fas fa-phone-alt"></i><p>Emergency Calls</p></a></li>
-          <li class="nav-item"><a href="login.html" class="nav-link"><i class="nav-icon fas fa-sign-out-alt"></i><p>Logout</p></a></li>
+<!-- Dashboard -->
+<li class="nav-item">
+  <a href="dashboard.php" class="nav-link ">
+    <i class="nav-icon fas fa-tachometer-alt"></i>
+    <p>Dashboard</p>
+  </a>
+</li>
 
+<!-- Location & Map Features -->
+<li class="nav-item">
+  <a href="location_search.php" class="nav-link">
+    <i class="nav-icon fas fa-search-location"></i>
+    <p>Basic Location Search</p>
+  </a>
+</li>
+<li class="nav-item">
+  <a href="map_explore.php" class="nav-link">
+    <i class="nav-icon fas fa-map-marked-alt"></i>
+    <p>Map Exploration</p>
+  </a>
+</li>
+<li class="nav-item">
+  <a href="safety_ratings.php" class="nav-link">
+    <i class="nav-icon fas fa-eye"></i>
+    <p>Visual Safety Ratings</p>
+  </a>
+</li>
+<li class="nav-item">
+  <a href="check_safety.php" class="nav-link">
+    <i class="nav-icon fas fa-shield-alt"></i>
+    <p>Check Before Going Out</p>
+  </a>
+</li>
+<li class="nav-item">
+  <a href="identify_routes.php" class="nav-link">
+    <i class="nav-icon fas fa-route"></i>
+    <p>Identify Safer Routes</p>
+  </a>
+</li>
+
+<!-- Crime & Incident Insights -->
+<li class="nav-item">
+  <a href="filter_incidents.php" class="nav-link">
+    <i class="nav-icon fas fa-filter"></i>
+    <p>Filter Incidents</p>
+  </a>
+</li>
+<li class="nav-item">
+  <a href="crime_hotspot.php" class="nav-link">
+    <i class="nav-icon fas fa-exclamation-triangle"></i>
+    <p>Crime Hotspot Tracker</p>
+  </a>
+</li>
+
+<!-- Resources & Community Support -->
+<li class="nav-item">
+  <a href="community_resources.php" class="nav-link">
+    <i class="nav-icon fas fa-hands-helping"></i>
+    <p>Community Resources</p>
+  </a>
+</li>
+
+<!-- Educational Tools -->
+<li class="nav-item">
+  <a href="understand_factors.php" class="nav-link">
+    <i class="nav-icon fas fa-lightbulb"></i>
+    <p>Understanding Safety Factors</p>
+  </a>
+</li>
+<li class="nav-item">
+  <a href="legend_info.php" class="nav-link">
+    <i class="nav-icon fas fa-map"></i>
+    <p>Using the Legend</p>
+  </a>
+</li>
+
+<!-- Communication -->
+<li class="nav-item">
+  <a href="send_notifications.php" class="nav-link">
+    <i class="nav-icon fas fa-bell"></i>
+    <p>Send Notifications</p>
+  </a>
+</li>
+<li class="nav-item"><a href="all_notifications.php" class="nav-link "><i class="nav-icon fas fa-bell"></i><p>All Notifications</p></a></li>
+
+<li class="nav-item">
+  <a href="emergency_calls.php" class="nav-link active">
+    <i class="nav-icon fas fa-phone-alt"></i>
+    <p>Emergency Calls</p>
+  </a>
+</li>
+
+
+<!-- Logout -->
+<li class="nav-item">
+  <a href="login.html" class="nav-link">
+    <i class="nav-icon fas fa-sign-out-alt"></i>
+    <p>Logout</p>
+  </a>
+</li>
         </ul>
       </nav>
     </div>

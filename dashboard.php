@@ -119,6 +119,17 @@ $role = $_SESSION['role'] ?? null;
   height: auto;
 }
 
+header {
+      background-color: var(--primary);
+      color: white;
+      padding: 1rem;
+      text-align: center;
+      font-size: 1.7rem;
+      font-weight: bold;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
 
 
   .chart-title {
@@ -190,104 +201,106 @@ $role = $_SESSION['role'] ?? null;
   <div class="sidebar">
     <nav class="mt-2">
       <ul class="nav nav-pills nav-sidebar flex-column">
+<!-- Dashboard -->
+<li class="nav-item">
+  <a href="dashboard.php" class="nav-link active">
+    <i class="nav-icon fas fa-tachometer-alt"></i>
+    <p>Dashboard</p>
+  </a>
+</li>
 
-        <!-- Dashboard -->
-        <li class="nav-item">
-          <a href="dashboard.php" class="nav-link active">
-            <i class="nav-icon fas fa-tachometer-alt"></i>
-            <p>Dashboard</p>
-          </a>
-        </li>
 
-        <!-- Location & Map Features -->
-        <li class="nav-item">
-          <a href="location_search.php" class="nav-link">
-            <i class="nav-icon fas fa-map-marker-alt"></i>
-            <p>Basic Location Search</p>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a href="map_explore.php" class="nav-link">
-            <i class="nav-icon fas fa-map"></i>
-            <p>Map Exploration</p>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a href="safety_ratings.php" class="nav-link">
-            <i class="nav-icon fas fa-eye"></i>
-            <p>Visual Safety Ratings</p>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a href="check_safety.php" class="nav-link">
-            <i class="nav-icon fas fa-shield-alt"></i>
-            <p>Check Before Going Out</p>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a href="identify_routes.php" class="nav-link">
-            <i class="nav-icon fas fa-route"></i>
-            <p>Identifying Safer Routes</p>
-          </a>
-        </li>
+<!-- Location & Map Features -->
+<li class="nav-item">
+  <a href="location_search.php" class="nav-link">
+    <i class="nav-icon fas fa-search-location"></i>
+    <p>Basic Location Search</p>
+  </a>
+</li>
+<li class="nav-item">
+  <a href="map_explore.php" class="nav-link">
+    <i class="nav-icon fas fa-map-marked-alt"></i>
+    <p>Map Exploration</p>
+  </a>
+</li>
+<li class="nav-item">
+  <a href="safety_ratings.php" class="nav-link">
+    <i class="nav-icon fas fa-eye"></i>
+    <p>Visual Safety Ratings</p>
+  </a>
+</li>
+<li class="nav-item">
+  <a href="check_safety.php" class="nav-link">
+    <i class="nav-icon fas fa-shield-alt"></i>
+    <p>Check Before Going Out</p>
+  </a>
+</li>
+<li class="nav-item">
+  <a href="identify_routes.php" class="nav-link">
+    <i class="nav-icon fas fa-route"></i>
+    <p>Identify Safer Routes</p>
+  </a>
+</li>
 
-        <!-- Crime & Incident Insights -->
-        <li class="nav-item">
-          <a href="filter_incidents.php" class="nav-link">
-            <i class="nav-icon fas fa-filter"></i>
-            <p>Filter Incident</p>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a href="crime_hotspot.php" class="nav-link">
-            <i class="nav-icon fas fa-exclamation-triangle"></i>
-            <p>Crime Hotspot Tracker</p>
-          </a>
-        </li>
+<!-- Crime & Incident Insights -->
+<li class="nav-item">
+  <a href="filter_incidents.php" class="nav-link">
+    <i class="nav-icon fas fa-filter"></i>
+    <p>Filter Incidents</p>
+  </a>
+</li>
+<li class="nav-item">
+  <a href="crime_hotspot.php" class="nav-link">
+    <i class="nav-icon fas fa-exclamation-triangle"></i>
+    <p>Crime Hotspot Tracker</p>
+  </a>
+</li>
 
-        <!-- Resources & Community Support -->
-        <li class="nav-item">
-          <a href="community_resources.php" class="nav-link">
-            <i class="nav-icon fas fa-hands-helping"></i>
-            <p>Community Resources</p>
-          </a>
-        </li>
+<!-- Resources & Community Support -->
+<li class="nav-item">
+  <a href="community_resources.php" class="nav-link">
+    <i class="nav-icon fas fa-hands-helping"></i>
+    <p>Community Resources</p>
+  </a>
+</li>
 
-        <!-- Educational Tools -->
-        <li class="nav-item">
-          <a href="understand_factors.php" class="nav-link">
-            <i class="nav-icon fas fa-info-circle"></i>
-            <p>Understanding Safety Factors</p>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a href="legend_info.php" class="nav-link">
-            <i class="nav-icon fas fa-map-signs"></i>
-            <p>Using the Legend</p>
-          </a>
-        </li>
+<!-- Educational Tools -->
+<li class="nav-item">
+  <a href="understand_factors.php" class="nav-link">
+    <i class="nav-icon fas fa-lightbulb"></i>
+    <p>Understanding Safety Factors</p>
+  </a>
+</li>
+<li class="nav-item">
+  <a href="legend_info.php" class="nav-link">
+    <i class="nav-icon fas fa-map"></i>
+    <p>Using the Legend</p>
+  </a>
+</li>
 
-        <!-- Communication -->
-        <li class="nav-item">
-          <a href="send_notifications.php" class="nav-link">
-            <i class="nav-icon fas fa-bell"></i>
-            <p>Send Notifications</p>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a href="emergency_calls.php" class="nav-link">
-            <i class="nav-icon fas fa-phone-alt"></i>
-            <p>Emergency Calls</p>
-          </a>
-        </li>
+<!-- Communication -->
+<li class="nav-item">
+  <a href="send_notifications.php" class="nav-link">
+    <i class="nav-icon fas fa-bell"></i>
+    <p>Send Notifications</p>
+  </a>
+</li>
+<li class="nav-item"><a href="all_notifications.php" class="nav-link "><i class="nav-icon fas fa-bell"></i><p>All Notifications</p></a></li>
 
-        <!-- Logout -->
-        <li class="nav-item">
-          <a href="login.html" class="nav-link">
-            <i class="nav-icon fas fa-sign-out-alt"></i>
-            <p>Logout</p>
-          </a>
-        </li>
+<li class="nav-item">
+  <a href="emergency_calls.php" class="nav-link">
+    <i class="nav-icon fas fa-phone-alt"></i>
+    <p>Emergency Calls</p>
+  </a>
+</li>
+
+<!-- Logout -->
+<li class="nav-item">
+  <a href="login.html" class="nav-link">
+    <i class="nav-icon fas fa-sign-out-alt"></i>
+    <p>Logout</p>
+  </a>
+</li>
 
       </ul>
     </nav>
@@ -484,6 +497,15 @@ $role = $_SESSION['role'] ?? null;
 
 
 
+
+
+
+
+
+
+
+
+
 <!-- Charts Section -->
 <div class="dashboard-section">
   <div class="card">
@@ -559,6 +581,24 @@ $role = $_SESSION['role'] ?? null;
     </div>
   </div>
 </div>
+
+
+
+
+<!-- Detailed Insights Banner -->
+<div class="card mt-4 bg-gradient-primary text-white" style="cursor: pointer;" onclick="window.location.href='detailed_Insights.php'">
+  <div class="card-body text-center">
+    <h4><i class="fas fa-search-plus"></i> Explore Full Safety Insights & Trends</h4>
+    <p class="mb-0">Click to dive deeper into location-based analytics, response times, trends, and more.</p>
+  </div>
+</div>
+
+
+
+
+
+
+
 
             <!-- Feature Summary -->
             <div class="dashboard-section">
@@ -869,312 +909,375 @@ $role = $_SESSION['role'] ?? null;
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-    <!-- Chart.js Scripts -->
+
+
+
+
+
+
     <script>
+  fetch("get_dashboard.php")
+    .then((response) => response.json())
+    .then((data) => {
+      const {
+        crimeStats,
+        safetyData,
+        safetyChecks,
+        featureUsage,
+        crimeTypes,
+        responseData,
+        notifEngage,
+        bubbleData,
+      } = data;
+
+      // === FILTER TOP 5 ===
+      const topCrimeStats = crimeStats
+        .sort((a, b) => b.incident_count - a.incident_count)
+        .slice(0, 5);
+
+      const topSafetyData = safetyData
+        .sort((a, b) => b.value - a.value)
+        .slice(0, 5);
+
+      const topFeatureUsage = featureUsage
+        .sort((a, b) => b.usage_count - a.usage_count)
+        .slice(0, 5);
+
+      const topResponseData = responseData
+        .sort((a, b) => b.response_rating - a.response_rating)
+        .slice(0, 5);
+
+      const topBubbleData = bubbleData.slice(0, 5); // Assuming preprocessed for bubble chart
+      const topNotifEngage = {
+        labels: notifEngage.labels.slice(0, 5),
+        datasets: notifEngage.datasets.map((ds) => ({
+          ...ds,
+          data: ds.data.slice(0, 5),
+        })),
+      };
+
+      // === CHART 1: CRIME BAR CHART ===
+      new Chart(document.getElementById("crimeChart"), {
+        type: "bar",
+        data: {
+          labels: topCrimeStats.map((stat) => stat.area),
+          datasets: [
+            {
+              label: "Incidents",
+              data: topCrimeStats.map((stat) => stat.incident_count),
+              backgroundColor: "#dc3545",
+              borderWidth: 1,
+            },
+            {
+              label: "Crime Index",
+              data: topCrimeStats.map((stat) => stat.crime_index),
+              backgroundColor: "#ffc107",
+              borderWidth: 1,
+            },
+          ],
+        },
+        options: {
+          responsive: true,
+          plugins: {
+            tooltip: {
+              callbacks: {
+                label: (ctx) =>
+                  ctx.dataset.label === "Crime Index"
+                    ? `Index: ${ctx.raw}`
+                    : `Incidents: ${ctx.raw}`,
+              },
+            },
+            title: {
+              display: true,
+              text: "Top 5 Crime-Prone Areas in Dhaka",
+              font: { size: 18 },
+            },
+          },
+          scales: {
+            y: {
+              beginAtZero: true,
+              title: { display: true, text: "Value" },
+            },
+          },
+        },
+      });
+
+      // === CHART 2: SAFETY PIE/DOUGHNUT CHART ===
+      new Chart(document.getElementById("areaSafetyPie"), {
+        type: "doughnut",
+        data: {
+          labels: topSafetyData.map((s) => `${s.category}: ${s.label}`),
+          datasets: [
+            {
+              label: "Safety Distribution",
+              data: topSafetyData.map((s) => s.value),
+              backgroundColor: ["#28a745", "#ffc107", "#dc3545", "#17a2b8", "#6610f2"],
+              hoverOffset: 10,
+            },
+          ],
+        },
+        options: {
+          plugins: {
+            title: {
+              display: true,
+              text: "Top 5 Safety Factors by Score",
+              font: { size: 18 },
+            },
+            tooltip: {
+              callbacks: {
+                label: (ctx) =>
+                  `${ctx.label} — Score: ${ctx.raw}, Weight: ${topSafetyData[ctx.dataIndex].weightage_percent}%`,
+              },
+            },
+            legend: {
+              position: "bottom",
+              labels: { usePointStyle: true, boxWidth: 10 },
+            },
+          },
+        },
+      });
+
+      // === CHART 3: SAFETY CHECK LINE CHART (All Days) ===
+      const safetyCheckMap = {};
+      safetyChecks.forEach((entry) => {
+        const day = entry.check_day;
+        safetyCheckMap[day] = (safetyCheckMap[day] || 0) + 1;
+      });
+      const dayLabels = Object.keys(safetyCheckMap);
+      const checkCounts = Object.values(safetyCheckMap);
+
+      new Chart(document.getElementById("routeCheckLine"), {
+        type: "line",
+        data: {
+          labels: dayLabels,
+          datasets: [
+            {
+              label: "Safety Checks",
+              data: checkCounts,
+              fill: true,
+              borderColor: "#007bff",
+              backgroundColor: "rgba(0, 123, 255, 0.2)",
+              tension: 0.4,
+              pointRadius: 5,
+            },
+          ],
+        },
+        options: {
+          plugins: {
+            title: {
+              display: true,
+              text: "Daily Safety Checks Across Dhaka",
+              font: { size: 18 },
+            },
+            tooltip: {
+              callbacks: { label: (ctx) => ` ${ctx.raw} checks` },
+            },
+          },
+          scales: {
+            y: {
+              beginAtZero: true,
+              title: { display: true, text: "Check Count" },
+            },
+          },
+        },
+      });
+
+      // === CHART 4: FEATURE USAGE RADAR CHART ===
+      new Chart(document.getElementById("featureRadar"), {
+        type: "radar",
+        data: {
+          labels: topFeatureUsage.map((f) => f.feature),
+          datasets: [
+            {
+              label: "Usage Count",
+              data: topFeatureUsage.map((f) => f.usage_count),
+              fill: true,
+              backgroundColor: "rgba(40,167,69,0.2)",
+              borderColor: "rgba(40,167,69,1)",
+              pointBackgroundColor: "rgba(40,167,69,1)",
+            },
+          ],
+        },
+        options: {
+          plugins: {
+            title: {
+              display: true,
+              text: "Top 5 Used SafeWay Features",
+              font: { size: 18 },
+            },
+            legend: { display: false },
+          },
+          scales: {
+            r: {
+              angleLines: { display: true },
+              suggestedMin: 0,
+              suggestedMax: Math.max(...topFeatureUsage.map(f => f.usage_count)) + 5,
+              pointLabels: { font: { size: 14 } },
+            },
+          },
+        },
+      });
+
+      // === CHART 5: CRIME TYPE TREND LINE CHART (All Data) ===
+        // Calculate total incidents per week
+        const weekTotals = crimeTypes.labels.map((week, i) => {
+          let total = 0;
+          for (const dataset of crimeTypes.datasets) {
+            total += dataset.data[i];
+          }
+          return { week, total };
+        });
+
+        // Sort weeks by total descending and take top 7
+        const topWeeks = weekTotals
+          .sort((a, b) => b.total - a.total)
+          .slice(0, 7)
+          .map((w) => w.week);
+
+        // Filter labels to top 7 weeks
+        const filteredLabels = topWeeks;
+
+        // Filter each dataset's data to only include top 7 weeks in correct order
+        const filteredDatasets = crimeTypes.datasets.map((ds) => {
+          return {
+            ...ds,
+            data: topWeeks.map((week) => {
+              const index = crimeTypes.labels.indexOf(week);
+              return ds.data[index];
+            }),
+          };
+        });
+
+        // Now create the chart with filtered data
+        new Chart(document.getElementById("crimeTypeTrend"), {
+          type: "line",
+          data: {
+            labels: filteredLabels,
+            datasets: filteredDatasets,
+          },
+          options: {
+            responsive: true,
+            plugins: {
+              title: {
+                display: true,
+                text: "Top 7 Weeks of Crime Trends in Dhaka",
+                font: { size: 18 },
+              },
+            },
+          },
+        });
 
 
 
-      fetch("get_dashboard.php")
-        .then((response) => response.json())
-        .then((data) => {
-          const {
-            crimeStats,
-            safetyData,
-            safetyChecks,
-            featureUsage,
-            crimeTypes,
-            responseData,
-            notifEngage,
-            bubbleData,
-          } = data;
 
-          // CRIME BAR CHART
-          new Chart(document.getElementById("crimeChart"), {
-            type: "bar",
-            data: {
-              labels: crimeStats.map((stat) => stat.area),
-              datasets: [
-                {
-                  label: "Incidents",
-                  data: crimeStats.map((stat) => stat.incidents),
-                  backgroundColor: [
-                    "#dc3545",
-                    "#fd7e14",
-                    "#28a745",
-                    "#007bff",
-                    "#ffc107",
-                    "#17a2b8",
-                  ],
-                  borderWidth: 1,
-                },
-              ],
+      // === CHART 6: EMERGENCY RESPONSE BAR CHART ===
+      new Chart(document.getElementById("responseBar"), {
+        type: "bar",
+        data: {
+          labels: topResponseData.map((r) => `${r.service_type} - ${r.area}`),
+          datasets: [
+            {
+              label: "Avg. Response Time (mins)",
+              data: topResponseData.map((r) => r.average_response_time_min),
+              backgroundColor: "#3498db",
             },
-            options: {
-              responsive: true,
-              plugins: {
-                legend: { display: false },
-                tooltip: {
-                  callbacks: {
-                    label: (ctx) => ` ${ctx.raw} reported incidents`,
-                  },
-                },
-                title: {
-                  display: true,
-                  text: "Crime Distribution in Key Dhaka Zones",
-                  font: { size: 18 },
-                },
-              },
-              scales: {
-                y: {
-                  beginAtZero: true,
-                  title: { display: true, text: "Number of Incidents" },
-                },
-              },
+            {
+              label: "Service Rating",
+              data: topResponseData.map((r) => r.response_rating),
+              backgroundColor: "#2ecc71",
             },
-          });
+          ],
+        },
+        options: {
+          indexAxis: "y",
+          plugins: {
+            title: {
+              display: true,
+              text: "Top 5 Emergency Response Performers",
+              font: { size: 18 },
+            },
+          },
+          scales: {
+            x: {
+              beginAtZero: true,
+              title: { display: true, text: "Value" },
+            },
+          },
+        },
+      });
 
-          // SAFETY PIE CHART
-          new Chart(document.getElementById("areaSafetyPie"), {
-            type: "doughnut",
-            data: {
-              labels: safetyData.map((s) => s.label),
-              datasets: [
-                {
-                  label: "Safety Distribution",
-                  data: safetyData.map((s) => s.value),
-                  backgroundColor: ["#28a745", "#ffc107", "#dc3545"],
-                  hoverOffset: 10,
-                },
-              ],
+      // === CHART 7: NOTIFICATION INTERACTION STACKED BAR ===
+      new Chart(document.getElementById("notifEngage"), {
+        type: "bar",
+        data: {
+          labels: topNotifEngage.labels,
+          datasets: topNotifEngage.datasets,
+        },
+        options: {
+          plugins: {
+            title: {
+              display: true,
+              text: "Top 5 Notification Engagement Types",
+              font: { size: 18 },
             },
-            options: {
-              responsive: true,
-              plugins: {
-                title: {
-                  display: true,
-                  text: "Safety Classification Across 150+ Areas in Dhaka",
-                  font: { size: 18 },
-                },
-                tooltip: {
-                  callbacks: { label: (ctx) => `${ctx.label}: ${ctx.raw}%` },
-                },
-                legend: {
-                  position: "bottom",
-                  labels: { usePointStyle: true, boxWidth: 10 },
-                },
-              },
+            tooltip: { mode: "index", intersect: false },
+            legend: { position: "bottom" },
+          },
+          scales: {
+            x: { stacked: true },
+            y: {
+              stacked: true,
+              beginAtZero: true,
+              title: { display: true, text: "Count" },
             },
-          });
+          },
+        },
+      });
 
-          // SAFETY CHECK LINE CHART
-          new Chart(document.getElementById("routeCheckLine"), {
-            type: "line",
-            data: {
-              labels: safetyChecks.map((d) => d.day),
-              datasets: [
-                {
-                  label: "Safety Checks",
-                  data: safetyChecks.map((d) => d.checks),
-                  fill: true,
-                  borderColor: "#007bff",
-                  backgroundColor: "rgba(0, 123, 255, 0.2)",
-                  tension: 0.4,
-                  pointRadius: 5,
-                },
-              ],
+      // === CHART 8: FEEDBACK BUBBLE CHART (Top 5) ===
+      new Chart(document.getElementById("bubbleFeedback"), {
+        type: "bubble",
+        data: {
+          datasets: topBubbleData,
+        },
+        options: {
+          plugins: {
+            title: {
+              display: true,
+              text: "Top 5 Feedbacks (X: Positive, Y: Safety, R: Traffic)",
+              font: { size: 18 },
             },
-            options: {
-              responsive: true,
-              plugins: {
-                title: {
-                  display: true,
-                  text: "Student Engagement with Route Safety Tool",
-                  font: { size: 18 },
-                },
-                tooltip: {
-                  callbacks: { label: (ctx) => ` ${ctx.raw} checks` },
-                },
-              },
-              scales: {
-                y: {
-                  beginAtZero: true,
-                  title: { display: true, text: "Checks Per Day" },
+            tooltip: {
+              callbacks: {
+                label: (ctx) => {
+                  const val = ctx.raw;
+                  return `${ctx.dataset.label}: Feedback ${val.x}%, Safety ${val.y}%, Traffic Score: ${val.r}`;
                 },
               },
             },
-          });
+            legend: { position: "bottom" },
+          },
+          scales: {
+            x: {
+              title: { display: true, text: "Feedback Positivity (%)" },
+              min: 0,
+              max: 100,
+            },
+            y: {
+              title: { display: true, text: "Safety Score (%)" },
+              min: 0,
+              max: 100,
+            },
+          },
+        },
+      });
+    })
+    .catch((error) =>
+      console.error("Error loading dashboard data:", error)
+    );
+</script>
 
-          // RADAR FEATURE USAGE CHART
-          new Chart(document.getElementById("featureRadar"), {
-            type: "radar",
-            data: {
-              labels: featureUsage.map((f) => f.feature),
-              datasets: [
-                {
-                  label: "Usage Score",
-                  data: featureUsage.map((f) => f.score),
-                  fill: true,
-                  backgroundColor: "rgba(40,167,69,0.2)",
-                  borderColor: "rgba(40,167,69,1)",
-                  pointBackgroundColor: "rgba(40,167,69,1)",
-                },
-              ],
-            },
-            options: {
-              responsive: true,
-              plugins: {
-                title: {
-                  display: true,
-                  text: "Relative Usage of SafeWay Features",
-                  font: { size: 18 },
-                },
-                legend: { display: false },
-              },
-              scales: {
-                r: {
-                  angleLines: { display: true },
-                  suggestedMin: 50,
-                  suggestedMax: 100,
-                  pointLabels: { font: { size: 14 } },
-                },
-              },
-            },
-          });
 
-          // CRIME TYPE TREND LINE CHART
-          new Chart(document.getElementById("crimeTypeTrend"), {
-            type: "line",
-            data: {
-              labels: crimeTypes.labels,
-              datasets: crimeTypes.datasets,
-            },
-            options: {
-              responsive: true,
-              plugins: {
-                title: {
-                  display: true,
-                  text: "Weekly Trends by Crime Type",
-                  font: { size: 18 },
-                },
-              },
-            },
-          });
 
-          // EMERGENCY RESPONSE BAR CHART
-          new Chart(document.getElementById("responseBar"), {
-            type: "bar",
-            data: {
-              labels: responseData.map((r) => r.area),
-              datasets: [
-                {
-                  label: "Avg. Emergency Response Time (mins)",
-                  data: responseData.map((r) => r.time),
-                  backgroundColor: "#3498db",
-                },
-              ],
-            },
-            options: {
-              indexAxis: "y",
-              plugins: {
-                title: {
-                  display: true,
-                  text: "Emergency Response Time by Area",
-                  font: { size: 18 },
-                },
-              },
-              scales: {
-                x: {
-                  beginAtZero: true,
-                  title: { display: true, text: "Minutes" },
-                },
-              },
-            },
-          });
-
-          // NOTIFICATION INTERACTION CHART
-          new Chart(document.getElementById("notifEngage"), {
-            type: "bar",
-            data: {
-              labels: notifEngage.labels,
-              datasets: notifEngage.datasets,
-            },
-            options: {
-              responsive: true,
-              plugins: {
-                title: {
-                  display: true,
-                  text: "User Interaction with Notifications",
-                  font: { size: 18 },
-                },
-                tooltip: { mode: "index", intersect: false },
-                legend: { position: "bottom" },
-              },
-              scales: {
-                x: { stacked: true },
-                y: {
-                  stacked: true,
-                  beginAtZero: true,
-                  title: { display: true, text: "Number of Users" },
-                },
-              },
-            },
-          });
-
-          // BUBBLE CHART: FEEDBACK VS SAFETY VS TRAFFIC
-
-          new Chart(document.getElementById("bubbleFeedback"), {
-            type: "bubble",
-            data: {
-              datasets: bubbleData,
-            },
-            options: {
-              responsive: true,
-              plugins: {
-                title: {
-                  display: true,
-                  text: "Feedback (X), Safety Score (Y), and Foot Traffic (Size)",
-                  font: { size: 18 },
-                },
-                tooltip: {
-                  callbacks: {
-                    label: (ctx) => {
-                      const val = ctx.raw;
-                      return `${ctx.dataset.label}: Feedback ${
-                        val.x
-                      }%, Safety ${val.y}%, Traffic ${val.r * 100}`;
-                    },
-                  },
-                },
-                legend: {
-                  position: "bottom",
-                },
-              },
-              scales: {
-                x: {
-                  title: {
-                    display: true,
-                    text: "User Feedback Positivity (%)",
-                  },
-                  min: 0,
-                  max: 100,
-                },
-                y: {
-                  title: {
-                    display: true,
-                    text: "Safety Rating (%)",
-                  },
-                  min: 0,
-                  max: 100,
-                },
-              },
-            },
-          });
-        })
-
-        
-        .catch((error) =>
-          console.error("Error loading dashboard data:", error)
-        );
-    </script>
   </body>
 </html>
