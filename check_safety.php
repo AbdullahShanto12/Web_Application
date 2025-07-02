@@ -13,163 +13,191 @@
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
 
   <style>
-    body {
-      font-family: 'Source Sans Pro', sans-serif;
-    }
+  /* Body and font */
+  body {
+    background: linear-gradient(135deg, #e0f0ff 0%, #ffffff 100%);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #223344;
+  }
 
+  /* Navbar */
+  .main-header.navbar {
+    background: #004085;
+    color: white;
+    font-weight: 600;
+    box-shadow: 0 3px 8px rgba(0, 64, 133, 0.3);
+  }
+
+  .main-header.navbar .nav-link,
+  .main-header.navbar .nav-icon {
+    color: #cce0ff;
+    transition: color 0.3s ease;
+  }
+
+  .main-header.navbar .nav-link:hover {
+    color: #ffffff;
+  }
+
+  /* Sidebar */
+  .main-sidebar {
+    background-color: rgb(28, 31, 34);
+    color: #ffffff;
+  }
+
+  .main-sidebar .brand-link {
+    background-color: rgb(34, 38, 43);
+    color: #ffffff;
+    font-weight: bold;
+    border-bottom: 1px solid #003366;
+  }
+
+  .main-sidebar .nav-link {
+    color: #cfd9ff;
+    font-weight: 500;
+    transition: all 0.3s ease;
+  }
+
+  .main-sidebar .nav-link .nav-icon {
+    color: #a0b8ff;
+  }
+
+  .main-sidebar .nav-link.active,
+  .main-sidebar .nav-link:hover {
+    background-color: #e6f0ff;
+    color: #001f3f;
+    font-weight: bold;
+    border-radius: 8px;
+  }
+
+  .main-sidebar .nav-link.active .nav-icon,
+  .main-sidebar .nav-link:hover .nav-icon {
+    color: #001f3f;
+  }
+
+  /* Content Wrapper */
+  .content-wrapper {
+    background: #fdfefe;
+    padding: 40px 35px 60px;
+    min-height: calc(100vh - 56px);
+  }
+
+  /* Header */
+  header.text-center {
+    background-color: #004085;
+    color: white;
+    padding: 1rem;
+    font-size: 1.7rem;
+    font-weight: 700;
+    border-radius: 15px;
+    margin-bottom: 30px;
+    letter-spacing: 0.05em;
+  }
+
+  /* Form Controls */
+  input.form-control {
+    border-radius: 15px;
+    padding: 14px 20px;
+    border: 1px solid #ced4da;
+    font-size: 1.1rem;
+    box-shadow: none;
+    transition: border-color 0.3s ease;
+  }
+
+  input.form-control:focus {
+    border-color: #004085;
+    box-shadow: 0 0 8px rgba(0, 64, 133, 0.4);
+  }
+
+  /* Button */
+  .btn-primary {
+    background-color: #004085;
+    border-color: #004085;
+    font-weight: 700;
+    border-radius: 15px;
+    padding: 12px 28px;
+    font-size: 1.1rem;
+    transition: background-color 0.3s ease;
+  }
+
+  .btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+  }
+
+  /* Result */
+  #result {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #003366;
+    margin-top: 30px;
+  }
+
+  /* Map styling */
+  #map {
+    height: 550px;
+    width: 100%;
+    border-radius: 15px;
+    border: 3px solid #004085;
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.15);
+    transition: box-shadow 0.3s ease;
+    margin-top: 30px;
+  }
+
+  #map:hover {
+    box-shadow: 0 18px 45px rgba(0, 0, 0, 0.25);
+  }
+
+  /* Feature Cards */
+  .feature-card {
+    border-radius: 15px;
+    padding: 25px;
+    margin-bottom: 25px;
+    background: #e6f0ff;
+    box-shadow: 0 8px 24px rgba(0, 64, 133, 0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .feature-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 32px rgba(0, 64, 133, 0.25);
+  }
+
+  .feature-title {
+    font-weight: 700;
+    font-size: 1.4rem;
+    color: #003366;
+    margin-bottom: 15px;
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
     #map {
-      height: 550px;
-      width: 100%;
-      border-radius: 15px;
-      border: 2px solid #74b9ff;
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+      height: 300px;
     }
 
-    .safety-score {
-      font-size: 1.8rem;
-      font-weight: 700;
-      padding: 14px 22px;
-      border-radius: 12px;
-      display: inline-block;
-      margin-top: 20px;
-      animation: pulse 2s infinite ease-in-out;
-      color: #fff;
-    }
-
-    @keyframes pulse {
-      0% { transform: scale(1); opacity: 1; }
-      50% { transform: scale(1.03); opacity: 0.9; }
-      100% { transform: scale(1); opacity: 1; }
+    header.text-center {
+      font-size: 1.3rem;
+      padding: 0.75rem;
     }
 
     .feature-card {
-      border-radius: 15px;
-      padding: 20px;
-      margin-bottom: 20px;
-      background: linear-gradient(135deg, #ffffff 0%, #f1f2f6 100%);
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .feature-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 6px 24px rgba(0, 0, 0, 0.1);
-    }
-
-    .feature-title {
-      font-weight: 700;
-      font-size: 1.3rem;
-      color: #0984e3;
-      margin-bottom: 10px;
-    }
-
-    .btn {
-      border-radius: 10px;
-      font-weight: 600;
-      padding: 8px 18px;
-    }
-
-    .btn-primary {
-      background-color: #0984e3;
-      border-color: #0984e3;
-      transition: background-color 0.3s ease;
-    }
-
-    .btn-primary:hover {
-      background-color: #74b9ff;
-      border-color: #74b9ff;
+      padding: 18px;
     }
 
     input.form-control {
-      border-radius: 12px;
-      padding: 12px 18px;
-      border: 1px solid #dfe6e9;
-      background-color: #ffffff;
-    }
-
-    ul {
-      padding-left: 20px;
-    }
-
-    ul li {
-      margin-bottom: 6px;
       font-size: 1rem;
+      padding: 12px 14px;
     }
 
-    #transportScores div {
-      margin: 6px 0;
-      font-weight: 600;
-      color: #2d3436;
-    }
-
-    h2 {
-      font-size: 2rem;
-      font-weight: 800;
-      color: #2d3436;
-      margin-bottom: 25px;
-    }
-
-    #clock {
+    .btn-primary {
       font-size: 1rem;
-      font-weight: normal;
+      padding: 10px 22px;
     }
+  }
+</style>
 
-    label {
-      font-weight: 700;
-      color: #636e72;
-    }
 
-    #result {
-      margin-top: 15px;
-      font-size: 1.2rem;
-    }
 
-    .search-box {
-      margin-bottom: 20px;
-    }
-
-    .info-card {
-      margin-bottom: 15px;
-    }
-
-    .info-box {
-      background-color: #f4f6f9;
-      border-radius: 10px;
-      padding: 15px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.08);
-    }
-
-    .info-box h5 {
-      font-weight: 600;
-    }
-
-    .highlight {
-      color: #17a2b8;
-      font-weight: bold;
-    }
-
-    header {
-      background-color: var(--primary);
-      color: white;
-      padding: 1rem;
-      text-align: center;
-      font-size: 1.7rem;
-      font-weight: bold;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    @media (max-width: 768px) {
-      #map {
-        height: 300px;
-      }
-
-      h2 {
-        font-size: 1.6rem;
-      }
-    }
-  </style>
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -308,9 +336,11 @@
   <div class="container-fluid">
     <!-- Header -->
     <header class="text-center py-2">
-      <h3><span>🔎 Check Safety Before Going Out</span></h3>
-      <div id="clock"></div>
-    </header>
+  <h3><span>🔎 Check Safety Before Going Out</span></h3>
+  <div id="clock"></div>
+</header>
+
+
 
     <!-- Location Input -->
     <div class="form-group mt-3">

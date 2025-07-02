@@ -14,129 +14,246 @@
   <link rel="stylesheet" href="dist/css/adminlte.min.css">
   <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
   <style>
-    :root {
-      --primary: #0d6efd;
-      --danger: #dc3545;
-      --success: #28a745;
-      --warning: #ffc107;
-      --light: #f8f9fa;
-      --dark: #212529;
+  :root {
+    --primary: #004085;
+    --accent: #007bff;
+    --light-bg: #f4f7fb;
+    --dark-bg: #1c1f22;
+    --white: #ffffff;
+    --dark-text: #2d3436;
+  }
+
+  body {
+    font-family: 'Roboto', 'Segoe UI', sans-serif;
+    background: var(--light-bg);
+    color: var(--dark-text);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+
+  /* Navbar */
+  .main-header.navbar {
+    background: var(--primary);
+    color: white;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+  }
+
+  .main-header.navbar .nav-link {
+    color: #d4e7ff;
+    font-weight: 500;
+  }
+
+  .main-header.navbar .nav-link:hover {
+    color: white;
+  }
+
+  /* Sidebar */
+  .main-sidebar {
+    background-color: var(--dark-bg);
+    color: var(--white);
+  }
+
+  .main-sidebar .brand-link {
+    background-color: #22262b;
+    color: white;
+    font-weight: bold;
+    border-bottom: 1px solid #003366;
+  }
+
+  .main-sidebar .nav-link {
+    color: #cfd9ff;
+    font-weight: 500;
+    transition: all 0.3s ease;
+  }
+
+  .main-sidebar .nav-link .nav-icon {
+    color: #a0b8ff;
+  }
+
+  .main-sidebar .nav-link.active,
+  .main-sidebar .nav-link:hover {
+    background-color: #e6f0ff;
+    color: #001f3f;
+    font-weight: bold;
+    border-radius: 8px;
+  }
+
+  .main-sidebar .nav-link.active .nav-icon,
+  .main-sidebar .nav-link:hover .nav-icon {
+    color: #001f3f;
+  }
+
+  /* Header title */
+  header {
+    background-color: var(--primary);
+    color: white;
+    padding: 1rem;
+    font-size: 1.6rem;
+    font-weight: bold;
+    border-radius: 12px;
+    margin-bottom: 25px;
+    text-align: center;
+    letter-spacing: 0.03em;
+  }
+
+  #clock {
+    font-size: 1rem;
+    font-weight: normal;
+  }
+
+  /* Control Panel */
+  #controls {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    padding: 1rem;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    margin-bottom: 25px;
+  }
+
+  #controls input,
+  #controls select,
+  #controls button {
+    padding: 12px 16px;
+    font-size: 1rem;
+    border-radius: 10px;
+    border: 1px solid #ccd6dd;
+    transition: all 0.2s ease;
+  }
+
+  #controls input:focus,
+  #controls select:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 6px rgba(0, 64, 133, 0.25);
+    outline: none;
+  }
+
+  #controls button {
+    background-color: #ffffff;
+    font-weight: 600;
+    border: 2px solid var(--primary);
+    color: var(--primary);
+    cursor: pointer;
+  }
+
+  #controls button:hover {
+    background-color: var(--primary);
+    color: #ffffff;
+  }
+
+  /* Loader */
+  #loader {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-weight: bold;
+    font-size: 1.2rem;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 1rem 2rem;
+    border-radius: 10px;
+    display: none;
+    z-index: 9999;
+  }
+
+  /* Map Section */
+  #map {
+    width: 100%;
+    height: 550px;
+    border-radius: 15px;
+    border: 3px solid var(--primary);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+    transition: box-shadow 0.3s ease;
+  }
+
+  #map:hover {
+    box-shadow: 0 18px 45px rgba(0, 0, 0, 0.25);
+  }
+
+  /* Summary and Alert Boxes */
+  #alertBox,
+  #safetyStatus,
+  #crimeSummary {
+    margin: 1.5rem auto;
+    padding: 1rem 1.2rem;
+    border-radius: 10px;
+    max-width: 800px;
+    text-align: center;
+    font-weight: bold;
+    display: none;
+  }
+
+  #crimeSummary {
+    background-color: #001f3f;
+    color: #ffffff;
+  }
+
+  /* Chart container */
+  #crimeChartContainer {
+    background: #ffffff;
+    margin: 2rem auto;
+    padding: 1.5rem;
+    border-radius: 12px;
+    max-width: 800px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  }
+
+  #crimeChartContainer h3 {
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    color: #003366;
+  }
+
+  /* Dark Mode Styles */
+  .dark-mode {
+    background-color: #121212;
+    color: #eee;
+  }
+
+  .dark-mode header {
+    background-color: #1f1f1f;
+  }
+
+  .dark-mode #controls,
+  .dark-mode #crimeChartContainer {
+    background-color: #2a2a2a;
+    color: #fff;
+  }
+
+  .dark-mode select,
+  .dark-mode input,
+  .dark-mode button {
+    background-color: #444;
+    color: white;
+    border-color: #666;
+  }
+
+  .dark-mode #map {
+    border-color: #333;
+  }
+
+  @media (max-width: 768px) {
+    #controls {
+      flex-direction: column;
     }
 
-    body {
-      margin: 0;
-      font-family: 'Roboto', 'Segoe UI', sans-serif;
-      background-color: var(--light);
-      color: #333;
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
+    #controls input,
+    #controls select,
+    #controls button {
+      width: 100%;
     }
 
     header {
-      background-color: var(--primary);
-      color: white;
-      padding: 1rem;
-      text-align: center;
-      font-size: 1.7rem;
-      font-weight: bold;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+      font-size: 1.3rem;
     }
+  }
+</style>
 
-    #clock {
-      font-size: 1rem;
-      font-weight: normal;
-    }
-
-    #controls {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 1rem;
-      padding: 1rem;
-      background: #fff;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-    }
-
-    #controls input, #controls select, #controls button {
-      padding: 0.5rem 0.8rem;
-      font-size: 1rem;
-      border-radius: 6px;
-      border: 1px solid #ccc;
-      transition: all 0.2s ease;
-    }
-
-    #controls button:hover {
-      background-color: var(--primary);
-      color: white;
-    }
-
-    #map {
-      flex: 1;
-      min-height: 550px;
-    }
-
-    #alertBox, #safetyStatus, #crimeSummary {
-      margin: 1rem auto;
-      padding: 1rem;
-      border-radius: 6px;
-      max-width: 800px;
-      text-align: center;
-      display: none;
-    }
-
-    #crimeSummary {
-      background-color: var(--dark);
-      color: #fff;
-      font-weight: bold;
-    }
-
-    #crimeChartContainer {
-      background: #fff;
-      margin: 1rem auto;
-      padding: 1rem;
-      border-radius: 10px;
-      max-width: 800px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-    }
-
-    #loader {
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      font-weight: bold;
-      font-size: 1.2rem;
-      background: rgba(255,255,255,0.95);
-      padding: 1rem 2rem;
-      border-radius: 10px;
-      display: none;
-      z-index: 9999;
-    }
-
-    .dark-mode {
-      background-color: #121212;
-      color: #eee;
-    }
-
-    .dark-mode header {
-      background-color: #1f1f1f;
-    }
-
-    .dark-mode #controls,
-    .dark-mode #crimeChartContainer {
-      background-color: #2a2a2a;
-      color: #fff;
-    }
-
-    .dark-mode select, .dark-mode input, .dark-mode button {
-      background-color: #444;
-      color: white;
-      border-color: #666;
-    }
-  </style>
 
 </head>
 

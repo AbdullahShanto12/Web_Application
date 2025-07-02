@@ -24,45 +24,106 @@ $areas = $mysqli->query("SELECT DISTINCT area FROM incidents");
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
   <style>
-/* Overall background gradient for page */
+/* ----------------------------
+   Base Page Styling
+----------------------------- */
 body {
   background: linear-gradient(135deg, #e0f0ff 0%, #ffffff 100%);
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   color: #223344;
 }
 
-/* Wrapper tweak to add subtle shadow and round edges */
+/* Full-page wrapper box with shadow and rounded edges */
 .wrapper {
   min-height: 100vh;
-  box-shadow: 0 0 20px rgb(0 0 0 / 0.1);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
   border-radius: 15px;
   overflow: hidden;
 }
 
-/* Navbar */
+/* ----------------------------
+   Navbar Styling
+----------------------------- */
 .main-header.navbar {
   background: #004085;
   color: white;
   font-weight: 600;
-  box-shadow: 0 3px 8px rgb(0 64 133 / 0.3);
+  box-shadow: 0 3px 8px rgba(0, 64, 133, 0.3);
   border-bottom: none;
+  padding-left: 15px; /* Add spacing from sidebar */
+  padding-right: 15px;
 }
-.main-header.navbar .nav-link, .main-header.navbar .nav-icon {
+
+/* Nav links and icons inside navbar */
+.main-header.navbar .nav-link,
+.main-header.navbar .nav-icon {
   color: #cce0ff;
   transition: color 0.3s ease;
 }
+
+/* Hover state for nav links */
 .main-header.navbar .nav-link:hover {
   color: #ffffff;
 }
 
-/* Content Wrapper */
+/* Small horizontal gap between nav items */
+.main-header .navbar-nav .nav-item {
+  margin-left: 10px;
+}
+
+
+
+/* ----------------------------------------
+   🖤 Sidebar (Match from Identify Routes)
+------------------------------------------- */
+.main-sidebar {
+  background-color:rgb(28, 31, 34); /* Dark navy blue */
+  color: #ffffff;
+}
+
+.main-sidebar .brand-link {
+  background-color:rgb(34, 38, 43);
+  color: #ffffff;
+  font-weight: bold;
+  border-bottom: 1px solid #003366;
+}
+
+.main-sidebar .nav-link {
+  color: #cfd9ff;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.main-sidebar .nav-link .nav-icon {
+  color: #a0b8ff;
+}
+
+.main-sidebar .nav-link.active,
+.main-sidebar .nav-link:hover {
+  background-color: #e6f0ff;
+  color: #001f3f;
+  font-weight: bold;
+  border-radius: 8px;
+}
+
+.main-sidebar .nav-link.active .nav-icon,
+.main-sidebar .nav-link:hover .nav-icon {
+  color: #001f3f;
+}
+
+
+/* ----------------------------
+   Content Wrapper Styling
+----------------------------- */
 .content-wrapper {
   background: #fdfefe;
   padding: 40px 35px 60px;
-  min-height: calc(100vh - 56px);
+  min-height: calc(100vh - 56px); /* Adjust for navbar height */
 }
 
-/* Headings */
+/* ----------------------------
+   Headings
+----------------------------- */
 h2, h3 {
   border-bottom: 4px solid #0056b3;
   padding-bottom: 12px;
@@ -73,12 +134,14 @@ h2, h3 {
   text-transform: uppercase;
 }
 
-/* Filters container */
+/* ----------------------------
+   Filters Section (Form Inputs)
+----------------------------- */
 .filters {
   background: linear-gradient(90deg, #d9e7ff, #ffffff);
   padding: 25px 30px;
   border-radius: 15px;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
   margin-bottom: 40px;
   display: flex;
   flex-wrap: wrap;
@@ -87,6 +150,7 @@ h2, h3 {
   justify-content: center;
 }
 
+/* Labels inside filters */
 .filters label {
   font-weight: 700;
   color: #004085;
@@ -95,50 +159,64 @@ h2, h3 {
   user-select: none;
 }
 
-.filters select, .filters input[type="date"] {
+/* Input + select dropdowns inside filters */
+.filters select,
+.filters input[type="date"] {
   border: 2px solid #0056b3;
   border-radius: 10px;
   padding: 10px 18px;
   font-size: 1.1rem;
   color: #003366;
   min-width: 180px;
-  transition: all 0.3s ease;
-  box-shadow: inset 0 2px 6px rgba(0,0,0,0.05);
   cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.05);
 }
-.filters select:hover, .filters input[type="date"]:hover {
+
+/* Hover & Focus styles for inputs */
+.filters select:hover,
+.filters input[type="date"]:hover {
   border-color: #003366;
   box-shadow: 0 0 10px #0056b3aa;
 }
-.filters select:focus, .filters input[type="date"]:focus {
+.filters select:focus,
+.filters input[type="date"]:focus {
   border-color: #00254d;
   outline: none;
   box-shadow: 0 0 12px #003366cc;
 }
 
-/* Map styling */
+/* ----------------------------
+   Map Styling
+----------------------------- */
 #map {
   height: 550px;
   border-radius: 20px;
-  box-shadow: 0 12px 28px rgba(0,0,0,0.2);
+  border: 4px solid #004085;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.2);
   margin-bottom: 40px;
   transition: box-shadow 0.3s ease;
-  border: 4px solid #004085;
-}
-#map:hover {
-  box-shadow: 0 18px 45px rgba(0,0,0,0.35);
 }
 
-/* Results container */
+/* Map hover effect */
+#map:hover {
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.35);
+}
+
+/* ----------------------------
+   Results Container
+----------------------------- */
 .results {
   background: #ffffff;
   border-radius: 15px;
   padding: 30px 35px;
-  box-shadow: 0 10px 28px rgba(0,0,0,0.15);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.15);
   margin-bottom: 40px;
 }
 
-/* Incident list styling */
+/* ----------------------------
+   Incident List Styling
+----------------------------- */
 #incident-list {
   list-style: none;
   padding-left: 0;
@@ -146,28 +224,24 @@ h2, h3 {
   overflow-y: auto;
   font-size: 1.05rem;
 }
+
+/* Individual list items */
 #incident-list li {
   border-bottom: 1px solid #cce0ff;
   padding: 14px 0;
   font-weight: 600;
   color: #223344;
-  cursor: default;
-  transition: background-color 0.25s ease, color 0.25s ease;
   border-radius: 8px;
+  transition: background-color 0.25s ease, color 0.25s ease;
 }
+
+/* Hover style for list items */
 #incident-list li:hover {
   background-color: #d0e7ff;
   color: #00254d;
 }
 
-/* Chart canvas styling */
-#incidentChart {
-  border-radius: 20px;
-  box-shadow: 0 14px 40px rgba(0,0,0,0.1);
-  max-height: 450px;
-}
-
-/* Scrollbar for incident list */
+/* Scrollbar Styling for incident list */
 #incident-list::-webkit-scrollbar {
   width: 8px;
 }
@@ -180,13 +254,25 @@ h2, h3 {
   border-radius: 8px;
 }
 
-/* Responsive tweaks */
+/* ----------------------------
+   Chart Canvas Styling
+----------------------------- */
+#incidentChart {
+  border-radius: 20px;
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.1);
+  max-height: 450px;
+}
+
+/* ----------------------------
+   Responsive Design Tweaks
+----------------------------- */
 @media (max-width: 991px) {
   .filters {
     flex-direction: column;
     gap: 1.5rem;
   }
-  .filters select, .filters input[type="date"] {
+  .filters select,
+  .filters input[type="date"] {
     width: 100%;
     min-width: auto;
   }
@@ -200,7 +286,8 @@ h2, h3 {
     font-size: 1rem;
     min-width: 80px;
   }
-  .filters select, .filters input[type="date"] {
+  .filters select,
+  .filters input[type="date"] {
     font-size: 1rem;
     padding: 8px 15px;
   }
@@ -220,14 +307,17 @@ h2, h3 {
 <body class="hold-transition sidebar-mini layout-fixed">
   <div class="wrapper">
 
-    <!-- Navbar -->
-    <nav class="main-header navbar navbar-expand navbar-white navbar-light shadow-sm">
-      <ul class="navbar-nav">
-        <li class="nav-item"><a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a></li>
-        <li class="nav-item d-none d-sm-inline-block"><a href="#" class="nav-link font-weight-bold text-primary">Home</a></li>
-      </ul>
-    </nav>
-
+<!-- Navbar -->
+<nav class="main-header navbar navbar-expand navbar-white navbar-light shadow-sm px-3">
+  <ul class="navbar-nav">
+    <li class="nav-item me-3">
+      <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
+    </li>
+    <li class="nav-item d-none d-sm-inline-block">
+      <a href="#" class="nav-link font-weight-bold text-primary">Home</a>
+    </li>
+  </ul>
+</nav>
 
 
 
@@ -237,6 +327,11 @@ h2, h3 {
       <img src="dist/img/AdminLTELogo.png" alt="Logo" class="brand-image img-circle elevation-3">
       <span class="brand-text font-weight-light">SafeWay</span>
     </a>
+
+
+
+
+    
       <div class="sidebar">
         <nav class="mt-3">
           <ul class="nav nav-pills nav-sidebar flex-column" role="menu">

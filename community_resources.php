@@ -87,63 +87,217 @@ $colorIndex = 0;
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap">
 
     <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            background: linear-gradient(to right, #f0f2f5, #e3f2fd);
-        }
-        #map {
-    height: 550px;
-    border-radius: 10px;
-    border: 2px solid #007bff;
+  :root {
+    --primary: #004085;
+    --accent: #007bff;
+    --light-bg: #f4f7fb;
+    --dark-bg: #1c1f22;
+    --white: #ffffff;
+    --dark-text: #2d3436;
+  }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--light-bg);
+    color: var(--dark-text);
+    margin: 0;
+  }
+
+  /* Navbar */
+  .main-header.navbar {
+    background: var(--primary);
+    color: white;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+  }
+
+  .main-header .nav-link {
+    color: #cfe7ff;
+    font-weight: 500;
+  }
+
+  .main-header .nav-link:hover {
+    color: white;
+  }
+
+  /* Sidebar */
+  .main-sidebar {
+    background-color: var(--dark-bg);
+    color: var(--white);
+  }
+
+  .main-sidebar .brand-link {
+    background-color: #22262b;
+    color: white;
+    font-weight: bold;
+    border-bottom: 1px solid #003366;
+  }
+
+  .main-sidebar .nav-link {
+    color: #cfd9ff;
+    font-weight: 500;
+    transition: all 0.3s ease;
+  }
+
+  .main-sidebar .nav-link .nav-icon {
+    color: #a0b8ff;
+  }
+
+  .main-sidebar .nav-link.active,
+  .main-sidebar .nav-link:hover {
+    background-color: #e6f0ff;
+    color: #001f3f;
+    font-weight: bold;
+    border-radius: 8px;
+  }
+
+  .main-sidebar .nav-link.active .nav-icon,
+  .main-sidebar .nav-link:hover .nav-icon {
+    color: #001f3f;
+  }
+
+  /* Page Container */
+  .content-wrapper {
+    background-color: var(--light-bg);
+    padding: 2rem 1rem;
+  }
+
+  .card.bg-white {
+    border-radius: 14px;
+    border: 1px solid #e1eaf1;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.06);
+    padding: 1.5rem;
+  }
+
+  h2.text-primary {
+    color: #003366 !important;
+    font-weight: bold;
+  }
+
+  p.text-muted {
+    font-size: 1rem;
+  }
+
+  /* Stats Cards */
+  .stats-card {
+    padding: 20px;
+    border-radius: 16px;
+    text-align: center;
     margin-bottom: 20px;
-}
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.07);
+    transition: 0.3s ease-in-out;
+  }
 
-        .stats-card {
-            color: white;
-            padding: 20px;
-            border-radius: 16px;
-            box-shadow: 0 0 15px rgba(0,0,0,0.1);
-            text-align: center;
-            margin-bottom: 20px;
-            transition: 0.3s ease-in-out;
-        }
-        .stats-card:hover {
-            transform: scale(1.05);
-        }
-        .badge-category {
-            padding: 5px 10px;
-            font-size: 0.85rem;
-            border-radius: 12px;
-        }
-        .purpose-highlight {
-            font-weight: 600;
-            font-size: 0.95rem;
-            color: #007bff;
-            cursor: help;
-            text-decoration: underline dotted;
-        }
-        .table-striped tbody tr:hover {
-            background-color: #e3f2fd;
-        }
-        .filter-form label {
-            font-weight: 600;
-        }
-        .table th, .table td {
-            vertical-align: middle !important;
-        }
+  .stats-card:hover {
+    transform: scale(1.05);
+  }
 
+  .stats-card h3 {
+    font-size: 2rem;
+    font-weight: bold;
+  }
 
+  .stats-card small {
+    font-size: 0.9rem;
+    color: #f8f9fa;
+  }
 
+  /* Filters */
+  .filter-form label {
+    font-weight: 600;
+    color: #003366;
+  }
 
+  .filter-form .form-control {
+    border-radius: 10px;
+    border: 1px solid #ccddee;
+    transition: 0.2s ease;
+  }
 
-    </style>
+  .filter-form .form-control:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 6px rgba(0, 123, 255, 0.25);
+    outline: none;
+  }
+
+  .filter-form .btn-primary {
+    background-color: var(--primary);
+    border-color: var(--primary);
+    font-weight: 600;
+  }
+
+  .filter-form .btn-outline-secondary {
+    border-radius: 8px;
+  }
+
+  /* Map */
+  #map {
+    height: 550px;
+    border-radius: 12px;
+    border: 3px solid #004085;
+    margin-bottom: 25px;
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Table */
+  .table-responsive {
+    background: #ffffff;
+    padding: 1rem;
+    border-radius: 12px;
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.08);
+  }
+
+  .table thead {
+    background-color: #003366;
+    color: white;
+    font-weight: bold;
+  }
+
+  .table-striped tbody tr:hover {
+    background-color: #e3f2fd;
+  }
+
+  .badge-category {
+    padding: 5px 10px;
+    font-size: 0.85rem;
+    border-radius: 12px;
+  }
+
+  .purpose-highlight {
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: #007bff;
+    cursor: help;
+    text-decoration: underline dotted;
+  }
+
+  .table td a.btn-outline-success {
+    font-weight: 500;
+    border-radius: 8px;
+  }
+
+  @media (max-width: 768px) {
+    .filter-form .form-row {
+      flex-direction: column;
+    }
+    .form-group {
+      margin-bottom: 1rem;
+    }
+  }
+  .main-header .nav-link {
+    color: white !important;
+  }
+  .main-header .nav-link:hover {
+    color: #ffdd57 !important;
+  }
+</style>
+
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
 
     <!-- Navbar -->
-    <nav class="main-header navbar navbar-expand navbar-white navbar-light shadow-sm">
-        <ul class="navbar-nav">
+    <nav class="main-header navbar navbar-expand navbar-dark" style="background-color: #003366;">
+    <ul class="navbar-nav">
             <li class="nav-item"><a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a></li>
             <li class="nav-item d-none d-sm-inline-block"><a href="dashboard.php" class="nav-link">Home</a></li>
         </ul>
