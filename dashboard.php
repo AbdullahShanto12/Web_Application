@@ -45,126 +45,355 @@ $role = $_SESSION['role'] ?? null;
 
 
     <style>
-  /* General Interactive Elements */
-  .info-box {
-    cursor: pointer;
-  }
 
-  .card-body a {
-    text-decoration: none;
-  }
+/* 🌐 GLOBAL STYLES */
+/* --------------------------------------------- */
+body {
+  background: linear-gradient(135deg, #e0f0ff 0%, #ffffff 100%);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #223344;
+}
 
-  ul li {
-    transition: all 0.3s ease-in-out;
-  }
+/* --------------------------------------------- */
+/* 🔷 NAVBAR STYLES */
+/* --------------------------------------------- */
+.main-header.navbar {
+  background: #004085;
+  color: white;
+  font-weight: 600;
+  box-shadow: 0 3px 8px rgba(0, 64, 133, 0.3);
+}
 
-  /* Dashboard Section */
-  .dashboard-section {
-    margin-top: 30px;
-  }
+.main-header.navbar .nav-link,
+.main-header.navbar .nav-icon {
+  color: #cce0ff;
+  transition: color 0.3s ease;
+}
 
-  .dashboard-section .card-body {
-    padding: 30px;
-  }
+.main-header.navbar .nav-link:hover {
+  color: #ffffff;
+}
 
-  /* Feature Box Styling */
-  .feature-box {
-    padding: 15px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    margin-bottom: 15px;
-    background-color: #f9f9f9;
-    transition: 0.3s ease-in-out;
-  }
+/* --------------------------------------------- */
+/* 🧭 SIDEBAR STYLES */
+/* --------------------------------------------- */
+.main-sidebar {
+  background-color: rgb(28, 31, 34);
+  color: #ffffff;
+}
 
-  .feature-box h5 {
-    margin-bottom: 8px;
-  }
+.main-sidebar .brand-link {
+  background-color: rgb(34, 38, 43);
+  color: #ffffff;
+  font-weight: bold;
+  border-bottom: 1px solid #003366;
+}
 
-  .feature-box:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-    background-color: #f8f9fa;
-  }
+.main-sidebar .nav-link {
+  color: #cfd9ff;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
 
-  /* Chart Container Styling */
-  .chart-container {
-    height: 320px;
-    padding: 10px;
-    margin-bottom: 30px;
-    background: #ffffff;
-    border-radius: 12px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    transition: transform 0.3s ease-in-out;
-  }
+.main-sidebar .nav-link .nav-icon {
+  color: #a0b8ff;
+}
 
-  .chart-container:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
-  }
+.main-sidebar .nav-link.active,
+.main-sidebar .nav-link:hover {
+  background-color: #e6f0ff;
+  color: #001f3f;
+  font-weight: bold;
+  border-radius: 8px;
+}
 
+.main-sidebar .nav-link.active .nav-icon,
+.main-sidebar .nav-link:hover .nav-icon {
+  color: #001f3f;
+}
 
-  .center-chart-content {
+/* --------------------------------------------- */
+/* 📄 CONTENT WRAPPER & HEADINGS */
+/* --------------------------------------------- */
+.content-wrapper {
+  background: #fdfefe;
+  padding: 40px 35px 60px;
+  min-height: calc(100vh - 56px);
+}
+
+h2,
+h3.card-title {
+  border-bottom: 4px solid #0056b3;
+  padding-bottom: 12px;
+  margin-bottom: 30px;
+  font-weight: 800;
+  color: #003366;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+/* --------------------------------------------- */
+/* 📦 CARD STYLES */
+/* --------------------------------------------- */
+.card.card-info {
+  border-radius: 15px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+  border: none;
+}
+
+.card.card-info .card-header {
+  background-color: #004085;
+  border-radius: 15px 15px 0 0;
+  color: white;
+}
+
+/* Custom Header Styling */
+.card-header.custom-header {
+  background: linear-gradient(135deg, rgb(1, 30, 73), rgb(143, 179, 214));
+  color: white;
+  font-weight: 700;
+  font-size: 1.5rem;
+  padding: 20px 25px;
+  border-radius: 15px 15px 0 0;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.card-header.custom-header h3.card-title {
+  margin: 0;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: 0.5px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* --------------------------------------------- */
+/* 🔍 SEARCH BOX STYLES */
+/* --------------------------------------------- */
+.search-box input.form-control {
+  border-radius: 10px 0 0 10px;
+  border: 2px solid #0056b3;
+  padding: 12px 15px;
+  font-size: 1rem;
+  transition: 0.3s;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.06);
+}
+
+.search-box input.form-control:focus {
+  border-color: #00254d;
+  box-shadow: 0 0 10px #0056b3aa;
+}
+
+.search-box .btn.btn-info {
+  background-color: #004085;
+  border-color: #004085;
+  border-radius: 0 10px 10px 0;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.search-box .btn.btn-info:hover {
+  background-color: #00254d;
+}
+
+/* --------------------------------------------- */
+/* 🗺️ MAP STYLING */
+/* --------------------------------------------- */
+#map {
+  height: 450px;
+  border-radius: 15px;
+  border: 3px solid #004085;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.15);
+  transition: box-shadow 0.3s ease;
+}
+
+#map:hover {
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.25);
+}
+
+/* --------------------------------------------- */
+/* 📊 INFO CARDS & FEATURE BOXES */
+/* --------------------------------------------- */
+.info-card .info-box {
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 18px;
+  box-shadow: 0 5px 12px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s;
+}
+
+.info-card .info-box:hover {
+  transform: translateY(-3px);
+}
+
+.info-card h5 {
+  font-weight: 700;
+  color: #004085;
+  font-size: 1rem;
+  margin-bottom: 10px;
+}
+
+/* Feature Box Style */
+.feature-box {
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  background-color: #f9f9f9;
+  transition: 0.3s ease-in-out;
+}
+
+.feature-box h5 {
+  margin-bottom: 8px;
+}
+
+.feature-box:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  background-color: #f8f9fa;
+}
+
+/* --------------------------------------------- */
+/* 📈 CHART STYLING */
+/* --------------------------------------------- */
+.chart-container {
+  height: 320px;
+  padding: 10px;
+  margin-bottom: 30px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.3s ease-in-out;
+}
+
+.chart-container:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
+}
+
+.center-chart-content {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
 }
+
 .center-chart-content canvas {
   max-width: 100%;
   height: auto;
 }
 
+.chart-title {
+  font-size: 16px;
+  font-weight: 500;
+  text-align: center;
+  margin-bottom: 10px;
+  color: #343a40;
+}
+
+/* --------------------------------------------- */
+/* 🎨 UTILITY CLASSES */
+/* --------------------------------------------- */
+.highlight {
+  color: #17a2b8;
+  font-weight: bold;
+}
+
+.text-pink {
+  color: #e83e8c;
+}
+
+.border-pink {
+  border-color: #e83e8c !important;
+}
+
+.text-indigo {
+  color: #6610f2;
+}
+
+.border-indigo {
+  border-color: #6610f2 !important;
+}
+
+/* --------------------------------------------- */
+/* 📱 RESPONSIVE STYLES */
+/* --------------------------------------------- */
+@media (max-width: 768px) {
+  .search-box input.form-control,
+  .search-box .btn.btn-info {
+    width: 100%;
+    border-radius: 10px !important;
+    margin-top: 10px;
+  }
+
+  .info-card {
+    margin-bottom: 20px;
+  }
+
+  .chart-container {
+    height: auto;
+    margin-bottom: 20px;
+  }
+}
+
+/* --------------------------------------------- */
+/* ✨ MISCELLANEOUS INTERACTIVE ELEMENTS */
+/* --------------------------------------------- */
+.info-box {
+  cursor: pointer;
+}
+
+.card-body a {
+  text-decoration: none;
+}
+
+ul {
+  padding-left: 1.2rem;
+}
+
+ul li {
+  margin-bottom: 6px;
+  color: #333;
+  transition: all 0.3s ease-in-out;
+}
+
+/* --------------------------------------------- */
+/* 🧩 DASHBOARD SECTION */
+/* --------------------------------------------- */
+.dashboard-section {
+  margin-top: 30px;
+}
+
+.dashboard-section .card-body {
+  padding: 30px;
+}
+
+/* --------------------------------------------- */
+/* 📌 HEADER SECTION */
+/* --------------------------------------------- */
 header {
-      background-color: var(--primary);
-      color: white;
-      padding: 1rem;
-      text-align: center;
-      font-size: 1.7rem;
-      font-weight: bold;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
+  background-color: var(--primary);
+  color: white;
+  padding: 1rem;
+  font-size: 1.7rem;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+}
 
-
-  .chart-title {
-    font-size: 16px;
-    font-weight: 500;
-    text-align: center;
-    margin-bottom: 10px;
-    color: #343a40;
-  }
-
-  /* Color Utility Classes */
-  .text-pink {
-    color: #e83e8c;
-  }
-
-  .border-pink {
-    border-color: #e83e8c !important;
-  }
-
-  .text-indigo {
-    color: #6610f2;
-  }
-
-  .border-indigo {
-    border-color: #6610f2 !important;
-  }
-
-  /* Responsive Adjustments */
-  @media (max-width: 767.98px) {
-    .chart-container {
-      height: auto;
-      margin-bottom: 20px;
-    }
-  }
 </style>
+
 
 
 

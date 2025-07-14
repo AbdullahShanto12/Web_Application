@@ -91,57 +91,60 @@
     color: var(--danger);
   }
 
-  /* Navbar */
-  .main-header.navbar {
-    background-color: var(--primary);
-    color: white;
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
-  }
 
-  .main-header .nav-link {
-    color: #cfe7ff;
-    font-weight: 500;
-  }
+/* ⬛ Navbar Styles */
+.main-header.navbar {
+  background: #004085;
+  color: white;
+  font-weight: 600;
+  box-shadow: 0 3px 8px rgba(0, 64, 133, 0.3);
+}
 
-  .main-header .nav-link:hover {
-    color: white;
-  }
+.main-header.navbar .nav-link,
+.main-header.navbar .nav-icon {
+  color: #cce0ff;
+  transition: color 0.3s ease;
+}
 
-  /* Sidebar */
-  .main-sidebar {
-    background-color: var(--dark-bg);
-    color: var(--white);
-  }
+.main-header.navbar .nav-link:hover {
+  color: #ffffff;
+}
 
-  .main-sidebar .brand-link {
-    background-color: #22262b;
-    color: white;
-    font-weight: bold;
-    border-bottom: 1px solid #003366;
-  }
+/* 🧭 Sidebar Styles */
+.main-sidebar {
+  background-color: rgb(28, 31, 34);
+  color: #ffffff;
+}
 
-  .main-sidebar .nav-link {
-    color: #cfd9ff;
-    font-weight: 500;
-    transition: all 0.3s ease;
-  }
+.main-sidebar .brand-link {
+  background-color: rgb(34, 38, 43);
+  color: #ffffff;
+  font-weight: bold;
+  border-bottom: 1px solid #003366;
+}
 
-  .main-sidebar .nav-link .nav-icon {
-    color: #a0b8ff;
-  }
+.main-sidebar .nav-link {
+  color: #cfd9ff;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
 
-  .main-sidebar .nav-link.active,
-  .main-sidebar .nav-link:hover {
-    background-color: #e6f0ff;
-    color: #001f3f;
-    font-weight: bold;
-    border-radius: 8px;
-  }
+.main-sidebar .nav-link .nav-icon {
+  color: #a0b8ff;
+}
 
-  .main-sidebar .nav-link.active .nav-icon,
-  .main-sidebar .nav-link:hover .nav-icon {
-    color: #001f3f;
-  }
+.main-sidebar .nav-link.active,
+.main-sidebar .nav-link:hover {
+  background-color: #e6f0ff;
+  color: #001f3f;
+  font-weight: bold;
+  border-radius: 8px;
+}
+
+.main-sidebar .nav-link.active .nav-icon,
+.main-sidebar .nav-link:hover .nav-icon {
+  color: #001f3f;
+}
 
   /* Dark Mode */
   body.dark-mode {

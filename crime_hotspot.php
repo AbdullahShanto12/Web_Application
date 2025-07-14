@@ -443,184 +443,189 @@
 
 
 
+<!-- Include Leaflet, Leaflet.markercluster, Leaflet.heat, Chart.js libs in your HTML head or before this script -->
 
+<script>
+  const map = L.map('map').setView([23.8103, 90.4125], 12);
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
+  
+  let markersCluster = L.markerClusterGroup();
+  map.addLayer(markersCluster);
 
+  let heatLayer, crimeChart;
+  let globalCrimeData = [];
+  const alertThreshold = 7;
 
+  function updateClock() {
+    const now = new Date();
+    document.getElementById('clock').textContent = now.toLocaleTimeString();
+  }
+  setInterval(updateClock, 1000);
+  updateClock();
 
-  <script>
-    const map = L.map('map').setView([23.8103, 90.4125], 12);
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
-    let markersCluster = L.markerClusterGroup();
-    map.addLayer(markersCluster);
-    let heatLayer, crimeChart;
-    let globalCrimeData = [];
-    const alertThreshold = 7;
-
-    function updateClock() {
-      const now = new Date();
-      document.getElementById('clock').textContent = now.toLocaleTimeString();
+  async function fetchCrimeData(days) {
+    document.getElementById('loader').style.display = 'block';
+    try {
+      const url = `get_crime_data.php?days=${days}`;
+      const res = await fetch(url);
+      const json = await res.json();
+      return json.data || [];
+    } catch {
+      alert("⚠️ Failed to fetch data.");
+      return [];
+    } finally {
+      document.getElementById('loader').style.display = 'none';
     }
-    setInterval(updateClock, 1000);
-    updateClock();
+  }
 
-    async function fetchCrimeData(days, type) {
-      document.getElementById('loader').style.display = 'block';
-      try {
-        const url = `get_crime_data.php?days=${days}&type=${type}`;
-        const res = await fetch(url);
-        const json = await res.json();
-        return json.data || [];
-      } catch {
-        alert("⚠️ Failed to fetch data.");
-        return [];
-      } finally {
-        document.getElementById('loader').style.display = 'none';
-      }
+  function aggregateByArea(data) {
+    const areaMap = {};
+    data.forEach(({ area, count }) => {
+      areaMap[area] = (areaMap[area] || 0) + count;
+    });
+    return areaMap;
+  }
+
+  function prepareHeatPoints(data) {
+    return data.map(d => [d.lat, d.lon, d.count]);
+  }
+
+  function clearMapLayers() {
+    markersCluster.clearLayers();
+    if (heatLayer) map.removeLayer(heatLayer);
+  }
+
+  function checkAlerts(areaCounts) {
+    const alertBox = document.getElementById('alertBox');
+    const hotspots = Object.entries(areaCounts).filter(([_, c]) => c >= alertThreshold);
+    if (hotspots.length) {
+      alertBox.style.display = 'block';
+      alertBox.style.background = '#ffe6e6';
+      alertBox.style.color = '#a00';
+      alertBox.innerHTML = `⚠️ Hotspots: ${hotspots.map(([a, c]) => `${a} (${c})`).join(', ')}`;
+    } else {
+      alertBox.style.display = 'none';
     }
+  }
 
-    function aggregateByArea(data) {
-      const areaMap = {};
-      data.forEach(({ area, count }) => {
-        areaMap[area] = (areaMap[area] || 0) + count;
-      });
-      return areaMap;
-    }
+  function renderMarkers(data) {
+    data.forEach(({ lat, lon, area, date, count }) => {
+      const emoji = '❗';  // generic alert emoji since no type info
 
-    function prepareHeatPoints(data) {
-      return data.map(d => [d.lat, d.lon, d.count]);
-    }
+      const popup = `<b>${emoji} ${area}</b><br>${count} incident(s)<br><i>${date}</i>`;
+      L.marker([lat, lon]).bindPopup(popup).addTo(markersCluster);
+    });
+  }
 
-    function clearMapLayers() {
-      markersCluster.clearLayers();
-      if (heatLayer) map.removeLayer(heatLayer);
-    }
+  function renderHeatmap(data) {
+    const heatPoints = prepareHeatPoints(data);
+    heatLayer = L.heatLayer(heatPoints, { radius: 25, blur: 20 }).addTo(map);
+  }
 
-    function checkAlerts(areaCounts) {
-      const alertBox = document.getElementById('alertBox');
-      const hotspots = Object.entries(areaCounts).filter(([_, c]) => c >= alertThreshold);
-      if (hotspots.length) {
-        alertBox.style.display = 'block';
-        alertBox.style.background = '#ffe6e6';
-        alertBox.style.color = '#a00';
-        alertBox.innerHTML = `⚠️ Hotspots: ${hotspots.map(([a, c]) => `${a} (${c})`).join(', ')}`;
-      } else {
-        alertBox.style.display = 'none';
-      }
-    }
+  function updateCrimeChart(areaCounts) {
+    const labels = Object.keys(areaCounts);
+    const values = Object.values(areaCounts);
+    const ctx = document.getElementById('crimeChart').getContext('2d');
 
-    function renderMarkers(data) {
-      data.forEach(({ lat, lon, area, date, type, count }) => {
-        const emoji = {
-          Robbery: '🧤', Harassment: '😡', Assault: '🥊', Theft: '👜'
-        }[type] || '❗';
-        const popup = `<b>${emoji} ${area}</b><br>${type} - ${count} report(s)<br><i>${date}</i>`;
-        L.marker([lat, lon]).bindPopup(popup).addTo(markersCluster);
-      });
-    }
-
-    function renderHeatmap(data) {
-      const heatPoints = prepareHeatPoints(data);
-      heatLayer = L.heatLayer(heatPoints, { radius: 25, blur: 20 }).addTo(map);
-    }
-
-    function updateCrimeChart(areaCounts) {
-      const labels = Object.keys(areaCounts);
-      const values = Object.values(areaCounts);
-      const ctx = document.getElementById('crimeChart').getContext('2d');
-
-      if (crimeChart) {
-        crimeChart.data.labels = labels;
-        crimeChart.data.datasets[0].data = values;
-        crimeChart.update();
-      } else {
-        crimeChart = new Chart(ctx, {
-          type: 'bar',
-          data: {
-            labels,
-            datasets: [{
-              label: 'Incidents',
-              data: values,
-              backgroundColor: '#dc3545'
-            }]
-          },
-          options: {
-            scales: { y: { beginAtZero: true } },
-            plugins: { legend: { display: false } }
-          }
-        });
-      }
-    }
-
-    function toggleHeatmap() {
-      if (heatLayer && map.hasLayer(heatLayer)) {
-        map.removeLayer(heatLayer);
-      } else {
-        renderHeatmap(globalCrimeData);
-      }
-    }
-
-    function toggleDarkMode() {
-      document.body.classList.toggle('dark-mode');
-    }
-
-    function showSummary(total) {
-      const box = document.getElementById('crimeSummary');
-      box.style.display = 'block';
-      box.textContent = `📊 Total Incidents Displayed: ${total}`;
-    }
-
-    async function updateView() {
-      const days = document.getElementById('timeRange').value;
-      const type = document.getElementById('crimeType').value;
-      const keyword = document.getElementById('areaSearch').value.toLowerCase();
-
-      let data = await fetchCrimeData(days, type);
-      if (keyword) {
-        data = data.filter(d => d.area.toLowerCase().includes(keyword));
-      }
-
-      globalCrimeData = data;
-      clearMapLayers();
-      renderMarkers(data);
-      renderHeatmap(data);
-      const areaCounts = aggregateByArea(data);
-      updateCrimeChart(areaCounts);
-      checkAlerts(areaCounts);
-      showSummary(data.reduce((sum, d) => sum + d.count, 0));
-    }
-
-    function getUserLocation() {
-      if (!navigator.geolocation) return alert("Location not supported.");
-      navigator.geolocation.getCurrentPosition(pos => {
-        const { latitude, longitude } = pos.coords;
-        const userLatLng = L.latLng(latitude, longitude);
-        const radius = 0.5;
-
-        const incidents = globalCrimeData.filter(d =>
-          userLatLng.distanceTo([d.lat, d.lon]) / 1000 <= radius
-        );
-        const total = incidents.reduce((sum, d) => sum + d.count, 0);
-        const status = document.getElementById('safetyStatus');
-        status.style.display = 'block';
-
-        if (total >= alertThreshold) {
-          status.textContent = `🚨 High Risk Zone! ${total} incidents nearby.`;
-          status.style.background = '#ffdddd';
-          status.style.color = '#a00';
-        } else if (total > 0) {
-          status.textContent = `⚠️ Medium Risk: ${total} incidents nearby.`;
-          status.style.background = '#fff3cd';
-          status.style.color = '#856404';
-        } else {
-          status.textContent = `✅ You are in a low-risk area.`;
-          status.style.background = '#d4edda';
-          status.style.color = '#155724';
+    if (crimeChart) {
+      crimeChart.data.labels = labels;
+      crimeChart.data.datasets[0].data = values;
+      crimeChart.update();
+    } else {
+      crimeChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels,
+          datasets: [{
+            label: 'Incidents',
+            data: values,
+            backgroundColor: '#dc3545'
+          }]
+        },
+        options: {
+          scales: { y: { beginAtZero: true } },
+          plugins: { legend: { display: false } }
         }
       });
     }
+  }
 
-    document.getElementById('areaSearch').addEventListener('input', updateView);
-    updateView();
-  </script>
+  function toggleHeatmap() {
+    if (heatLayer && map.hasLayer(heatLayer)) {
+      map.removeLayer(heatLayer);
+    } else {
+      renderHeatmap(globalCrimeData);
+    }
+  }
+
+  function toggleDarkMode() {
+    document.body.classList.toggle('dark-mode');
+  }
+
+  function showSummary(total) {
+    const box = document.getElementById('crimeSummary');
+    box.style.display = 'block';
+    box.textContent = `📊 Total Incidents Displayed: ${total}`;
+  }
+
+  async function updateView() {
+    const days = document.getElementById('timeRange').value;
+    const keyword = document.getElementById('areaSearch').value.toLowerCase();
+
+    let data = await fetchCrimeData(days);
+    if (keyword) {
+      data = data.filter(d => d.area.toLowerCase().includes(keyword));
+    }
+
+    globalCrimeData = data;
+    clearMapLayers();
+    renderMarkers(data);
+    renderHeatmap(data);
+    const areaCounts = aggregateByArea(data);
+    updateCrimeChart(areaCounts);
+    checkAlerts(areaCounts);
+    showSummary(data.reduce((sum, d) => sum + d.count, 0));
+  }
+
+  function getUserLocation() {
+    if (!navigator.geolocation) return alert("Location not supported.");
+    navigator.geolocation.getCurrentPosition(pos => {
+      const { latitude, longitude } = pos.coords;
+      const userLatLng = L.latLng(latitude, longitude);
+      const radius = 0.5; // kilometers
+
+      const incidents = globalCrimeData.filter(d =>
+        userLatLng.distanceTo([d.lat, d.lon]) / 1000 <= radius
+      );
+      const total = incidents.reduce((sum, d) => sum + d.count, 0);
+      const status = document.getElementById('safetyStatus');
+      status.style.display = 'block';
+
+      if (total >= alertThreshold) {
+        status.textContent = `🚨 High Risk Zone! ${total} incidents nearby.`;
+        status.style.background = '#ffdddd';
+        status.style.color = '#a00';
+      } else if (total > 0) {
+        status.textContent = `⚠️ Medium Risk: ${total} incidents nearby.`;
+        status.style.background = '#fff3cd';
+        status.style.color = '#856404';
+      } else {
+        status.textContent = `✅ You are in a low-risk area.`;
+        status.style.background = '#d4edda';
+        status.style.color = '#155724';
+      }
+    });
+  }
+
+  // Event listeners
+  document.getElementById('areaSearch').addEventListener('input', updateView);
+  document.getElementById('timeRange').addEventListener('change', updateView);
+  // If you have a button to get user location, hook it here:
+  // document.getElementById('btnGetLocation').addEventListener('click', getUserLocation);
+
+  // Initial load
+  updateView();
+</script>
+
 </body>
 </html>

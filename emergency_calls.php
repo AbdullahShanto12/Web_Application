@@ -615,122 +615,306 @@ require_once 'check_scheduled_calls.php';
   <link rel="stylesheet" href="plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
   <!-- Font Awesome CDN -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  
+  
+  
   <style>
+  /* ------------------------------------------------------
+     ✅ GENERAL LAYOUT & COLOR THEME STYLES
+  ---------------------------------------------------------*/
+  body {
+    font-family: 'Source Sans Pro', sans-serif;
+    background-color: #f9fafe;
+  }
+
+  .content-wrapper {
+    background: #fdfefe;
+    padding: 40px 35px 60px;
+    min-height: calc(100vh - 56px);
+  }
+
+  /* ------------------------------------------------------
+     ✅ NAVBAR STYLING
+  ---------------------------------------------------------*/
+  .main-header.navbar {
+    background: #004085;
+    color: white;
+    font-weight: 600;
+    box-shadow: 0 3px 8px rgba(0, 64, 133, 0.3);
+  }
+
+  .main-header.navbar .nav-link,
+  .main-header.navbar .nav-icon {
+    color: #cce0ff;
+    transition: color 0.3s ease;
+  }
+
+  .main-header.navbar .nav-link:hover {
+    color: #ffffff;
+  }
+
+  /* ------------------------------------------------------
+     ✅ SIDEBAR STYLING
+  ---------------------------------------------------------*/
+  .main-sidebar {
+    background-color: rgb(28, 31, 34);
+    color: #ffffff;
+  }
+
+  .main-sidebar .brand-link {
+    background-color: rgb(34, 38, 43);
+    color: #ffffff;
+    font-weight: bold;
+    border-bottom: 1px solid #003366;
+  }
+
+  .main-sidebar .nav-link {
+    color: #cfd9ff;
+    font-weight: 500;
+    transition: all 0.3s ease;
+  }
+
+  .main-sidebar .nav-link .nav-icon {
+    color: #a0b8ff;
+  }
+
+  .main-sidebar .nav-link.active,
+  .main-sidebar .nav-link:hover {
+    background-color: #e6f0ff;
+    color: #001f3f;
+    font-weight: bold;
+    border-radius: 8px;
+  }
+
+  .main-sidebar .nav-link.active .nav-icon,
+  .main-sidebar .nav-link:hover .nav-icon {
+    color: #001f3f;
+  }
+
+  /* ------------------------------------------------------
+     ✅ BUTTON STYLES
+  ---------------------------------------------------------*/
+  .btn-panic {
+    background-color: #dc3545;
+    color: #fff;
+    font-size: 1.2rem;
+    padding: 15px;
+    border: none;
+    border-radius: 10px;
+    width: 100%;
+    margin-bottom: 15px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .btn-panic:hover {
+    background-color: #c82333;
+  }
+
+  /* ------------------------------------------------------
+     ✅ CALL BUTTON STYLING
+  ---------------------------------------------------------*/
+  .call-button {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #f8f9fa;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    transition: background-color 0.2s ease;
+    cursor: pointer;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  }
+
+  .call-button:hover {
+    background-color: #e2e6ea;
+  }
+
+  .call-icon {
+    font-size: 1.8rem;
+    margin-right: 10px;
+    color: #007bff;
+  }
+
+  /* ------------------------------------------------------
+     ✅ QR CODE BOX STYLE
+  ---------------------------------------------------------*/
+  .qr-box {
+    background: #fff;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    text-align: center;
+    padding: 15px;
+    box-shadow: 0 1px 6px rgba(0,0,0,0.1);
+  }
+
+  /* ------------------------------------------------------
+     ✅ VOICE NOTE TEXT STYLE
+  ---------------------------------------------------------*/
+  .voice-note {
+    font-style: italic;
+    color: #555;
+    margin-top: 8px;
+  }
+
+  /* ------------------------------------------------------
+     ✅ SECTION TITLE STYLE
+  ---------------------------------------------------------*/
+  .section-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-top: 30px;
+    margin-bottom: 15px;
+    color: #003366;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  /* ------------------------------------------------------
+     ✅ INFO BOX STYLE
+  ---------------------------------------------------------*/
+  .info-box {
+    background-color: #e9ecef;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    box-shadow: inset 0 0 5px rgba(0,0,0,0.05);
+    color: #333;
+  }
+
+  /* ------------------------------------------------------
+     ✅ FORM CONTROL SPACING
+  ---------------------------------------------------------*/
+  .form-control {
+    margin-bottom: 10px;
+  }
+
+  /* ------------------------------------------------------
+     ✅ HEADER STYLE
+  ---------------------------------------------------------*/
+  header {
+    background-color: var(--primary);
+    color: white;
+    padding: 1rem;
+    text-align: center;
+    font-size: 1.7rem;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 3px 6px rgba(0,64,133,0.4);
+  }
+
+  /* ------------------------------------------------------
+     ✅ SHARE BUTTONS CONTAINER & BUTTONS
+  ---------------------------------------------------------*/
+  .share-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 15px;
+  }
+
+  .share-button {
+    padding: 8px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    color: white;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .share-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  }
+
+  .share-button i {
+    margin-right: 5px;
+  }
+
+  /* ------------------------------------------------------
+     ✅ VOICE COMMAND CONTAINER & BUTTON
+  ---------------------------------------------------------*/
+  .voice-command-container {
+    padding: 20px;
+    text-align: center;
+  }
+
+  #voiceCommandBtn {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    font-size: 1.2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 123, 255, 0.5);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  #voiceCommandBtn:hover {
+    background-color: #0056b3;
+    box-shadow: 0 6px 15px rgba(0, 86, 179, 0.7);
+  }
+
+  #voiceCommandBtn i {
+    font-size: 2rem;
+    margin-bottom: 10px;
+  }
+
+  #voiceStatus {
+    min-height: 50px;
+    margin-top: 15px;
+    color: #444;
+    font-weight: 600;
+  }
+
+  /* ------------------------------------------------------
+     ✅ RESPONSIVE TWEAKS FOR SMALL SCREENS
+  ---------------------------------------------------------*/
+  @media (max-width: 576px) {
     .call-button {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      background-color: #f8f9fa;
-      padding: 15px;
-      border-radius: 10px;
-      margin-bottom: 15px;
-      transition: all 0.2s ease;
-      cursor: pointer;
-    }
-    .call-button:hover {
-      background-color: #e2e6ea;
-    }
-    .call-icon {
-      font-size: 1.8rem;
-      margin-right: 10px;
-    }
-    .qr-box {
-      background: #fff;
-      border: 1px solid #ccc;
-      border-radius: 10px;
-      text-align: center;
-      padding: 15px;
-    }
-    .voice-note {
-      font-style: italic;
-      color: #555;
-    }
-    .section-title {
-      font-size: 1.2rem;
-      font-weight: bold;
-      margin-top: 30px;
-      margin-bottom: 15px;
-    }
-    .info-box {
-      background-color: #e9ecef;
-      padding: 15px;
-      border-radius: 10px;
-      margin-bottom: 15px;
-    }
-    .btn-panic {
-      background-color: #dc3545;
-      color: #fff;
-      font-size: 1.2rem;
-      padding: 15px;
-      border: none;
-      border-radius: 10px;
-      width: 100%;
-      margin-bottom: 15px;
-    }
-    .btn-panic:hover {
-      background-color: #c82333;
-    }
-    .form-control {
-      margin-bottom: 10px;
-    }
-
-    header {
-      background-color: var(--primary);
-      color: white;
-      padding: 1rem;
-      text-align: center;
-      font-size: 1.7rem;
-      font-weight: bold;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    
-    .share-buttons {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 15px;
-    }
-    .share-button {
-      margin-right: 10px;
-      margin-bottom: 10px;
-      padding: 8px 15px;
-      border-radius: 5px;
-      text-decoration: none;
-      color: white;
-      transition: all 0.3s ease;
-    }
-    .share-button:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-    }
-    .share-button i {
-      margin-right: 5px;
-    }
-    .voice-command-container {
-      padding: 20px;
-    }
-    #voiceCommandBtn {
-      width: 200px;
-      height: 200px;
-      border-radius: 50%;
-      font-size: 1.2rem;
-      display: flex;
       flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      transition: all 0.3s ease;
+      align-items: flex-start;
+      gap: 10px;
     }
+
+    .voice-command-container {
+      padding: 10px;
+    }
+
+    #voiceCommandBtn {
+      width: 150px;
+      height: 150px;
+      font-size: 1rem;
+    }
+
     #voiceCommandBtn i {
-      font-size: 2rem;
-      margin-bottom: 10px;
+      font-size: 1.5rem;
+      margin-bottom: 6px;
     }
-    #voiceStatus {
-      min-height: 50px;
-    }
-  </style>
+  }
+</style>
+
+
+
+
+
+
+
+
+
+
+
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">

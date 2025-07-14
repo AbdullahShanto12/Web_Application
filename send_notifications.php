@@ -19,252 +19,279 @@ if (!isset($_SESSION['user_id'])) {
   <link rel="stylesheet" href="plugins/overlayScrollbars/css/OverlayScrollbars.min.css" />
 
   <style>
-    .notification-form {
-      background: #fff;
-      border-radius: 12px;
-      padding: 25px;
-      box-shadow: 0 0 15px rgba(0,0,0,0.1);
-    }
-    .form-section-title {
-      font-size: 1.2rem;
-      font-weight: bold;
-      margin-bottom: 10px;
-    }
-    .info-panel {
-      margin-top: 20px;
-      background: #f1f1f1;
-      padding: 15px;
-      border-left: 5px solid #007bff;
-      border-radius: 10px;
-    }
-    .info-panel h5 {
-      font-weight: 600;
-    }
-    .example-alert {
-      background: #fff3cd;
-      padding: 10px;
-      border-left: 4px solid #ffc107;
-      margin-bottom: 15px;
-      border-radius: 5px;
-    }
-    .example-alert i {
-      margin-right: 5px;
-    }
-    header {
-      background-color: var(--primary);
-      color: white;
-      padding: 1rem;
-      text-align: center;
-      font-size: 1.7rem;
-      font-weight: bold;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    /* Notification Table Styling */
-    table {
-      background-color: #fff;
-      border-radius: 8px;
-      overflow: hidden;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-    }
-
-    thead.thead-dark th {
-      background-color: #343a40;
-      color: #fff;
-      font-weight: 600;
-    }
-
-    .table td, .table th {
-      vertical-align: middle;
-      padding: 12px;
-    }
-
-    .table tbody tr:hover {
-      background-color: #f6f6f6;
-      transition: background 0.3s ease;
-    }
-
-    .badge {
-      font-size: 0.85rem;
-      padding: 5px 10px;
-      border-radius: 20px;
-      font-weight: 500;
-      text-transform: capitalize;
-    }
-
-    .badge-danger {
-      background-color: #dc3545;
-    }
-
-    .badge-warning {
-      background-color: #ffc107;
-      color: #000;
-    }
-
-    .badge-info {
-      background-color: #17a2b8;
-    }
-
-    .badge-secondary {
-      background-color: #6c757d;
-    }
-
-    .table-responsive {
-      border-radius: 10px;
-      overflow: auto;
-      margin-top: 1.5rem;
-      max-height: 400px; /* Limits height, adds vertical scroll */
-    }
-
-
-
-
-
-
-    /* Container style for info panel */
-.info-panel {
-  background-color: #fff;
-  border-radius: 12px;
-  padding: 20px 25px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-  font-family: 'Source Sans Pro', sans-serif;
-  color: #333;
-}
-
-/* Headings */
-.info-panel h5 {
-  font-size: 1.4rem;
-  font-weight: 700;
-  margin-bottom: 20px;
-  color: #dc3545; /* Bootstrap danger red */
-  user-select: none;
-}
-
-/* List inside info panel */
-.info-panel ul {
-  list-style: none;
-  padding-left: 0;
-  margin: 0;
-}
-
-/* Each notification summary item */
-.info-panel ul li {
-  font-size: 1rem;
-  margin-bottom: 15px;
-  line-height: 1.4;
-  border-bottom: 1px solid #eee;
-  padding-bottom: 10px;
-  transition: background-color 0.3s ease;
-  cursor: default;
-}
-
-/* Hover effect on list items */
-.info-panel ul li:hover {
-  background-color: #f9f9f9;
-}
-
-/* Emphasized text inside list */
-.info-panel ul li strong {
-  color: #b02a37; /* slightly darker red */
-}
-
-.info-panel ul li em {
-  color: #666;
-  font-style: normal;
-  font-weight: 600;
-}
-
-/* Badges for urgency */
-.badge {
-  font-size: 0.8rem;
-  padding: 3px 10px;
-  border-radius: 15px;
-  font-weight: 600;
-  text-transform: capitalize;
-  vertical-align: middle;
-  margin: 0 6px;
-  color: #fff;
-  user-select: none;
-}
-
-.badge-danger {
-  background-color: #dc3545;
-}
-
-.badge-warning {
-  background-color: #ffc107;
-  color: #212529;
-}
-
-.badge-info {
-  background-color: #17a2b8;
-}
-
-.badge-secondary {
-  background-color: #6c757d;
-}
-
-/* Timestamp style */
-.info-panel ul li small {
-  color: #999;
-  font-size: 0.85rem;
-  user-select: none;
-}
-
-/* Example alert snippet container */
-.example-alert {
-  background-color: #fff8f8;
-  border-left: 5px solid #dc3545;
-  padding: 12px 15px;
-  margin-bottom: 15px;
-  border-radius: 8px;
-  font-size: 1rem;
-  display: flex;
-  align-items: center;
-  box-shadow: 0 1px 6px rgba(220,53,69,0.15);
-  transition: box-shadow 0.3s ease;
-}
-
-/* Hover effect */
-.example-alert:hover {
-  box-shadow: 0 4px 15px rgba(220,53,69,0.3);
-  background-color: #fff2f2;
-}
-
-/* Icon style */
-.example-alert i {
-  margin-right: 12px;
-  font-size: 1.3rem;
-  flex-shrink: 0;
-  color: inherit;
-  user-select: none;
-}
-
-/* Strong title inside alert */
-.example-alert strong {
-  margin-right: 6px;
-  color: #b02a37;
-  user-select: text;
-}
-
-/* Text inside alert */
-.example-alert {
-  color: #5a1f24;
-  user-select: text;
-}
-
-/* Responsive tweaks */
-@media (max-width: 576px) {
-  .info-panel ul li, .example-alert {
-    font-size: 0.9rem;
+  /* ------------------------------------------------------
+     ✅ GENERAL LAYOUT & COLOR THEME STYLES
+  ---------------------------------------------------------*/
+  body {
+    font-family: 'Source Sans Pro', sans-serif;
+    background-color: #f9fafe;
   }
+
+  .content-wrapper {
+    background: #fdfefe;
+    padding: 40px 35px 60px;
+    min-height: calc(100vh - 56px);
+  }
+
+  /* ------------------------------------------------------
+     ✅ NAVBAR STYLING
+  ---------------------------------------------------------*/
+  .main-header.navbar {
+    background: #004085;
+    color: white;
+    font-weight: 600;
+    box-shadow: 0 3px 8px rgba(0, 64, 133, 0.3);
+  }
+
+  .main-header.navbar .nav-link,
+  .main-header.navbar .nav-icon {
+    color: #cce0ff;
+    transition: color 0.3s ease;
+  }
+
+  .main-header.navbar .nav-link:hover {
+    color: #ffffff;
+  }
+
+  /* ------------------------------------------------------
+     ✅ SIDEBAR STYLING
+  ---------------------------------------------------------*/
+  .main-sidebar {
+    background-color: rgb(28, 31, 34);
+    color: #ffffff;
+  }
+
+  .main-sidebar .brand-link {
+    background-color: rgb(34, 38, 43);
+    color: #ffffff;
+    font-weight: bold;
+    border-bottom: 1px solid #003366;
+  }
+
+  .main-sidebar .nav-link {
+    color: #cfd9ff;
+    font-weight: 500;
+    transition: all 0.3s ease;
+  }
+
+  .main-sidebar .nav-link .nav-icon {
+    color: #a0b8ff;
+  }
+
+  .main-sidebar .nav-link.active,
+  .main-sidebar .nav-link:hover {
+    background-color: #e6f0ff;
+    color: #001f3f;
+    font-weight: bold;
+    border-radius: 8px;
+  }
+
+  .main-sidebar .nav-link.active .nav-icon,
+  .main-sidebar .nav-link:hover .nav-icon {
+    color: #001f3f;
+  }
+
+  /* ------------------------------------------------------
+     ✅ SECTION HEADING STYLE
+  ---------------------------------------------------------*/
+  h2, h4, h5 {
+    border-bottom: 4px solid #0056b3;
+    padding-bottom: 12px;
+    margin-bottom: 30px;
+    font-weight: 800;
+    color: #003366;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  /* ------------------------------------------------------
+     ✅ NOTIFICATION FORM
+  ---------------------------------------------------------*/
+  .notification-form {
+    background: #fff;
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  }
+
+  .form-section-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+
+  /* ------------------------------------------------------
+     ✅ INFO PANEL STYLES
+  ---------------------------------------------------------*/
+  .info-panel {
+    background-color: #fff;
+    border-radius: 12px;
+    padding: 20px 25px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    color: #333;
+    margin-top: 20px;
+  }
+
+  .info-panel h5 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: #dc3545;
+    user-select: none;
+  }
+
+  .info-panel ul {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+  }
+
+  .info-panel ul li {
+    font-size: 1rem;
+    margin-bottom: 15px;
+    line-height: 1.4;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+    transition: background-color 0.3s ease;
+    cursor: default;
+  }
+
+  .info-panel ul li:hover {
+    background-color: #f9f9f9;
+  }
+
+  .info-panel ul li strong {
+    color: #b02a37;
+  }
+
+  .info-panel ul li em {
+    color: #666;
+    font-style: normal;
+    font-weight: 600;
+  }
+
+  .info-panel ul li small {
+    color: #999;
+    font-size: 0.85rem;
+    user-select: none;
+  }
+
+  /* ------------------------------------------------------
+     ✅ EXAMPLE ALERT SNIPPET STYLES
+  ---------------------------------------------------------*/
+  .example-alert {
+    background-color: #fff8f8;
+    border-left: 5px solid #dc3545;
+    padding: 12px 15px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    color: #5a1f24;
+    box-shadow: 0 1px 6px rgba(220, 53, 69, 0.15);
+    transition: box-shadow 0.3s ease;
+  }
+
+  .example-alert:hover {
+    box-shadow: 0 4px 15px rgba(220, 53, 69, 0.3);
+    background-color: #fff2f2;
+  }
+
   .example-alert i {
-    font-size: 1.1rem;
-    margin-right: 8px;
+    margin-right: 12px;
+    font-size: 1.3rem;
+    flex-shrink: 0;
+    user-select: none;
   }
-}
+
+  .example-alert strong {
+    margin-right: 6px;
+    color: #b02a37;
+    user-select: text;
+  }
+
+  /* ------------------------------------------------------
+     ✅ BADGE STYLING FOR URGENCY
+  ---------------------------------------------------------*/
+  .badge {
+    font-size: 0.8rem;
+    padding: 3px 10px;
+    border-radius: 15px;
+    font-weight: 600;
+    text-transform: capitalize;
+    vertical-align: middle;
+    margin: 0 6px;
+    color: #fff;
+    user-select: none;
+  }
+
+  .badge-danger {
+    background-color: #dc3545;
+  }
+
+  .badge-warning {
+    background-color: #ffc107;
+    color: #212529;
+  }
+
+  .badge-info {
+    background-color: #17a2b8;
+  }
+
+  .badge-secondary {
+    background-color: #6c757d;
+  }
+
+  /* ------------------------------------------------------
+     ✅ TABLE STYLES FOR NOTIFICATION HISTORY
+  ---------------------------------------------------------*/
+  table {
+    background-color: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  }
+
+  thead.thead-dark th {
+    background-color: #343a40;
+    color: #fff;
+    font-weight: 600;
+  }
+
+  .table td,
+  .table th {
+    vertical-align: middle;
+    padding: 12px;
+  }
+
+  .table tbody tr:hover {
+    background-color: #f6f6f6;
+    transition: background 0.3s ease;
+  }
+
+  .table-responsive {
+    border-radius: 10px;
+    overflow: auto;
+    margin-top: 1.5rem;
+    max-height: 400px;
+  }
+
+  /* ------------------------------------------------------
+     ✅ RESPONSIVE TWEAKS FOR SMALL SCREENS
+  ---------------------------------------------------------*/
+  @media (max-width: 576px) {
+    .info-panel ul li,
+    .example-alert {
+      font-size: 0.9rem;
+    }
+
+    .example-alert i {
+      font-size: 1.1rem;
+      margin-right: 8px;
+    }
+  }
+</style>
 
 
 
@@ -273,7 +300,7 @@ if (!isset($_SESSION['user_id'])) {
 
 
 
-  </style>
+
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
