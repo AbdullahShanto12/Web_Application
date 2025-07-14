@@ -903,6 +903,38 @@ require_once 'check_scheduled_calls.php';
       margin-bottom: 6px;
     }
   }
+
+  .emergency-header {
+  margin: 40px 0 30px;
+  padding: 20px;
+  background: linear-gradient(90deg, #6d4accff, #460879ff);
+  border-radius: 16px;
+  box-shadow: 0 6px 20px rgba(255, 65, 108, 0.2);
+  color: #fff;
+  animation: fadeIn 1s ease-out;
+}
+
+.emergency-title {
+  font-size: 2.2rem;
+  font-weight: 800;
+  margin-bottom: 10px;
+  color: #fff;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+.emergency-subtext {
+  font-size: 1.1rem;
+  font-weight: 400;
+  margin: 0;
+  color: #fff;
+  opacity: 0.95;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
 </style>
 
 
@@ -1041,8 +1073,14 @@ require_once 'check_scheduled_calls.php';
   <!-- Main Content -->
   <div class="content-wrapper p-3">
     <div class="container-fluid">
-      <h2>Emergency & Trusted Calls</h2>
-      <p>Reach help instantly — whether it's authorities or someone you trust.</p>
+<div class="emergency-header text-center">
+  <h2 class="emergency-title">
+    🚨 Emergency & Trusted Calls
+  </h2>
+  <p class="emergency-subtext">
+    Reach help instantly — whether it's authorities or someone you trust.
+  </p>
+</div>
 
       <!-- Emergency Services -->
       <div class="section-title">Emergency Services</div>

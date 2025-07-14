@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 04, 2025 at 07:59 PM
+-- Generation Time: Jul 14, 2025 at 06:27 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -45,7 +45,95 @@ INSERT INTO `call_logs` (`id`, `user_id`, `phone_number`, `scheduled_time`, `sta
 (2, 102, '9876543210', '2025-05-04 09:00:00', 'failed', '2025-05-04 17:23:42'),
 (3, 101, '1112223333', '2025-05-06 14:15:00', 'completed', '2025-05-04 17:23:42'),
 (4, 103, '4445556666', '2025-05-07 18:00:00', 'completed', '2025-05-04 17:23:42'),
-(5, 104, '7778889999', '2025-05-03 20:45:00', 'completed', '2025-05-04 17:23:42');
+(5, 104, '7778889999', '2025-05-03 20:45:00', 'completed', '2025-05-04 17:23:42'),
+(0, 9, '1234567890', '2025-05-05 15:00:00', 'completed', '2025-05-05 17:01:01'),
+(0, 9, '1234567890', '2025-05-06 12:10:00', 'completed', '2025-06-23 17:53:17');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `community_resources`
+--
+
+CREATE TABLE `community_resources` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `category` varchar(50) NOT NULL,
+  `location` varchar(255) NOT NULL,
+  `contact` varchar(50) NOT NULL,
+  `purpose` varchar(255) NOT NULL,
+  `hours` varchar(100) DEFAULT NULL,
+  `description` text DEFAULT NULL,
+  `latitude` double NOT NULL DEFAULT 0,
+  `longitude` double NOT NULL DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `community_resources`
+--
+
+INSERT INTO `community_resources` (`id`, `name`, `category`, `location`, `contact`, `purpose`, `hours`, `description`, `latitude`, `longitude`) VALUES
+(1, 'Ain o Salish Kendra', 'Legal Aid', 'Siddeshwari, Dhaka', '01711442233', 'Legal assistance for women and children', '9 AM - 5 PM', 'Provides legal support and mediation services for abuse victims.', 23.7393, 90.4125),
+(2, 'Naripokkho', 'Women\'s Support', 'Dhanmondi, Dhaka', '01715013324', 'Women rights and awareness', '10 AM - 4 PM', 'Advocacy and support for women’s rights.', 23.7476, 90.3761),
+(3, 'BRAC Legal Aid Services', 'Legal Aid', 'Mohakhali, Dhaka', '01730542211', 'Legal advice and support', '9 AM - 6 PM', 'Free legal advice, especially for vulnerable women.', 23.7806, 90.4003),
+(4, 'Dhaka Medical Emergency', 'Emergency Help', 'Bakshibazar, Dhaka', '01313499870', '24/7 emergency medical aid', '24 Hours', 'Government hospital emergency unit.', 23.7274, 90.3931),
+(5, 'BNPS Counseling Center', 'Women\'s Support', 'Farmgate, Dhaka', '01918228400', 'Counseling for trauma', '10 AM - 5 PM', 'Psychological help for women facing violence.', 23.7512, 90.3874),
+(6, 'JAAGO Foundation', 'Local Initiatives', 'Banani, Dhaka', '01844558788', 'Community training', '10 AM - 5 PM', 'Empowers women through education and training.', 23.7904, 90.4074),
+(7, 'Fire Service & Civil Defence HQ', 'Emergency Help', 'Fulbaria, Dhaka', '01730336699', 'Emergency fire response', '24 Hours', 'Call for any fire-related emergencies.', 23.7115, 90.4087),
+(8, 'BDRCS First Aid Center', 'Emergency Help', 'Motijheel, Dhaka', '01811458555', 'Basic first aid', '24 Hours', 'Bangladesh Red Crescent Society first response team.', 23.7324, 90.4176),
+(9, 'Anannya Women’s Center', 'Women\'s Support', 'Mirpur-10, Dhaka', '01755334422', 'Abuse survivor support', '9 AM - 5 PM', 'Safe space and support for victims of abuse.', 23.8045, 90.3654),
+(10, 'Self Defense Class by Police HQ', 'Local Initiatives', 'Rajarbagh, Dhaka', '01730334455', 'Martial arts & safety tips', 'Weekly', 'Free safety training for women.', 23.7426, 90.4262),
+(11, 'ASK Women\'s Helpline', 'Emergency Help', 'Dhaka', '10921', '24/7 helpline for emergencies', '24 Hours', 'Confidential helpline for abuse victims.', 23.7811, 90.4),
+(12, 'Sajida Foundation', 'Women\'s Support', 'Uttara, Dhaka', '01713533001', 'Health & psychological support', '9 AM - 5 PM', 'Community health and gender support.', 23.8759, 90.3798),
+(13, 'BLAST Office', 'Legal Aid', 'Karwan Bazar, Dhaka', '01730000990', 'Human rights and legal aid', '9 AM - 5 PM', 'Provides legal representation and rights awareness.', 23.7568, 90.3905),
+(14, 'Shokhi Community Program', 'Local Initiatives', 'Tejgaon, Dhaka', '01712111000', 'Empowerment through training', '10 AM - 4 PM', 'Community training for low-income women.', 23.7613, 90.3922),
+(15, 'Safe Dhaka App Helpdesk', 'Local Initiatives', 'Gulshan-2, Dhaka', '01744556677', 'App support and info', '9 AM - 6 PM', 'Information helpdesk for city safety apps.', 23.7967, 90.4154),
+(16, 'Rainbow Shelter Home', 'Women\'s Support', 'Old Dhaka, Dhaka', '01888992233', 'Shelter for abuse victims', '24 Hours', 'Safe housing and trauma support for survivors.', 23.7121, 90.4076),
+(17, 'National Legal Aid Service', 'Legal Aid', 'Sher-e-Bangla Nagar, Dhaka', '105', 'Govt. legal support', '9 AM - 4 PM', 'Free legal aid from govt. of Bangladesh.', 23.7779, 90.3786),
+(18, 'Emergency Trauma Unit - DMCH', 'Emergency Help', 'Bakshibazar, Dhaka', '01300338822', 'Immediate medical trauma care', '24 Hours', 'Dedicated trauma center at Dhaka Medical.', 23.7271, 90.3942),
+(19, 'Women’s Rights Forum', 'Women\'s Support', 'Shyamoli, Dhaka', '01933445566', 'Awareness and support', '10 AM - 5 PM', 'Workshops and safe talk sessions.', 23.7734, 90.3561),
+(20, 'UN Women Dhaka Office', 'Local Initiatives', 'Baridhara, Dhaka', '0258835273', 'Policy and community training', '9 AM - 5 PM', 'Advocacy and training by UN.', 23.7993, 90.4268),
+(21, 'Bangladesh Legal Aid & Services Trust', 'Legal Aid', 'Kakrail, Dhaka', '01718882200', 'Legal assistance and representation', '9 AM - 5 PM', 'Support for underprivileged women.', 23.7411, 90.4122),
+(22, 'SHE Counseling Center', 'Women\'s Support', 'Malibagh, Dhaka', '01888993300', 'Abuse trauma therapy', '10 AM - 6 PM', 'Professional mental health service.', 23.7511, 90.4199),
+(23, 'Rescue Foundation Hotline', 'Emergency Help', 'Dhaka', '999', 'National emergency services', '24 Hours', 'Police, fire, and ambulance in one number.', 23.7778, 90.407),
+(24, 'SafeSteps Women Empowerment', 'Local Initiatives', 'Khilgaon, Dhaka', '01777001122', 'Training & mentoring', '10 AM - 5 PM', 'Start-up help for young women.', 23.7389, 90.4299),
+(25, 'BD Women Helpline', 'Emergency Help', 'Dhaka', '109', 'All purpose helpline for women', '24 Hours', 'Crisis, legal, medical help in one number.', 23.761, 90.4004),
+(26, 'Aparajita Training Center', 'Local Initiatives', 'Mohammadpur, Dhaka', '01700889966', 'Self-defense and skills training', '9 AM - 5 PM', 'Equips women with safety skills.', 23.7612, 90.3657),
+(27, 'Hope Bangladesh', 'Women\'s Support', 'Baridhara DOHS, Dhaka', '01777714433', 'Trauma recovery & safe home', '24 Hours', 'Shelter and psychological recovery.', 23.815, 90.4261),
+(28, 'Dhaka North City Corporation Helpline', 'Emergency Help', 'Gulshan, Dhaka', '333', 'City safety, sanitation, women safety', '8 AM - 8 PM', 'Report issues and get help.', 23.7915, 90.4212),
+(29, 'WomenWatch Bangladesh', 'Local Initiatives', 'Wari, Dhaka', '01711100900', 'Watchdog, awareness & reporting', '10 AM - 4 PM', 'Report local incidents or unsafe zones.', 23.7166, 90.4193),
+(30, 'National Trauma Counseling Center', 'Women\'s Support', 'Green Road, Dhaka', '01552223300', 'Mental health support', '10 AM - 5 PM', 'Therapy and group sessions for victims.', 23.751, 90.385);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `crime_incidents`
+--
+
+CREATE TABLE `crime_incidents` (
+  `id` int(11) NOT NULL,
+  `area` varchar(100) NOT NULL,
+  `latitude` double NOT NULL,
+  `longitude` double NOT NULL,
+  `incident_count` int(11) NOT NULL DEFAULT 1,
+  `incident_date` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `crime_incidents`
+--
+
+INSERT INTO `crime_incidents` (`id`, `area`, `latitude`, `longitude`, `incident_count`, `incident_date`) VALUES
+(1, 'Dhanmondi', 23.7415, 90.3733, 4, '2025-07-10'),
+(2, 'Gulshan', 23.7925, 90.4078, 7, '2025-07-11'),
+(3, 'Uttara', 23.8747, 90.3984, 2, '2025-07-09'),
+(4, 'Mirpur', 23.8065, 90.3695, 5, '2025-07-08'),
+(5, 'Motijheel', 23.7361, 90.4194, 6, '2025-07-07'),
+(6, 'Mohakhali', 23.7785, 90.4003, 3, '2025-07-10'),
+(7, 'Banani', 23.7925, 90.4113, 9, '2025-07-12'),
+(8, 'Badda', 23.7803, 90.426, 1, '2025-07-11'),
+(9, 'Tejgaon', 23.7578, 90.3947, 4, '2025-07-13'),
+(10, 'Shyamoli', 23.774, 90.3461, 2, '2025-07-10');
 
 -- --------------------------------------------------------
 
@@ -55,21 +143,48 @@ INSERT INTO `call_logs` (`id`, `user_id`, `phone_number`, `scheduled_time`, `sta
 
 CREATE TABLE `crime_stats` (
   `id` int(11) NOT NULL,
-  `area` varchar(100) DEFAULT NULL,
-  `incidents` int(11) DEFAULT NULL
+  `area` varchar(100) NOT NULL,
+  `thana` varchar(100) NOT NULL,
+  `incident_count` int(11) DEFAULT 0,
+  `last_updated` datetime DEFAULT current_timestamp(),
+  `crime_index` float DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `crime_stats`
 --
 
-INSERT INTO `crime_stats` (`id`, `area`, `incidents`) VALUES
-(1, 'Gulshan', 34),
-(2, 'Dhanmondi', 28),
-(3, 'Mirpur', 40),
-(4, 'Uttara', 22),
-(5, 'Banani', 19),
-(6, 'Badda', 25);
+INSERT INTO `crime_stats` (`id`, `area`, `thana`, `incident_count`, `last_updated`, `crime_index`) VALUES
+(1, 'Banani', 'Gulshan Thana', 45, '2025-07-01 20:40:41', 7.8),
+(2, 'Gulshan', 'Gulshan Thana', 32, '2025-07-01 20:40:41', 6.1),
+(3, 'Mirpur', 'Mirpur Thana', 67, '2025-07-01 20:40:41', 8.2),
+(4, 'Dhanmondi', 'Dhanmondi Thana', 22, '2025-07-01 20:40:41', 5),
+(5, 'Uttara', 'Uttara Thana', 51, '2025-07-01 20:40:41', 7.1),
+(6, 'Motijheel', 'Motijheel Thana', 39, '2025-07-01 20:40:41', 6.7),
+(7, 'Mohammadpur', 'Mohammadpur Thana', 48, '2025-07-01 20:40:41', 7),
+(8, 'Farmgate', 'Tejgaon Thana', 29, '2025-07-01 20:40:41', 6),
+(9, 'Badda', 'Badda Thana', 41, '2025-07-01 20:40:41', 6.9),
+(10, 'Rampura', 'Rampura Thana', 36, '2025-07-01 20:40:41', 6.4),
+(11, 'Khilgaon', 'Khilgaon Thana', 27, '2025-07-01 20:40:41', 5.8),
+(12, 'Tejgaon', 'Tejgaon Thana', 52, '2025-07-01 20:40:41', 7.3),
+(13, 'Baridhara', 'Gulshan Thana', 18, '2025-07-01 20:40:41', 4.3),
+(14, 'Shahbagh', 'Shahbagh Thana', 23, '2025-07-01 20:40:41', 5.5),
+(15, 'Wari', 'Wari Thana', 30, '2025-07-01 20:40:41', 5.9),
+(16, 'Jatrabari', 'Jatrabari Thana', 37, '2025-07-01 20:40:41', 6.2),
+(17, 'Paltan', 'Paltan Thana', 44, '2025-07-01 20:40:41', 6.8),
+(18, 'Malibagh', 'Ramna Thana', 26, '2025-07-01 20:40:41', 5.7),
+(19, 'Bashundhara', 'Bhatara Thana', 15, '2025-07-01 20:40:41', 3.9),
+(20, 'Kalabagan', 'Kalabagan Thana', 33, '2025-07-01 20:40:41', 6.3),
+(21, 'Shyamoli', 'Sher-e-Bangla Nagar Thana', 28, '2025-07-01 20:40:41', 5.6),
+(22, 'Kuril', 'Bhatara Thana', 31, '2025-07-01 20:40:41', 6.1),
+(23, 'Notun Bazar', 'Bhatara Thana', 20, '2025-07-01 20:40:41', 4.8),
+(24, 'Agargaon', 'Sher-e-Bangla Nagar Thana', 35, '2025-07-01 20:40:41', 6.5),
+(25, 'Hatirjheel', 'Ramna Thana', 25, '2025-07-01 20:40:41', 5.4),
+(26, 'Kakrail', 'Ramna Thana', 19, '2025-07-01 20:40:41', 4.7),
+(27, 'Bijoy Sarani', 'Tejgaon Thana', 24, '2025-07-01 20:40:41', 5.2),
+(28, 'Shantinagar', 'Ramna Thana', 34, '2025-07-01 20:40:41', 6.6),
+(29, 'Green Road', 'Dhanmondi Thana', 21, '2025-07-01 20:40:41', 4.9),
+(30, 'Lalmatia', 'Mohammadpur Thana', 16, '2025-07-01 20:40:41', 4.4);
 
 -- --------------------------------------------------------
 
@@ -80,21 +195,36 @@ INSERT INTO `crime_stats` (`id`, `area`, `incidents`) VALUES
 CREATE TABLE `crime_type_trends` (
   `id` int(11) NOT NULL,
   `week` varchar(20) DEFAULT NULL,
-  `theft` int(11) DEFAULT NULL,
-  `harassment` int(11) DEFAULT NULL,
-  `assault` int(11) DEFAULT NULL,
-  `robbery` int(11) DEFAULT NULL
+  `area` varchar(100) DEFAULT NULL,
+  `theft` int(11) DEFAULT 0,
+  `harassment` int(11) DEFAULT 0,
+  `assault` int(11) DEFAULT 0,
+  `robbery` int(11) DEFAULT 0,
+  `vandalism` int(11) DEFAULT 0,
+  `kidnapping` int(11) DEFAULT 0,
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `crime_type_trends`
 --
 
-INSERT INTO `crime_type_trends` (`id`, `week`, `theft`, `harassment`, `assault`, `robbery`) VALUES
-(1, 'Week 1', 5, 3, 4, 2),
-(2, 'Week 2', 6, 2, 5, 3),
-(3, 'Week 3', 7, 4, 3, 4),
-(4, 'Week 4', 6, 3, 5, 2);
+INSERT INTO `crime_type_trends` (`id`, `week`, `area`, `theft`, `harassment`, `assault`, `robbery`, `vandalism`, `kidnapping`, `updated_at`) VALUES
+(31, '2025-W01', 'Banani', 12, 5, 3, 2, 4, 1, '2025-07-01 15:14:28'),
+(32, '2025-W02', 'Gulshan', 15, 7, 4, 3, 2, 0, '2025-07-01 15:14:28'),
+(33, '2025-W03', 'Mirpur', 10, 4, 5, 1, 3, 2, '2025-07-01 15:14:28'),
+(34, '2025-W04', 'Dhanmondi', 18, 6, 7, 4, 5, 1, '2025-07-01 15:14:28'),
+(35, '2025-W05', 'Uttara', 14, 3, 6, 2, 4, 0, '2025-07-01 15:14:28'),
+(36, '2025-W06', 'Motijheel', 9, 5, 3, 3, 1, 1, '2025-07-01 15:14:28'),
+(37, '2025-W07', 'Mohammadpur', 13, 4, 4, 2, 3, 0, '2025-07-01 15:14:28'),
+(38, '2025-W08', 'Farmgate', 11, 6, 2, 1, 2, 1, '2025-07-01 15:14:28'),
+(39, '2025-W09', 'Badda', 16, 5, 6, 3, 4, 2, '2025-07-01 15:14:28'),
+(40, '2025-W10', 'Rampura', 8, 4, 3, 2, 1, 0, '2025-07-01 15:14:28'),
+(41, '2025-W11', 'Khilgaon', 12, 3, 5, 1, 3, 1, '2025-07-01 15:14:28'),
+(42, '2025-W12', 'Tejgaon', 17, 6, 7, 4, 5, 0, '2025-07-01 15:14:28'),
+(43, '2025-W13', 'Baridhara', 14, 5, 6, 2, 3, 1, '2025-07-01 15:14:28'),
+(44, '2025-W14', 'Shahbagh', 10, 4, 3, 3, 2, 0, '2025-07-01 15:14:28'),
+(45, '2025-W15', 'Wari', 13, 5, 4, 2, 4, 1, '2025-07-01 15:14:28');
 
 -- --------------------------------------------------------
 
@@ -130,19 +260,47 @@ INSERT INTO `emergency_numbers` (`id`, `title`, `phone_number`, `description`, `
 CREATE TABLE `emergency_response` (
   `id` int(11) NOT NULL,
   `area` varchar(100) DEFAULT NULL,
-  `time` int(11) DEFAULT NULL
+  `service_type` enum('Police','Ambulance','Fire','Others') DEFAULT 'Police',
+  `average_response_time_min` float DEFAULT NULL,
+  `response_rating` int(11) DEFAULT NULL CHECK (`response_rating` between 1 and 5),
+  `last_reported` datetime DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `emergency_response`
 --
 
-INSERT INTO `emergency_response` (`id`, `area`, `time`) VALUES
-(1, 'Gulshan', 5),
-(2, 'Dhanmondi', 6),
-(3, 'Mirpur', 8),
-(4, 'Uttara', 7),
-(5, 'Banani', 4);
+INSERT INTO `emergency_response` (`id`, `area`, `service_type`, `average_response_time_min`, `response_rating`, `last_reported`) VALUES
+(1, 'Banani', 'Police', 6.5, 4, '2025-07-01 20:42:22'),
+(2, 'Gulshan', 'Police', 7, 4, '2025-07-01 20:42:22'),
+(3, 'Mirpur', 'Police', 8.2, 3, '2025-07-01 20:42:22'),
+(4, 'Dhanmondi', 'Police', 6, 4, '2025-07-01 20:42:22'),
+(5, 'Uttara', 'Police', 7.3, 3, '2025-07-01 20:42:22'),
+(6, 'Motijheel', 'Police', 6.9, 3, '2025-07-01 20:42:22'),
+(7, 'Mohammadpur', 'Police', 7.1, 3, '2025-07-01 20:42:22'),
+(8, 'Farmgate', 'Police', 5.8, 4, '2025-07-01 20:42:22'),
+(9, 'Badda', 'Police', 6.4, 3, '2025-07-01 20:42:22'),
+(10, 'Rampura', 'Police', 6.2, 3, '2025-07-01 20:42:22'),
+(11, 'Khilgaon', 'Police', 5.7, 4, '2025-07-01 20:42:22'),
+(12, 'Tejgaon', 'Police', 6.5, 4, '2025-07-01 20:42:22'),
+(13, 'Baridhara', 'Police', 5, 5, '2025-07-01 20:42:22'),
+(14, 'Shahbagh', 'Police', 5.9, 4, '2025-07-01 20:42:22'),
+(15, 'Wari', 'Police', 6.6, 4, '2025-07-01 20:42:22'),
+(16, 'Jatrabari', 'Police', 7, 3, '2025-07-01 20:42:22'),
+(17, 'Paltan', 'Police', 6.3, 4, '2025-07-01 20:42:22'),
+(18, 'Malibagh', 'Police', 5.8, 4, '2025-07-01 20:42:22'),
+(19, 'Bashundhara', 'Police', 4.9, 5, '2025-07-01 20:42:22'),
+(20, 'Kalabagan', 'Police', 6.1, 4, '2025-07-01 20:42:22'),
+(21, 'Shyamoli', 'Ambulance', 9.2, 3, '2025-07-01 20:42:22'),
+(22, 'Kuril', 'Ambulance', 8.5, 3, '2025-07-01 20:42:22'),
+(23, 'Notun Bazar', 'Ambulance', 7.4, 4, '2025-07-01 20:42:22'),
+(24, 'Agargaon', 'Ambulance', 8, 3, '2025-07-01 20:42:22'),
+(25, 'Hatirjheel', 'Ambulance', 7.8, 4, '2025-07-01 20:42:22'),
+(26, 'Kakrail', 'Fire', 10.1, 2, '2025-07-01 20:42:22'),
+(27, 'Bijoy Sarani', 'Fire', 9.8, 3, '2025-07-01 20:42:22'),
+(28, 'Shantinagar', 'Fire', 10.5, 2, '2025-07-01 20:42:22'),
+(29, 'Green Road', 'Others', 6.7, 4, '2025-07-01 20:42:22'),
+(30, 'Lalmatia', 'Others', 6.3, 4, '2025-07-01 20:42:22');
 
 -- --------------------------------------------------------
 
@@ -153,19 +311,46 @@ INSERT INTO `emergency_response` (`id`, `area`, `time`) VALUES
 CREATE TABLE `feature_usage` (
   `id` int(11) NOT NULL,
   `feature` varchar(100) DEFAULT NULL,
-  `score` int(11) DEFAULT NULL
+  `usage_count` int(11) DEFAULT 0,
+  `user_type` enum('Admin','Students','Tourists','Shift Workers','New City Dwellers') DEFAULT 'Students',
+  `last_used_at` datetime DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `feature_usage`
 --
 
-INSERT INTO `feature_usage` (`id`, `feature`, `score`) VALUES
-(1, 'Location Search', 85),
-(2, 'Route Finder', 90),
-(3, 'Emergency Contact', 95),
-(4, 'Notification Alerts', 80),
-(5, 'Panic Button', 88);
+INSERT INTO `feature_usage` (`id`, `feature`, `usage_count`, `user_type`, `last_used_at`) VALUES
+(1, 'Dashboard', 150, 'Admin', '2025-07-01 20:55:43'),
+(2, 'Basic Location Search', 120, 'New City Dwellers', '2025-07-01 20:55:43'),
+(3, 'Map Exploration', 135, 'Students', '2025-07-01 20:55:43'),
+(4, 'Visual Safety Ratings', 110, 'Tourists', '2025-07-01 20:55:43'),
+(5, 'Check Before Going Out', 95, 'Shift Workers', '2025-07-01 20:55:43'),
+(6, 'Identify Safer Routes', 140, 'Students', '2025-07-01 20:55:43'),
+(7, 'Filter Incidents', 85, 'New City Dwellers', '2025-07-01 20:55:43'),
+(8, 'Crime Hotspot Tracker', 160, 'Admin', '2025-07-01 20:55:43'),
+(9, 'Community Resources', 90, 'Tourists', '2025-07-01 20:55:43'),
+(10, 'Understanding Safety Factors', 70, 'Students', '2025-07-01 20:55:43'),
+(11, 'Using the Legend', 60, 'New City Dwellers', '2025-07-01 20:55:43'),
+(12, 'Send Notifications', 100, 'Admin', '2025-07-01 20:55:43'),
+(13, 'Emergency Calls', 125, 'Shift Workers', '2025-07-01 20:55:43'),
+(14, 'Live Location Share', 78, 'Shift Workers', '2025-07-01 20:55:43'),
+(15, 'SOS Panic Button', 200, 'Tourists', '2025-07-01 20:55:43'),
+(16, 'Medical ID', 80, 'Students', '2025-07-01 20:55:43'),
+(17, 'Nearby Police Station', 64, 'New City Dwellers', '2025-07-01 20:55:43'),
+(18, 'Ambulance Tracker', 67, 'Shift Workers', '2025-07-01 20:55:43'),
+(19, 'Fire Station Locator', 42, 'Tourists', '2025-07-01 20:55:43'),
+(20, 'AI Safety Predictor', 55, 'Students', '2025-07-01 20:55:43'),
+(21, 'Daily Safety Tips', 88, 'Tourists', '2025-07-01 20:55:43'),
+(22, 'Night Safety Checker', 33, 'Shift Workers', '2025-07-01 20:55:43'),
+(23, 'Area Comparison Tool', 53, 'New City Dwellers', '2025-07-01 20:55:43'),
+(24, 'Safe Route Suggestion', 98, 'Students', '2025-07-01 20:55:43'),
+(25, 'Emergency Message Templates', 47, 'Shift Workers', '2025-07-01 20:55:43'),
+(26, 'Safety Notification Alerts', 108, 'New City Dwellers', '2025-07-01 20:55:43'),
+(27, 'Crowd Density Monitor', 66, 'Students', '2025-07-01 20:55:43'),
+(28, 'Public Feedback Bubble', 39, 'Tourists', '2025-07-01 20:55:43'),
+(29, 'Feature Tutorial Videos', 28, 'New City Dwellers', '2025-07-01 20:55:43'),
+(30, 'Settings Dashboard', 59, 'Admin', '2025-07-01 20:55:43');
 
 -- --------------------------------------------------------
 
@@ -175,20 +360,102 @@ INSERT INTO `feature_usage` (`id`, `feature`, `score`) VALUES
 
 CREATE TABLE `feedback_bubble` (
   `id` int(11) NOT NULL,
+  `user_id` int(11) DEFAULT NULL,
   `label` varchar(50) DEFAULT NULL,
-  `feedback_pos` int(11) DEFAULT NULL,
-  `safety_score` int(11) DEFAULT NULL,
-  `traffic_size` float DEFAULT NULL
+  `feedback_positive` int(11) DEFAULT 0,
+  `feedback_negative` int(11) DEFAULT 0,
+  `safety_score` float DEFAULT 0,
+  `traffic_density` float DEFAULT 0,
+  `submitted_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `feedback_bubble`
 --
 
-INSERT INTO `feedback_bubble` (`id`, `label`, `feedback_pos`, `safety_score`, `traffic_size`) VALUES
-(1, 'Gulshan', 85, 78, 0.6),
-(2, 'Mirpur', 70, 65, 0.8),
-(3, 'Dhanmondi', 90, 82, 0.7);
+INSERT INTO `feedback_bubble` (`id`, `user_id`, `label`, `feedback_positive`, `feedback_negative`, `safety_score`, `traffic_density`, `submitted_at`) VALUES
+(31, 1, 'Banani', 65, 3, 72, 5.4, '2025-07-01 15:07:43'),
+(32, 2, 'Gulshan', 78, 5, 81, 4.9, '2025-07-01 15:07:43'),
+(33, 3, 'Mirpur', 55, 7, 63, 6.5, '2025-07-01 15:07:43'),
+(34, 4, 'Dhanmondi', 70, 2, 78, 5.1, '2025-07-01 15:07:43'),
+(35, 5, 'Uttara', 62, 4, 69, 5.7, '2025-07-01 15:07:43'),
+(36, 6, 'Motijheel', 50, 6, 60, 6.8, '2025-07-01 15:07:43'),
+(37, 7, 'Mohammadpur', 58, 3, 70, 5.3, '2025-07-01 15:07:43'),
+(38, 8, 'Farmgate', 48, 4, 59, 6.2, '2025-07-01 15:07:43'),
+(39, 9, 'Badda', 53, 5, 65, 6, '2025-07-01 15:07:43'),
+(40, 10, 'Rampura', 45, 6, 56, 6.6, '2025-07-01 15:07:43'),
+(41, 11, 'Khilgaon', 43, 3, 62, 5.9, '2025-07-01 15:07:43'),
+(42, 12, 'Tejgaon', 75, 2, 80, 4.7, '2025-07-01 15:07:43'),
+(43, 13, 'Baridhara', 80, 1, 85, 4.2, '2025-07-01 15:07:43'),
+(44, 14, 'Shahbagh', 68, 3, 73, 5, '2025-07-01 15:07:43'),
+(45, 15, 'Wari', 55, 5, 64, 5.8, '2025-07-01 15:07:43'),
+(46, 16, 'Jatrabari', 58, 4, 67, 5.6, '2025-07-01 15:07:43'),
+(47, 17, 'Paltan', 65, 3, 71, 5.4, '2025-07-01 15:07:43'),
+(48, 18, 'Malibagh', 50, 4, 63, 5.9, '2025-07-01 15:07:43'),
+(49, 19, 'Bashundhara', 78, 2, 80, 4.4, '2025-07-01 15:07:43'),
+(50, 20, 'Kalabagan', 62, 3, 72, 5.5, '2025-07-01 15:07:43'),
+(51, 21, 'Shyamoli', 53, 4, 61, 6, '2025-07-01 15:07:43'),
+(52, 22, 'Kuril', 48, 5, 60, 6.3, '2025-07-01 15:07:43'),
+(53, 23, 'Notun Bazar', 45, 6, 57, 6.5, '2025-07-01 15:07:43'),
+(54, 24, 'Agargaon', 53, 5, 64, 5.8, '2025-07-01 15:07:43'),
+(55, 25, 'Hatirjheel', 55, 3, 69, 5.1, '2025-07-01 15:07:43'),
+(56, 26, 'Kakrail', 43, 6, 55, 6.4, '2025-07-01 15:07:43'),
+(57, 27, 'Bijoy Sarani', 57, 3, 68, 5.2, '2025-07-01 15:07:43'),
+(58, 28, 'Shantinagar', 65, 2, 75, 4.9, '2025-07-01 15:07:43'),
+(59, 29, 'Green Road', 60, 3, 70, 5.6, '2025-07-01 15:07:43'),
+(60, 30, 'Lalmatia', 62, 2, 71, 5.3, '2025-07-01 15:07:43');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `incidents`
+--
+
+CREATE TABLE `incidents` (
+  `id` int(11) NOT NULL,
+  `category` varchar(100) DEFAULT NULL,
+  `area` varchar(100) DEFAULT NULL,
+  `date` date DEFAULT NULL,
+  `description` text DEFAULT NULL,
+  `latitude` float DEFAULT NULL,
+  `longitude` float DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `incidents`
+--
+
+INSERT INTO `incidents` (`id`, `category`, `area`, `date`, `description`, `latitude`, `longitude`) VALUES
+(1, 'Theft', 'Dhanmondi', '2025-06-01', 'A mobile phone was stolen near the supermarket.', 23.7465, 90.376),
+(2, 'Theft', 'Gulshan', '2025-06-03', 'Wallet snatching reported near the park.', 23.7929, 90.4071),
+(3, 'Theft', 'Mirpur', '2025-06-04', 'Bicycle stolen from parking area.', 23.8103, 90.3662),
+(4, 'Theft', 'Banani', '2025-06-05', 'Laptop missing from a cafe table.', 23.7945, 90.4078),
+(5, 'Theft', 'Uttara', '2025-06-06', 'Pickpocket incident in market.', 23.869, 90.3994),
+(6, 'Theft', 'Mohammadpur', '2025-06-07', 'Shoplifting in a local store.', 23.746, 90.3576),
+(7, 'Theft', 'Tejgaon', '2025-06-08', 'Bag stolen from bus stop.', 23.7622, 90.3953),
+(8, 'Assault', 'Dhanmondi', '2025-06-02', 'Physical altercation near the college gate.', 23.7468, 90.374),
+(9, 'Assault', 'Gulshan', '2025-06-03', 'Person attacked during night walk.', 23.7932, 90.4065),
+(10, 'Assault', 'Mirpur', '2025-06-06', 'Group fight reported in park.', 23.8107, 90.367),
+(11, 'Assault', 'Banani', '2025-06-08', 'Man punched during street argument.', 23.795, 90.4085),
+(12, 'Assault', 'Uttara', '2025-06-09', 'Woman harassed and physically assaulted.', 23.8687, 90.3999),
+(13, 'Assault', 'Mohammadpur', '2025-06-10', 'Assault incident reported outside market.', 23.7464, 90.358),
+(14, 'Robbery', 'Dhanmondi', '2025-06-03', 'Robbery at ATM machine.', 23.7462, 90.3755),
+(15, 'Robbery', 'Gulshan', '2025-06-04', 'Jewelry stolen during home break-in.', 23.7925, 90.4068),
+(16, 'Robbery', 'Mirpur', '2025-06-05', 'Convenience store robbed at night.', 23.8108, 90.3665),
+(17, 'Robbery', 'Banani', '2025-06-07', 'Bike snatched from rider.', 23.7942, 90.408),
+(18, 'Robbery', 'Tejgaon', '2025-06-09', 'Bag robbed near bus stop.', 23.762, 90.395),
+(19, 'Harassment', 'Dhanmondi', '2025-06-04', 'Verbal harassment near college.', 23.7469, 90.3745),
+(20, 'Harassment', 'Gulshan', '2025-06-06', 'Unwanted attention in the market.', 23.793, 90.407),
+(21, 'Harassment', 'Mirpur', '2025-06-07', 'Street harassment incident reported.', 23.8105, 90.3667),
+(22, 'Harassment', 'Uttara', '2025-06-08', 'Harassment in public transport.', 23.8692, 90.399),
+(23, 'Harassment', 'Tejgaon', '2025-06-10', 'Harassment near workplace.', 23.7625, 90.3955),
+(24, 'Vandalism', 'Dhanmondi', '2025-06-05', 'Public property damaged near park.', 23.7466, 90.375),
+(25, 'Vandalism', 'Gulshan', '2025-06-07', 'Graffiti on building walls.', 23.7928, 90.4072),
+(26, 'Vandalism', 'Banani', '2025-06-08', 'Car window smashed.', 23.794, 90.4083),
+(27, 'Drug-related', 'Mirpur', '2025-06-05', 'Suspicious drug activity reported.', 23.81, 90.3672),
+(28, 'Drug-related', 'Uttara', '2025-06-07', 'Drug sale attempt stopped by police.', 23.8685, 90.3995),
+(29, 'Drug-related', 'Tejgaon', '2025-06-08', 'Drug paraphernalia found in alley.', 23.7623, 90.3957),
+(30, 'Drug-related', 'Mohammadpur', '2025-06-09', 'Suspected drug user apprehended.', 23.7458, 90.357);
 
 -- --------------------------------------------------------
 
@@ -289,6 +556,7 @@ INSERT INTO `message_history` (`id`, `user_id`, `message_text`, `created_at`) VA
 
 CREATE TABLE `notifications` (
   `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
   `title` varchar(255) NOT NULL,
   `message` text NOT NULL,
   `location` varchar(255) NOT NULL,
@@ -302,22 +570,24 @@ CREATE TABLE `notifications` (
 -- Dumping data for table `notifications`
 --
 
-INSERT INTO `notifications` (`id`, `title`, `message`, `location`, `category`, `urgency`, `link`, `timestamp`) VALUES
-(1, 'Road Block in Gulshan', 'There is a major road block due to an accident near Gulshan-1.', 'Gulshan', 'Traffic', 'High', 'http://example.com/roadblock-gulshan', '2025-05-04 08:00:00'),
-(2, 'Police Alert in Dhanmondi', 'Police are conducting a security check in Dhanmondi area.', 'Dhanmondi', 'Security', 'Medium', 'http://example.com/police-dhanmondi', '2025-05-04 09:15:00'),
-(3, 'Market Closed in Mirpur', 'Mirpur market will be closed today due to ongoing maintenance work.', 'Mirpur', 'Public Notice', 'Low', 'http://example.com/market-mirpur', '2025-05-04 10:30:00'),
-(4, 'Traffic Jam in Uttara', 'Heavy traffic reported on Airport Road in Uttara due to construction work.', 'Uttara', 'Traffic', 'High', 'http://example.com/traffic-uttara', '2025-05-04 11:45:00'),
-(5, 'Power Outage in Motijheel', 'A planned power outage will occur in Motijheel from 12 PM to 4 PM.', 'Motijheel', 'Utilities', 'Medium', 'http://example.com/power-outage-motijheel', '2025-05-04 12:00:00'),
-(6, 'Flood Warning in Mohammadpur', 'Flood warning has been issued for Mohammadpur and nearby areas.', 'Mohammadpur', 'Weather', 'High', 'http://example.com/flood-warning-mohammadpur', '2025-05-04 12:30:00'),
-(7, 'Streetlight Repair in Badda', 'Streetlights in Badda are being repaired tonight, please be cautious.', 'Badda', 'Maintenance', 'Low', 'http://example.com/streetlight-badda', '2025-05-04 13:00:00'),
-(8, 'New Hospital Opening in Tejgaon', 'Tejgaon Industrial Hospital is opening a new emergency department today.', 'Tejgaon', 'Event', 'Medium', 'http://example.com/hospital-tejgaon', '2025-05-04 14:00:00'),
-(9, 'Crime Alert in Shahbagh', 'There was a robbery incident reported in Shahbagh area, please stay cautious.', 'Shahbagh', 'Crime', 'High', 'http://example.com/crime-shahbagh', '2025-05-04 14:30:00'),
-(10, 'Road Closed in Rampura', 'Rampura road is closed for maintenance work until further notice.', 'Rampura', 'Traffic', 'Medium', 'http://example.com/road-closed-rampura', '2025-05-04 15:00:00'),
-(11, 'Security Check in Banani', 'There will be an increased police presence in Banani for a routine security check.', 'Banani', 'Security', 'Low', 'http://example.com/security-banani', '2025-05-04 15:30:00'),
-(12, 'Noise Pollution in Khilgaon', 'There is ongoing construction work in Khilgaon causing significant noise pollution.', 'Khilgaon', 'Environmental', 'Low', 'http://example.com/noise-khilgaon', '2025-05-04 16:00:00'),
-(13, 'Protest in Kotwali', 'A peaceful protest is happening in Kotwali, please avoid the area if possible.', 'Kotwali', 'Event', 'Medium', 'http://example.com/protest-kotwali', '2025-05-04 16:30:00'),
-(14, 'Bank Strike in Rajarbagh', 'Bank employees are on strike in Rajarbagh, affecting services in the area.', 'Rajarbagh', 'Labor', 'Medium', 'http://example.com/bank-strike-rajarbagh', '2025-05-04 17:00:00'),
-(15, 'New Mall Opening in Savar', 'The new shopping mall in Savar will have its grand opening this weekend.', 'Savar', 'Event', 'Low', 'http://example.com/mall-savar', '2025-05-04 17:30:00');
+INSERT INTO `notifications` (`id`, `user_id`, `title`, `message`, `location`, `category`, `urgency`, `link`, `timestamp`) VALUES
+(1, 9, 'Road Block in Gulshan', 'There is a major road block due to an accident near Gulshan-1.', 'Gulshan', 'Traffic', 'High', 'http://example.com/roadblock-gulshan', '2025-05-04 08:00:00'),
+(2, 9, 'Police Alert in Dhanmondi', 'Police are conducting a security check in Dhanmondi area.', 'Dhanmondi', 'Security', 'Medium', 'http://example.com/police-dhanmondi', '2025-05-04 09:15:00'),
+(3, 9, 'Market Closed in Mirpur', 'Mirpur market will be closed today due to ongoing maintenance work.', 'Mirpur', 'Public Notice', 'Low', 'http://example.com/market-mirpur', '2025-05-04 10:30:00'),
+(4, 9, 'Traffic Jam in Uttara', 'Heavy traffic reported on Airport Road in Uttara due to construction work.', 'Uttara', 'Traffic', 'High', 'http://example.com/traffic-uttara', '2025-05-04 11:45:00'),
+(5, 9, 'Power Outage in Motijheel', 'A planned power outage will occur in Motijheel from 12 PM to 4 PM.', 'Motijheel', 'Utilities', 'Medium', 'http://example.com/power-outage-motijheel', '2025-05-04 12:00:00'),
+(6, 9, 'Flood Warning in Mohammadpur', 'Flood warning has been issued for Mohammadpur and nearby areas.', 'Mohammadpur', 'Weather', 'High', 'http://example.com/flood-warning-mohammadpur', '2025-05-04 12:30:00'),
+(7, 9, 'Streetlight Repair in Badda', 'Streetlights in Badda are being repaired tonight, please be cautious.', 'Badda', 'Maintenance', 'Low', 'http://example.com/streetlight-badda', '2025-05-04 13:00:00'),
+(8, 9, 'New Hospital Opening in Tejgaon', 'Tejgaon Industrial Hospital is opening a new emergency department today.', 'Tejgaon', 'Event', 'Medium', 'http://example.com/hospital-tejgaon', '2025-05-04 14:00:00'),
+(9, 9, 'Crime Alert in Shahbagh', 'There was a robbery incident reported in Shahbagh area, please stay cautious.', 'Shahbagh', 'Crime', 'High', 'http://example.com/crime-shahbagh', '2025-05-04 14:30:00'),
+(10, 9, 'Road Closed in Rampura', 'Rampura road is closed for maintenance work until further notice.', 'Rampura', 'Traffic', 'Medium', 'http://example.com/road-closed-rampura', '2025-05-04 15:00:00'),
+(11, 9, 'Security Check in Banani', 'There will be an increased police presence in Banani for a routine security check.', 'Banani', 'Security', 'Low', 'http://example.com/security-banani', '2025-05-04 15:30:00'),
+(12, 9, 'Noise Pollution in Khilgaon', 'There is ongoing construction work in Khilgaon causing significant noise pollution.', 'Khilgaon', 'Environmental', 'Low', 'http://example.com/noise-khilgaon', '2025-05-04 16:00:00'),
+(13, 9, 'Protest in Kotwali', 'A peaceful protest is happening in Kotwali, please avoid the area if possible.', 'Kotwali', 'Event', 'Medium', 'http://example.com/protest-kotwali', '2025-05-04 16:30:00'),
+(14, 9, 'Bank Strike in Rajarbagh', 'Bank employees are on strike in Rajarbagh, affecting services in the area.', 'Rajarbagh', 'Labor', 'Medium', 'http://example.com/bank-strike-rajarbagh', '2025-05-04 17:00:00'),
+(15, 9, 'New Mall Opening in Savar', 'The new shopping mall in Savar will have its grand opening this weekend.', 'Savar', 'Event', 'Low', 'http://example.com/mall-savar', '2025-05-04 17:30:00'),
+(16, 9, 'New Mall Opening in Uttara', 'The new shopping mall in Savar will have its grand opening this weekend.', 'Uttara', 'traffic', 'medium', 'http://example.com/mall-savar', '2025-06-30 19:44:24'),
+(17, 9, '1', '1', '1', 'crime', 'high', 'http://example.com/mall-savar', '2025-06-30 20:37:30');
 
 -- --------------------------------------------------------
 
@@ -327,20 +597,50 @@ INSERT INTO `notifications` (`id`, `title`, `message`, `location`, `category`, `
 
 CREATE TABLE `notification_engagement` (
   `id` int(11) NOT NULL,
+  `user_id` int(11) DEFAULT NULL,
   `type` varchar(50) DEFAULT NULL,
-  `viewed` int(11) DEFAULT NULL,
-  `clicked` int(11) DEFAULT NULL,
-  `dismissed` int(11) DEFAULT NULL
+  `location` varchar(100) DEFAULT NULL,
+  `viewed` int(11) DEFAULT 0,
+  `clicked` int(11) DEFAULT 0,
+  `dismissed` int(11) DEFAULT 0,
+  `sent_at` datetime DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `notification_engagement`
 --
 
-INSERT INTO `notification_engagement` (`id`, `type`, `viewed`, `clicked`, `dismissed`) VALUES
-(1, 'Crime Alert', 100, 60, 10),
-(2, 'Weather Alert', 80, 50, 5),
-(3, 'Route Safety', 90, 55, 8);
+INSERT INTO `notification_engagement` (`id`, `user_id`, `type`, `location`, `viewed`, `clicked`, `dismissed`, `sent_at`) VALUES
+(1, 1, 'Safety Alert', 'Banani', 1, 1, 0, '2025-07-01 20:42:22'),
+(2, 2, 'Traffic Update', 'Gulshan', 1, 0, 0, '2025-07-01 20:42:22'),
+(3, 3, 'Emergency Notice', 'Mirpur', 1, 1, 0, '2025-07-01 20:42:22'),
+(4, 4, 'New Feature', 'Dhanmondi', 1, 1, 0, '2025-07-01 20:42:22'),
+(5, 5, 'General Info', 'Uttara', 1, 0, 1, '2025-07-01 20:42:22'),
+(6, 6, 'Safety Alert', 'Motijheel', 1, 1, 0, '2025-07-01 20:42:22'),
+(7, 7, 'Crime Alert', 'Mohammadpur', 1, 1, 0, '2025-07-01 20:42:22'),
+(8, 8, 'Safety Tip', 'Farmgate', 1, 0, 1, '2025-07-01 20:42:22'),
+(9, 9, 'Feature Update', 'Badda', 1, 1, 0, '2025-07-01 20:42:22'),
+(10, 10, 'Safety Alert', 'Rampura', 1, 0, 1, '2025-07-01 20:42:22'),
+(11, 11, 'Emergency Notice', 'Khilgaon', 1, 1, 0, '2025-07-01 20:42:22'),
+(12, 12, 'Traffic Update', 'Tejgaon', 1, 0, 0, '2025-07-01 20:42:22'),
+(13, 13, 'Crime Alert', 'Baridhara', 1, 1, 0, '2025-07-01 20:42:22'),
+(14, 14, 'Safety Alert', 'Shahbagh', 1, 1, 0, '2025-07-01 20:42:22'),
+(15, 15, 'Feature Update', 'Wari', 1, 0, 1, '2025-07-01 20:42:22'),
+(16, 16, 'New Feature', 'Jatrabari', 1, 1, 0, '2025-07-01 20:42:22'),
+(17, 17, 'Safety Tip', 'Paltan', 1, 0, 1, '2025-07-01 20:42:22'),
+(18, 18, 'General Info', 'Malibagh', 1, 1, 0, '2025-07-01 20:42:22'),
+(19, 19, 'Safety Alert', 'Bashundhara', 1, 1, 0, '2025-07-01 20:42:22'),
+(20, 20, 'Emergency Notice', 'Kalabagan', 1, 0, 1, '2025-07-01 20:42:22'),
+(21, 21, 'Traffic Update', 'Shyamoli', 1, 1, 0, '2025-07-01 20:42:22'),
+(22, 22, 'Feature Update', 'Kuril', 1, 1, 0, '2025-07-01 20:42:22'),
+(23, 23, 'Crime Alert', 'Notun Bazar', 1, 0, 1, '2025-07-01 20:42:22'),
+(24, 24, 'New Feature', 'Agargaon', 1, 1, 0, '2025-07-01 20:42:22'),
+(25, 25, 'Safety Tip', 'Hatirjheel', 1, 0, 1, '2025-07-01 20:42:22'),
+(26, 26, 'General Info', 'Kakrail', 1, 1, 0, '2025-07-01 20:42:22'),
+(27, 27, 'Emergency Notice', 'Bijoy Sarani', 1, 1, 0, '2025-07-01 20:42:22'),
+(28, 28, 'Safety Alert', 'Shantinagar', 1, 0, 1, '2025-07-01 20:42:22'),
+(29, 29, 'Traffic Update', 'Green Road', 1, 1, 0, '2025-07-01 20:42:22'),
+(30, 30, 'Crime Alert', 'Lalmatia', 1, 1, 0, '2025-07-01 20:42:22');
 
 -- --------------------------------------------------------
 
@@ -366,20 +666,49 @@ CREATE TABLE `route_requests` (
 
 CREATE TABLE `safety_checks` (
   `id` int(11) NOT NULL,
-  `day` varchar(15) DEFAULT NULL,
-  `checks` int(11) DEFAULT NULL
+  `user_id` int(11) DEFAULT NULL,
+  `check_day` varchar(15) DEFAULT NULL,
+  `check_time` time DEFAULT NULL,
+  `check_type` enum('Manual','Auto','Scheduled') DEFAULT 'Manual',
+  `location` varchar(100) DEFAULT NULL,
+  `status` enum('Safe','Unsafe') DEFAULT 'Safe'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `safety_checks`
 --
 
-INSERT INTO `safety_checks` (`id`, `day`, `checks`) VALUES
-(1, 'Monday', 120),
-(2, 'Tuesday', 135),
-(3, 'Wednesday', 150),
-(4, 'Thursday', 170),
-(5, 'Friday', 190);
+INSERT INTO `safety_checks` (`id`, `user_id`, `check_day`, `check_time`, `check_type`, `location`, `status`) VALUES
+(1, 1, 'Monday', '08:00:00', 'Manual', 'Banani', 'Safe'),
+(2, 2, 'Tuesday', '09:30:00', 'Auto', 'Gulshan', 'Safe'),
+(3, 3, 'Wednesday', '10:15:00', 'Scheduled', 'Mirpur', 'Unsafe'),
+(4, 4, 'Thursday', '11:00:00', 'Manual', 'Dhanmondi', 'Safe'),
+(5, 5, 'Friday', '12:00:00', 'Auto', 'Uttara', 'Safe'),
+(6, 6, 'Saturday', '13:00:00', 'Scheduled', 'Motijheel', 'Unsafe'),
+(7, 7, 'Sunday', '14:00:00', 'Manual', 'Mohammadpur', 'Safe'),
+(8, 8, 'Monday', '15:00:00', 'Auto', 'Farmgate', 'Safe'),
+(9, 9, 'Tuesday', '16:00:00', 'Scheduled', 'Badda', 'Unsafe'),
+(10, 10, 'Wednesday', '17:00:00', 'Manual', 'Rampura', 'Safe'),
+(11, 11, 'Thursday', '18:00:00', 'Auto', 'Khilgaon', 'Safe'),
+(12, 12, 'Friday', '19:00:00', 'Scheduled', 'Tejgaon', 'Unsafe'),
+(13, 13, 'Saturday', '20:00:00', 'Manual', 'Baridhara', 'Safe'),
+(14, 14, 'Sunday', '21:00:00', 'Auto', 'Shahbagh', 'Safe'),
+(15, 15, 'Monday', '22:00:00', 'Scheduled', 'Wari', 'Unsafe'),
+(16, 16, 'Tuesday', '23:00:00', 'Manual', 'Jatrabari', 'Safe'),
+(17, 17, 'Wednesday', '08:30:00', 'Auto', 'Paltan', 'Safe'),
+(18, 18, 'Thursday', '09:45:00', 'Scheduled', 'Malibagh', 'Unsafe'),
+(19, 19, 'Friday', '10:50:00', 'Manual', 'Bashundhara', 'Safe'),
+(20, 20, 'Saturday', '11:20:00', 'Auto', 'Kalabagan', 'Safe'),
+(21, 21, 'Sunday', '12:10:00', 'Scheduled', 'Shyamoli', 'Unsafe'),
+(22, 22, 'Monday', '13:05:00', 'Manual', 'Kuril', 'Safe'),
+(23, 23, 'Tuesday', '14:15:00', 'Auto', 'Notun Bazar', 'Safe'),
+(24, 24, 'Wednesday', '15:25:00', 'Scheduled', 'Agargaon', 'Unsafe'),
+(25, 25, 'Thursday', '16:35:00', 'Manual', 'Hatirjheel', 'Safe'),
+(26, 26, 'Friday', '17:40:00', 'Auto', 'Kakrail', 'Safe'),
+(27, 27, 'Saturday', '18:45:00', 'Scheduled', 'Bijoy Sarani', 'Unsafe'),
+(28, 28, 'Sunday', '19:50:00', 'Manual', 'Shantinagar', 'Safe'),
+(29, 29, 'Monday', '20:55:00', 'Auto', 'Green Road', 'Safe'),
+(30, 30, 'Tuesday', '21:30:00', 'Scheduled', 'Lalmatia', 'Unsafe');
 
 -- --------------------------------------------------------
 
@@ -434,18 +763,47 @@ INSERT INTO `safety_data` (`id`, `area`, `lat`, `lon`, `safety_score`, `police_s
 
 CREATE TABLE `safety_distribution` (
   `id` int(11) NOT NULL,
-  `label` varchar(50) DEFAULT NULL,
-  `value` int(11) DEFAULT NULL
+  `category` varchar(50) DEFAULT NULL,
+  `label` varchar(100) DEFAULT NULL,
+  `value` int(11) DEFAULT NULL,
+  `weightage_percent` float DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `safety_distribution`
 --
 
-INSERT INTO `safety_distribution` (`id`, `label`, `value`) VALUES
-(1, 'Safe', 45),
-(2, 'Moderate', 35),
-(3, 'Unsafe', 20);
+INSERT INTO `safety_distribution` (`id`, `category`, `label`, `value`, `weightage_percent`) VALUES
+(1, 'Lighting', 'Street Lights Functional', 85, 20),
+(2, 'Lighting', 'Well-lit Alleys', 75, 15),
+(3, 'Lighting', 'Main Road Illumination', 90, 25),
+(4, 'Crowd', 'Daytime Crowds', 80, 10),
+(5, 'Crowd', 'Nighttime Presence', 60, 8),
+(6, 'Crowd', 'Marketplace Activity', 70, 12),
+(7, 'Police Presence', 'Checkpoint Nearby', 65, 18),
+(8, 'Police Presence', 'Patrol Frequency', 60, 20),
+(9, 'Police Presence', 'Response to Alert', 75, 22),
+(10, 'Lighting', 'Park Lighting', 50, 10),
+(11, 'Crowd', 'Bus Stop Crowds', 77, 9),
+(12, 'Police Presence', 'Station Proximity', 80, 23),
+(13, 'Lighting', 'Rail Crossing Lights', 55, 11),
+(14, 'Crowd', 'Foot Traffic Volume', 65, 7),
+(15, 'Crowd', 'School Zone Activity', 78, 9.5),
+(16, 'Police Presence', 'Quick FIR Lodging', 70, 19.5),
+(17, 'Lighting', 'Tunnel Lighting', 62, 13),
+(18, 'Lighting', 'Bridge Lighting', 58, 12.5),
+(19, 'Crowd', 'Shopping Center Activity', 73, 11),
+(20, 'Police Presence', 'Security Van Patrol', 67, 18.5),
+(21, 'Lighting', 'Emergency Light Access', 61, 12.2),
+(22, 'Crowd', 'Festival Crowd Safety', 85, 10.3),
+(23, 'Police Presence', 'Women Police Unit', 78, 22.5),
+(24, 'Lighting', 'Cinema Hall Lights', 69, 9.8),
+(25, 'Crowd', 'Rail Station Safety', 72, 10.1),
+(26, 'Police Presence', 'App Notification Response', 74, 19.7),
+(27, 'Lighting', 'Commercial Light Signs', 88, 14.2),
+(28, 'Crowd', 'Night Shift Movement', 59, 7.6),
+(29, 'Police Presence', 'Thana Helpdesk Rating', 66, 16.3),
+(30, 'Crowd', 'Public Gathering Spot', 70, 8.4);
 
 -- --------------------------------------------------------
 
@@ -557,7 +915,8 @@ CREATE TABLE `scheduled_calls` (
 --
 
 INSERT INTO `scheduled_calls` (`id`, `user_id`, `phone_number`, `scheduled_time`, `status`, `created_at`) VALUES
-(0, 9, '1234567890', '2025-05-05 15:00:00', 'pending', '2025-05-04 17:36:20');
+(0, 9, '1234567890', '2025-05-05 15:00:00', 'completed', '2025-05-04 17:36:20'),
+(0, 9, '1234567890', '2025-05-06 12:10:00', 'completed', '2025-05-05 17:10:01');
 
 -- --------------------------------------------------------
 
@@ -609,6 +968,18 @@ INSERT INTO `users` (`id`, `full_name`, `email`, `password`, `role`) VALUES
 --
 
 --
+-- Indexes for table `community_resources`
+--
+ALTER TABLE `community_resources`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `crime_incidents`
+--
+ALTER TABLE `crime_incidents`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `crime_stats`
 --
 ALTER TABLE `crime_stats`
@@ -639,6 +1010,12 @@ ALTER TABLE `feedback_bubble`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `incidents`
+--
+ALTER TABLE `incidents`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `locations`
 --
 ALTER TABLE `locations`
@@ -648,7 +1025,8 @@ ALTER TABLE `locations`
 -- Indexes for table `notifications`
 --
 ALTER TABLE `notifications`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `user_id` (`user_id`);
 
 --
 -- Indexes for table `notification_engagement`
@@ -704,34 +1082,52 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT for table `community_resources`
+--
+ALTER TABLE `community_resources`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
+
+--
+-- AUTO_INCREMENT for table `crime_incidents`
+--
+ALTER TABLE `crime_incidents`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
 -- AUTO_INCREMENT for table `crime_stats`
 --
 ALTER TABLE `crime_stats`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT for table `crime_type_trends`
 --
 ALTER TABLE `crime_type_trends`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
 
 --
 -- AUTO_INCREMENT for table `emergency_response`
 --
 ALTER TABLE `emergency_response`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT for table `feature_usage`
 --
 ALTER TABLE `feature_usage`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT for table `feedback_bubble`
 --
 ALTER TABLE `feedback_bubble`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
+
+--
+-- AUTO_INCREMENT for table `incidents`
+--
+ALTER TABLE `incidents`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 
 --
 -- AUTO_INCREMENT for table `locations`
@@ -743,13 +1139,13 @@ ALTER TABLE `locations`
 -- AUTO_INCREMENT for table `notifications`
 --
 ALTER TABLE `notifications`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `notification_engagement`
 --
 ALTER TABLE `notification_engagement`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT for table `route_requests`
@@ -761,7 +1157,7 @@ ALTER TABLE `route_requests`
 -- AUTO_INCREMENT for table `safety_checks`
 --
 ALTER TABLE `safety_checks`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT for table `safety_data`
@@ -773,7 +1169,7 @@ ALTER TABLE `safety_data`
 -- AUTO_INCREMENT for table `safety_distribution`
 --
 ALTER TABLE `safety_distribution`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT for table `safety_ratings`
@@ -792,6 +1188,16 @@ ALTER TABLE `safety_zones`
 --
 ALTER TABLE `users`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `notifications`
+--
+ALTER TABLE `notifications`
+  ADD CONSTRAINT `notifications_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

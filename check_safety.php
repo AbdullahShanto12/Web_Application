@@ -194,6 +194,47 @@
       padding: 10px 22px;
     }
   }
+
+  
+.live-clock {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-top: 10px;
+  padding: 8px 16px;
+}
+
+
+.safety-check-header {
+  background: linear-gradient(90deg, #6d4accff, #090781ff);
+  padding: 20px;
+  border-radius: 16px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+  animation: fadeSlideIn 0.6s ease-in-out;
+  color: #2c3e50;
+}
+
+.safety-check-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #ffffffff;
+  text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.6);
+}
+
+
+
+@keyframes fadeSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+
 </style>
 
 
@@ -335,10 +376,13 @@
 <div class="content-wrapper p-3">
   <div class="container-fluid">
     <!-- Header -->
-    <header class="text-center py-2">
-  <h3><span>🔎 Check Safety Before Going Out</span></h3>
-  <div id="clock"></div>
+<header class="safety-check-header text-center py-3 mb-4">
+  <h3 class="safety-check-title">
+    🔎 <span>Check Safety Before Going Out</span>
+  </h3>
+  <div id="liveClock" class="live-clock mt-2"></div>
 </header>
+
 
 
 
@@ -564,16 +608,18 @@
       });
   }
 
-  function updateClocks() {
+  function updateClock() {
     const now = new Date();
-    const time = now.toLocaleTimeString();
-
-    const clock1 = document.getElementById('clock');
-    if (clock1) clock1.textContent = time;
+    const timeString = now.toLocaleTimeString([], {
+      hour: '2-digit',
+      minute: '2-digit',
+      second: '2-digit'
+    });
+    document.getElementById('liveClock').textContent = `🕒 ${timeString}`;
   }
 
-  setInterval(updateClocks, 1000);
-  updateClocks();
+  setInterval(updateClock, 1000);
+  updateClock(); // Initial call
 </script>
 
 </body>

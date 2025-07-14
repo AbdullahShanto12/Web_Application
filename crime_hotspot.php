@@ -192,6 +192,18 @@
     color: #ffffff;
   }
 
+
+  
+.live-clock {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-top: 10px;
+  padding: 8px 16px;
+}
+
+
+
+
   /* Chart container */
   #crimeChartContainer {
     background: #ffffff;
@@ -390,7 +402,7 @@
           <div id="loader">Loading...</div>
           <header class="text-center py-2">
             <h3><span>🚨 SafeWay - Crime Hotspot Tracker</span></h3>
-            <div id="clock"></div>
+    <div id="liveClock" class="live-clock mt-3"></div>
           </header>
 
           <div id="controls" class="mb-3 text-center">
@@ -458,10 +470,16 @@
 
   function updateClock() {
     const now = new Date();
-    document.getElementById('clock').textContent = now.toLocaleTimeString();
+    const timeString = now.toLocaleTimeString([], {
+      hour: '2-digit',
+      minute: '2-digit',
+      second: '2-digit'
+    });
+    document.getElementById('liveClock').textContent = `🕒 ${timeString}`;
   }
+
   setInterval(updateClock, 1000);
-  updateClock();
+  updateClock(); // Initial call
 
   async function fetchCrimeData(days) {
     document.getElementById('loader').style.display = 'block';
