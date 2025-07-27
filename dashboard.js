@@ -1,4 +1,4 @@
-fetch("get_dashboard.php")
+fetch("connect_php/get_dashboard.php")
   .then((response) => response.json())
   .then((data) => {
     const {

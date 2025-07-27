@@ -614,7 +614,7 @@ thead.thead-dark th {
       const markers = [];
       let heat;
 
-      fetch("get_safety_zones.php")
+      fetch("connect_php/get_safety_zones.php")
         .then((response) => response.json())
         .then((safetyData) => {
           console.log("Fetched safety data:", safetyData);

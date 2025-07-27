@@ -484,7 +484,7 @@ document.getElementById("location-form").addEventListener("submit", function(e) 
                 map.setView([lat, lon], 15);
 
                 // Fetch safety details from PHP backend
-                fetch(`get_location_data.php?location=${encodeURIComponent(query)}`)
+                fetch(`connect_php/get_location_data.php?location=${encodeURIComponent(query)}`)
                     .then(res => res.json())
                     .then(data => {
                         if (data.error) {

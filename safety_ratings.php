@@ -447,7 +447,7 @@ $locationsRes = $conn->query($locationsSql);
   }
 
   // Fetch and plot safety points
-  fetch('get_safety_data.php')
+  fetch('connect_php/get_safety_data.php')
     .then(res => res.json())
     .then(locations => {
       locations.forEach(loc => {
