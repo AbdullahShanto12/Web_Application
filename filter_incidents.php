@@ -322,287 +322,262 @@ h2, h3 {
 
 
   <!-- Sidebar -->
-  <aside class="main-sidebar sidebar-dark-primary elevation-4">
-    <a href="dashboard.php" class="brand-link">
-      <img src="dist/img/AdminLTELogo.png" alt="Logo" class="brand-image img-circle elevation-3">
-      <span class="brand-text font-weight-light">SafeWay</span>
-    </a>
+    <!-- Sidebar -->
+    <aside class="main-sidebar sidebar-dark-primary elevation-4">
+  <a href="dashboard.php" class="brand-link">
+    <img src="dist/img/AdminLTELogo.png" alt="Logo" class="brand-image img-circle elevation-3">
+    <span class="brand-text font-weight-light">SafeWay</span>
+  </a>
+  <div class="sidebar">
+    <nav class="mt-2">
+      <ul class="nav nav-pills nav-sidebar flex-column" role="menu">
+        <li class="nav-item"><a href="dashboard.php" class="nav-link"><i class="nav-icon fas fa-tachometer-alt"></i><p>Dashboard</p></a></li>
+        <li class="nav-item"><a href="location_search.php" class="nav-link"><i class="nav-icon fas fa-shield-alt"></i><p>Safety Control Center</p></a></li>
+        <li class="nav-item"><a href="safety_unified.php" class="nav-link"><i class="nav-icon fas fa-map-marked-alt"></i><p>Unified Safety Explorer</p></a></li>
+        <li class="nav-item"><a href="identify_routes.php" class="nav-link"><i class="nav-icon fas fa-route"></i><p>Identify Safer Routes</p></a></li>
+        <li class="nav-item"><a href="filter_incidents.php" class="nav-link active"><i class="nav-icon fas fa-exclamation-triangle"></i><p>Incidents & Hotspots</p></a></li>
+        <li class="nav-item"><a href="community_resources.php" class="nav-link"><i class="nav-icon fas fa-hands-helping"></i><p>Community Resources</p></a></li>
+        <li class="nav-item"><a href="legend_info.php" class="nav-link "><i class="nav-icon fas fa-map"></i><p>Using the Legend</p></a></li>
+        <li class="nav-item"><a href="send_notifications.php" class="nav-link"><i class="nav-icon fas fa-bell"></i><p>Send Notifications</p></a></li>
+        <li class="nav-item"><a href="all_notifications.php" class="nav-link"><i class="nav-icon fas fa-bell"></i><p>All Notifications</p></a></li>
+        <li class="nav-item"><a href="emergency_calls.php" class="nav-link"><i class="nav-icon fas fa-phone-alt"></i><p>Emergency Calls</p></a></li>
+        <li class="nav-item"><a href="login.html" class="nav-link"><i class="nav-icon fas fa-sign-out-alt"></i><p>Logout</p></a></li>
+      </ul>
+    </nav>
+  </div>
+</aside>
 
 
 
 
-    
-      <div class="sidebar">
-        <nav class="mt-3">
-          <ul class="nav nav-pills nav-sidebar flex-column" role="menu">
-<!-- Dashboard -->
-<li class="nav-item">
-  <a href="dashboard.php" class="nav-link ">
-    <i class="nav-icon fas fa-tachometer-alt"></i>
-    <p>Dashboard</p>
-  </a>
-</li>
 
-<!-- Location & Map Features -->
-<li class="nav-item">
-  <a href="location_search.php" class="nav-link">
-    <i class="nav-icon fas fa-search-location"></i>
-    <p>Basic Location Search</p>
-  </a>
-</li>
-<li class="nav-item">
-  <a href="map_explore.php" class="nav-link">
-    <i class="nav-icon fas fa-map-marked-alt"></i>
-    <p>Map Exploration</p>
-  </a>
-</li>
-<li class="nav-item">
-  <a href="safety_ratings.php" class="nav-link">
-    <i class="nav-icon fas fa-eye"></i>
-    <p>Visual Safety Ratings</p>
-  </a>
-</li>
-<li class="nav-item">
-  <a href="check_safety.php" class="nav-link">
-    <i class="nav-icon fas fa-shield-alt"></i>
-    <p>Check Before Going Out</p>
-  </a>
-</li>
-<li class="nav-item">
-  <a href="identify_routes.php" class="nav-link">
-    <i class="nav-icon fas fa-route"></i>
-    <p>Identify Safer Routes</p>
-  </a>
-</li>
 
-<!-- Crime & Incident Insights -->
-<li class="nav-item">
-  <a href="filter_incidents.php" class="nav-link active">
-    <i class="nav-icon fas fa-filter"></i>
-    <p>Filter Incidents</p>
-  </a>
-</li>
-<li class="nav-item">
-  <a href="crime_hotspot.php" class="nav-link">
-    <i class="nav-icon fas fa-exclamation-triangle"></i>
-    <p>Crime Hotspot Tracker</p>
-  </a>
-</li>
-
-<!-- Resources & Community Support -->
-<li class="nav-item">
-  <a href="community_resources.php" class="nav-link">
-    <i class="nav-icon fas fa-hands-helping"></i>
-    <p>Community Resources</p>
-  </a>
-</li>
-
-<!-- Educational Tools -->
-<li class="nav-item">
-  <a href="understand_factors.php" class="nav-link">
-    <i class="nav-icon fas fa-lightbulb"></i>
-    <p>Understanding Safety Factors</p>
-  </a>
-</li>
-<li class="nav-item">
-  <a href="legend_info.php" class="nav-link">
-    <i class="nav-icon fas fa-map"></i>
-    <p>Using the Legend</p>
-  </a>
-</li>
-
-<!-- Communication -->
-<li class="nav-item">
-  <a href="send_notifications.php" class="nav-link">
-    <i class="nav-icon fas fa-bell"></i>
-    <p>Send Notifications</p>
-  </a>
-</li>
-<li class="nav-item"><a href="all_notifications.php" class="nav-link "><i class="nav-icon fas fa-bell"></i><p>All Notifications</p></a></li>
-
-<li class="nav-item">
-  <a href="emergency_calls.php" class="nav-link">
-    <i class="nav-icon fas fa-phone-alt"></i>
-    <p>Emergency Calls</p>
-  </a>
-</li>
-
-<!-- Logout -->
-<li class="nav-item">
-  <a href="login.html" class="nav-link">
-    <i class="nav-icon fas fa-sign-out-alt"></i>
-    <p>Logout</p>
-  </a>
-</li>
-          </ul>
-        </nav>
-      </div>
-    </aside>
 
     <!-- Main Content -->
-    <div class="content-wrapper">
-      <div class="container-fluid">
-        <h2>Filter Incidents</h2>
 
-        <div class="filters" role="region" aria-label="Filter incidents by category, area, and date">
-          <label for="category">Category:</label>
-          <select id="category" aria-controls="incident-list">
-            <option value="">All</option>
-            <?php while ($row = $categories->fetch_assoc()): ?>
-              <option value="<?= htmlspecialchars($row['category']) ?>"><?= htmlspecialchars($row['category']) ?></option>
-            <?php endwhile; ?>
-          </select>
+<div class="content-wrapper">
+  <section class="content">
+    <div class="container-fluid pt-3">
 
-          <label for="area">Area:</label>
-          <select id="area" aria-controls="incident-list">
-            <option value="">All</option>
-            <?php while ($row = $areas->fetch_assoc()): ?>
-              <option value="<?= htmlspecialchars($row['area']) ?>"><?= htmlspecialchars($row['area']) ?></option>
-            <?php endwhile; ?>
-          </select>
+      <header class="text-center py-2">
+        <h3>🚨 SafeWay - Incident Filter & Crime Hotspot Tracker</h3>
+        <div id="liveClock" class="live-clock mt-2"></div>
+      </header>
 
-          <label for="date">Date:</label>
-          <input type="date" id="date" aria-controls="incident-list" />
-        </div>
+      <!-- Controls -->
+      <div id="controls" class="mb-3 text-center">
+        <input type="text" id="areaSearch" placeholder="Search by Area">
+        <select id="category"><option value="">All Categories</option></select>
+        <select id="timeRange">
+          <option value="7">Last 7 Days</option>
+          <option value="30" selected>Last 30 Days</option>
+          <option value="90">Last 90 Days</option>
+        </select>
+        <input type="date" id="dateFilter">
+        <button onclick="updateView()">🔄 Refresh</button>
+        <button onclick="getUserLocation()">📍 My Safety</button>
+        <button onclick="toggleHeatmap()">🔥 Toggle Heatmap</button>
+        <button onclick="toggleDarkMode()">🌙 Dark Mode</button>
+      </div>
 
-        <div id="map" role="region" aria-label="Map showing filtered incidents"></div>
+      <!-- Alerts -->
+      <div id="alertBox" class="text-center my-2"></div>
+      <div id="safetyStatus" class="text-center my-2"></div>
+      <div id="crimeSummary" class="text-center my-2"></div>
 
-        <div class="results" aria-live="polite" aria-atomic="true">
-          <h3>Incident List</h3>
-          <ul id="incident-list" tabindex="0"></ul>
-        </div>
+      <!-- Map -->
+      <div id="map"></div>
 
-        <div class="results" aria-live="polite" aria-atomic="true">
-          <h3>Incident Chart</h3>
-          <canvas id="incidentChart" aria-label="Bar chart showing incidents by category" role="img"></canvas>
-        </div>
+      <!-- Incident List -->
+      <div id="incidentListContainer" class="mt-3">
+        <h3>📄 Incident List</h3>
+        <ul id="incidentList"></ul>
+      </div>
+
+      <!-- Chart -->
+      <div id="crimeChartContainer" class="mt-3">
+        <h3>📊 Incidents by Area</h3>
+        <canvas id="crimeChart" height="150"></canvas>
       </div>
     </div>
+  </section>
+</div>
 
-  </div>
+<!-- JS -->
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+<script src="https://unpkg.com/leaflet.markercluster@1.4.1/dist/leaflet.markercluster.js"></script>
+<script src="https://unpkg.com/leaflet.heat/dist/leaflet-heat.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="plugins/jquery/jquery.min.js"></script>
+<script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="dist/js/adminlte.js"></script>
 
-  <!-- JS Scripts -->
-  <script src="plugins/jquery/jquery.min.js"></script>
-  <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="dist/js/adminlte.min.js"></script>
+<script>
+const map = L.map('map').setView([23.8103, 90.4125], 12);
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
+let markersCluster = L.markerClusterGroup();
+map.addLayer(markersCluster);
 
-  <script>
-    const map = L.map('map').setView([23.8103, 90.4125], 11);
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      attribution: '© OpenStreetMap contributors'
-    }).addTo(map);
+let heatLayer, crimeChart, globalData = [];
+let alertThreshold = 7;
 
-    const markers = [];
+// Clock
+function updateClock() {
+  const now = new Date();
+  document.getElementById('liveClock').textContent = '🕒 ' + now.toLocaleTimeString();
+}
+setInterval(updateClock, 1000); updateClock();
 
-    function fetchFilteredData() {
-      const category = document.getElementById("category").value;
-      const area = document.getElementById("area").value;
-      const date = document.getElementById("date").value;
+// Fetch incidents
+async function fetchData() {
+  const category = document.getElementById('category').value;
+  const area = document.getElementById('areaSearch').value;
+  const date = document.getElementById('dateFilter').value;
+  const days = document.getElementById('timeRange').value;
 
-      fetch(`get_filtered_data.php?category=${encodeURIComponent(category)}&area=${encodeURIComponent(area)}&date=${encodeURIComponent(date)}`)
-        .then(response => response.json())
-        .then(data => {
-          updateMap(data);
-          updateList(data);
-          updateChart(data);
-        });
-    }
+  const res = await fetch(`get_incidents.php?category=${encodeURIComponent(category)}&area=${encodeURIComponent(area)}&date=${encodeURIComponent(date)}&days=${days}`);
+  const json = await res.json();
+  return json.data || [];
+}
 
-    function updateMap(data) {
-      markers.forEach(m => map.removeLayer(m));
-      markers.length = 0;
-
-      if (data.length === 0) {
-        map.setView([23.8103, 90.4125], 11);
-        return;
-      }
-
-      const bounds = [];
-      data.forEach(inc => {
-        const marker = L.marker([inc.latitude, inc.longitude]).addTo(map)
-          .bindPopup(`<strong>${inc.category}</strong><br>${inc.description}`);
-        markers.push(marker);
-        bounds.push([inc.latitude, inc.longitude]);
-      });
-      if (bounds.length > 0) map.fitBounds(bounds, {padding: [60, 60]});
-    }
-function updateList(data) {
-  const list = document.getElementById("incident-list");
-  list.innerHTML = "";
-  if (data.length === 0) {
-    list.innerHTML = "<li>No incidents found.</li>";
-    return;
-  }
-  data.forEach(inc => {
-    list.innerHTML += `<li><strong>${inc.category}</strong> - ${inc.area} (${inc.date})<br><em>${inc.description}</em></li>`;
+// Render markers
+function renderMarkers(data) {
+  markersCluster.clearLayers();
+  data.forEach(d => {
+    L.marker([d.latitude, d.longitude])
+      .bindPopup(`<b>${d.category}</b><br>${d.area}<br>${d.incident_count} incident(s)<br>${d.incident_date}<br>${d.description}`)
+      .addTo(markersCluster);
   });
 }
 
+// Render heatmap
+function renderHeatmap(data) {
+  if (heatLayer) map.removeLayer(heatLayer);
+  heatLayer = L.heatLayer(
+    data.map(d => [d.latitude, d.longitude, d.incident_count]),
+    { radius: 25, blur: 20 }
+  ).addTo(map);
+}
 
-    function updateChart(data) {
-      const ctx = document.getElementById('incidentChart').getContext('2d');
-      const counts = {};
-      data.forEach(d => counts[d.category] = (counts[d.category] || 0) + 1);
+// Render incident list
+function renderList(data) {
+  const list = document.getElementById('incidentList');
+  list.innerHTML = '';
+  if (!data.length) {
+    list.innerHTML = '<li>No incidents found.</li>';
+    return;
+  }
+  data.forEach(d => {
+    list.innerHTML += `<li><b>${d.category}</b> - ${d.area} (${d.incident_date})<br><em>${d.description}</em></li>`;
+  });
+}
 
-      if (window.chartInstance) window.chartInstance.destroy();
-      window.chartInstance = new Chart(ctx, {
-        type: 'bar',
-        data: {
-          labels: Object.keys(counts),
-          datasets: [{
-            label: 'Number of Incidents',
-            data: Object.values(counts),
-            backgroundColor: 'rgba(0, 123, 255, 0.7)',
-            borderRadius: 6,
-            borderSkipped: false
-          }]
-        },
-        options: {
-          responsive: true,
-          animation: {
-            duration: 600,
-            easing: 'easeOutQuart'
-          },
-          scales: {
-            y: {
-              beginAtZero: true,
-              grid: {
-                color: '#e3e9f3',
-                borderColor: '#ccc'
-              },
-              ticks: {
-                color: '#223344',
-                font: {weight: '600'}
-              }
-            },
-            x: {
-              ticks: {
-                color: '#223344',
-                font: {weight: '600'}
-              },
-              grid: {
-                display: false
-              }
-            }
-          },
-          plugins: {
-            legend: { display: false },
-            title: { display: true, text: 'Incidents by Category', color: '#004085', font: { size: 18, weight: '700' } },
-            tooltip: {
-              backgroundColor: '#004085',
-              titleFont: { weight: '700' },
-              bodyFont: { weight: '600' }
-            }
-          }
-        }
-      });
-    }
+// Render chart
+function renderChart(data) {
+  const areaCounts = {};
+  data.forEach(d => {
+    areaCounts[d.area] = (areaCounts[d.area] || 0) + d.incident_count;
+  });
 
-    ["category", "area", "date"].forEach(id => {
-      document.getElementById(id).addEventListener("change", fetchFilteredData);
+  const ctx = document.getElementById('crimeChart').getContext('2d');
+  if (crimeChart) {
+    crimeChart.data.labels = Object.keys(areaCounts);
+    crimeChart.data.datasets[0].data = Object.values(areaCounts);
+    crimeChart.update();
+  } else {
+    crimeChart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: Object.keys(areaCounts),
+        datasets: [{ label: 'Incidents', data: Object.values(areaCounts), backgroundColor: '#dc3545' }]
+      },
+      options: { scales: { y: { beginAtZero: true } }, plugins: { legend: { display: false } } }
     });
+  }
+  checkAlerts(areaCounts);
+}
 
-    fetchFilteredData();
-  </script>
+// Check alerts
+function checkAlerts(areaCounts) {
+  const alertBox = document.getElementById('alertBox');
+  const hotspots = Object.entries(areaCounts).filter(([_, c]) => c >= alertThreshold);
+
+  if (hotspots.length) {
+    alertBox.style.display = 'block';
+    alertBox.style.background = '#ffe6e6';
+    alertBox.style.color = '#a00';
+    alertBox.innerHTML = '⚠️ Hotspots: ' + hotspots.map(([a, c]) => `${a} (${c})`).join(', ');
+  } else {
+    alertBox.style.display = 'none';
+  }
+
+  document.getElementById('crimeSummary').textContent =
+    '📊 Total Incidents: ' + Object.values(areaCounts).reduce((a, b) => a + b, 0);
+}
+
+// Update view
+async function updateView() {
+  globalData = await fetchData();
+  renderMarkers(globalData);
+  renderHeatmap(globalData);
+  renderList(globalData);
+  renderChart(globalData);
+  populateCategoryDropdown(globalData);
+}
+
+// Populate category dropdown
+function populateCategoryDropdown(data) {
+  const categorySelect = document.getElementById('category');
+  const categories = [...new Set(data.map(d => d.category))].sort();
+  categorySelect.innerHTML = '<option value="">All Categories</option>';
+  categories.forEach(cat => {
+    categorySelect.innerHTML += `<option value="${cat}">${cat}</option>`;
+  });
+}
+
+// Get user location safety status
+function getUserLocation() {
+  if (!navigator.geolocation) return alert('Location not supported.');
+  navigator.geolocation.getCurrentPosition(pos => {
+    const { latitude, longitude } = pos.coords;
+    const nearby = globalData.filter(d =>
+      L.latLng(latitude, longitude).distanceTo([d.latitude, d.longitude]) / 1000 <= 0.5
+    );
+    const total = nearby.reduce((a, b) => a + b.incident_count, 0);
+    const status = document.getElementById('safetyStatus');
+    status.style.display = 'block';
+    if (total >= alertThreshold) {
+      status.textContent = `🚨 High Risk! ${total} incidents nearby.`;
+      status.style.background = '#ffdddd';
+      status.style.color = '#a00';
+    } else if (total > 0) {
+      status.textContent = `⚠️ Medium Risk: ${total} incidents nearby.`;
+      status.style.background = '#fff3cd';
+      status.style.color = '#856404';
+    } else {
+      status.textContent = `✅ Low-risk area.`;
+      status.style.background = '#d4edda';
+      status.style.color = '#155724';
+    }
+  });
+}
+
+function toggleHeatmap() {
+  if (heatLayer && map.hasLayer(heatLayer)) map.removeLayer(heatLayer);
+  else renderHeatmap(globalData);
+}
+function toggleDarkMode() {
+  document.body.classList.toggle('dark-mode');
+}
+
+// Event listeners
+document.getElementById('areaSearch').addEventListener('input', updateView);
+document.getElementById('category').addEventListener('change', updateView);
+document.getElementById('timeRange').addEventListener('change', updateView);
+document.getElementById('dateFilter').addEventListener('change', updateView);
+
+// Initial load
+updateView();
+</script>
 </body>
 </html>

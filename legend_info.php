@@ -179,6 +179,62 @@
       padding: 16px;
     }
   }
+
+
+
+
+
+
+.section-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.section-btn {
+    background: var(--primary);
+    color: white;
+    padding: 10px 15px;
+    border-radius: 8px;
+    font-weight: 600;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: background 0.3s ease;
+    cursor: pointer;
+}
+
+.section-btn.active {
+    background: var(--accent);
+}
+
+.section-btn:hover {
+    background: var(--accent);
+    color: #fff;
+}
+
+.feature-card {
+    display: none; /* Hide all by default */
+}
+
+.feature-card.active {
+    display: block; /* Show active section */
+}
+
+@media (max-width: 768px) {
+    .section-nav {
+        flex-direction: column;
+    }
+    .section-btn {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+
+
+
 </style>
 
 </head>
@@ -195,178 +251,251 @@
 
     <!-- Sidebar -->
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
-        <a href="dashboard.php" class="brand-link">
-            <img src="dist/img/AdminLTELogo.png" alt="Logo" class="brand-image img-circle elevation-3">
-            <span class="brand-text font-weight-light">SafeWay</span>
-        </a>
-        <div class="sidebar">
-            <nav class="mt-2">
-                <ul class="nav nav-pills nav-sidebar flex-column" role="menu">
-<!-- Dashboard -->
-<li class="nav-item">
-  <a href="dashboard.php" class="nav-link ">
-    <i class="nav-icon fas fa-tachometer-alt"></i>
-    <p>Dashboard</p>
+  <a href="dashboard.php" class="brand-link">
+    <img src="dist/img/AdminLTELogo.png" alt="Logo" class="brand-image img-circle elevation-3">
+    <span class="brand-text font-weight-light">SafeWay</span>
   </a>
-</li>
+  <div class="sidebar">
+    <nav class="mt-2">
+      <ul class="nav nav-pills nav-sidebar flex-column" role="menu">
+        <li class="nav-item"><a href="dashboard.php" class="nav-link"><i class="nav-icon fas fa-tachometer-alt"></i><p>Dashboard</p></a></li>
+        <li class="nav-item"><a href="location_search.php" class="nav-link"><i class="nav-icon fas fa-shield-alt"></i><p>Safety Control Center</p></a></li>
+        <li class="nav-item"><a href="safety_unified.php" class="nav-link"><i class="nav-icon fas fa-map-marked-alt"></i><p>Unified Safety Explorer</p></a></li>
+        <li class="nav-item"><a href="identify_routes.php" class="nav-link"><i class="nav-icon fas fa-route"></i><p>Identify Safer Routes</p></a></li>
+        <li class="nav-item"><a href="filter_incidents.php" class="nav-link"><i class="nav-icon fas fa-exclamation-triangle"></i><p>Incidents & Hotspots</p></a></li>
+        <li class="nav-item"><a href="community_resources.php" class="nav-link"><i class="nav-icon fas fa-hands-helping"></i><p>Community Resources</p></a></li>
+        <li class="nav-item"><a href="legend_info.php" class="nav-link active"><i class="nav-icon fas fa-map"></i><p>Using the Legend</p></a></li>
+        <li class="nav-item"><a href="send_notifications.php" class="nav-link"><i class="nav-icon fas fa-bell"></i><p>Send Notifications</p></a></li>
+        <li class="nav-item"><a href="all_notifications.php" class="nav-link"><i class="nav-icon fas fa-bell"></i><p>All Notifications</p></a></li>
+        <li class="nav-item"><a href="emergency_calls.php" class="nav-link"><i class="nav-icon fas fa-phone-alt"></i><p>Emergency Calls</p></a></li>
+        <li class="nav-item"><a href="login.html" class="nav-link"><i class="nav-icon fas fa-sign-out-alt"></i><p>Logout</p></a></li>
+      </ul>
+    </nav>
+  </div>
+</aside>
 
-<!-- Location & Map Features -->
-<li class="nav-item">
-  <a href="location_search.php" class="nav-link">
-    <i class="nav-icon fas fa-search-location"></i>
-    <p>Basic Location Search</p>
-  </a>
-</li>
-<li class="nav-item">
-  <a href="map_explore.php" class="nav-link">
-    <i class="nav-icon fas fa-map-marked-alt"></i>
-    <p>Map Exploration</p>
-  </a>
-</li>
-<li class="nav-item">
-  <a href="safety_ratings.php" class="nav-link">
-    <i class="nav-icon fas fa-eye"></i>
-    <p>Visual Safety Ratings</p>
-  </a>
-</li>
-<li class="nav-item">
-  <a href="check_safety.php" class="nav-link">
-    <i class="nav-icon fas fa-shield-alt"></i>
-    <p>Check Before Going Out</p>
-  </a>
-</li>
-<li class="nav-item">
-  <a href="identify_routes.php" class="nav-link">
-    <i class="nav-icon fas fa-route"></i>
-    <p>Identify Safer Routes</p>
-  </a>
-</li>
 
-<!-- Crime & Incident Insights -->
-<li class="nav-item">
-  <a href="filter_incidents.php" class="nav-link">
-    <i class="nav-icon fas fa-filter"></i>
-    <p>Filter Incidents</p>
-  </a>
-</li>
-<li class="nav-item">
-  <a href="crime_hotspot.php" class="nav-link">
-    <i class="nav-icon fas fa-exclamation-triangle"></i>
-    <p>Crime Hotspot Tracker</p>
-  </a>
-</li>
 
-<!-- Resources & Community Support -->
-<li class="nav-item">
-  <a href="community_resources.php" class="nav-link">
-    <i class="nav-icon fas fa-hands-helping"></i>
-    <p>Community Resources</p>
-  </a>
-</li>
-
-<!-- Educational Tools -->
-<li class="nav-item">
-  <a href="understand_factors.php" class="nav-link">
-    <i class="nav-icon fas fa-lightbulb"></i>
-    <p>Understanding Safety Factors</p>
-  </a>
-</li>
-<li class="nav-item">
-  <a href="legend_info.php" class="nav-link active">
-    <i class="nav-icon fas fa-map"></i>
-    <p>Using the Legend</p>
-  </a>
-</li>
-
-<!-- Communication -->
-<li class="nav-item">
-  <a href="send_notifications.php" class="nav-link">
-    <i class="nav-icon fas fa-bell"></i>
-    <p>Send Notifications</p>
-  </a>
-</li>
-<li class="nav-item"><a href="all_notifications.php" class="nav-link "><i class="nav-icon fas fa-bell"></i><p>All Notifications</p></a></li>
-
-<li class="nav-item">
-  <a href="emergency_calls.php" class="nav-link">
-    <i class="nav-icon fas fa-phone-alt"></i>
-    <p>Emergency Calls</p>
-  </a>
-</li>
-
-<!-- Logout -->
-<li class="nav-item">
-  <a href="login.html" class="nav-link">
-    <i class="nav-icon fas fa-sign-out-alt"></i>
-    <p>Logout</p>
-  </a>
-</li>
-                </ul>
-            </nav>
-        </div>
-    </aside>
-
-    <!-- Main Content -->
-    <div class="content-wrapper p-3">
+<!-- Content Wrapper -->
+<div class="content-wrapper">
+    <!-- Page Header -->
+    <section class="content-header">
         <div class="container-fluid">
-            <h2><i class="fas fa-map-signs text-primary"></i> Using the Map Legend</h2>
-            <p class="mb-4">Learn how to interpret map visuals to make informed and safe travel decisions.</p>
+            <h2>Using the Map Legend</h2>
+            <p class="mb-4">
+                Understand the symbols, safety factors, and tools to make your journey more secure and informed.
+            </p>
 
-            <div class="feature-card">
-                <div class="feature-title"><i class="fas fa-palette"></i> 1. Color Codes for Area Safety</div>
-                <div class="icon-legend"><span class="legend-color" style="background-color: green;"></span> Safe Area (Score 70+)</div>
-                <div class="icon-legend"><span class="legend-color" style="background-color: orange;"></span> Moderate Risk (Score 41–69)</div>
-                <div class="icon-legend"><span class="legend-color" style="background-color: red;"></span> High Risk Zone (Score ≤ 40)</div>
-                <p class="legend-description">These colors quickly tell you the level of caution needed in each area. Green is safest, red signals high alert.</p>
+            <!-- Horizontal Section Navigation -->
+            <div class="section-nav mb-4">
+                <a data-target="safety-factors" class="section-btn active">
+                    <i class="fas fa-shield-alt"></i> Safety Factors
+                </a>
+                <a data-target="understanding-symbols" class="section-btn">
+                    <i class="fas fa-map"></i> Understanding Symbols
+                </a>
+                <a data-target="safety-news" class="section-btn">
+                    <i class="fas fa-newspaper"></i> Safety News
+                </a>
+                <a data-target="educational-videos" class="section-btn">
+                    <i class="fas fa-video"></i> Educational Videos
+                </a>
+                <a data-target="resources-guides" class="section-btn">
+                    <i class="fas fa-book"></i> Resources & Guides
+                </a>
+                <a data-target="interactive-learning" class="section-btn">
+                    <i class="fas fa-gamepad"></i> Interactive Learning
+                </a>
             </div>
-
-            <div class="feature-card">
-                <div class="feature-title"><i class="fas fa-route"></i> 2. Route Colors</div>
-                <div class="icon-legend"><span class="legend-color" style="background-color: blue;"></span> Recommended Safe Route</div>
-                <div class="icon-legend"><span class="legend-color" style="background-color: gray;"></span> Alternate Route (Unrated)</div>
-                <p class="legend-description">Follow blue for the safest paths. Gray routes are unexplored and might not be assessed.</p>
-            </div>
-
-            <div class="feature-card">
-                <div class="feature-title"><i class="fas fa-icons"></i> 3. Map Icons Explained</div>
-                <div class="icon-legend"><i class="fas fa-shield-alt text-primary"></i> Police Station / Security Booth</div>
-                <div class="icon-legend"><i class="fas fa-camera text-dark"></i> CCTV Coverage Area</div>
-                <div class="icon-legend"><i class="fas fa-exclamation-triangle text-danger"></i> Recent Incident Reported</div>
-                <div class="icon-legend"><i class="fas fa-umbrella text-info"></i> Weather Advisory Zone</div>
-                <div class="icon-legend"><i class="fas fa-bus text-success"></i> Safe Public Transport Stop</div>
-            </div>
-
-            <div class="feature-card">
-                <div class="feature-title"><i class="fas fa-layer-group"></i> 4. Map Layers</div>
-                <p>Toggle map layers using the icon at the top-right to focus on specific data:</p>
-                <ul>
-                    <li>Incident Heatmap</li>
-                    <li>Police & Security Presence</li>
-                    <li>Lighting & Camera Zones</li>
-                    <li>Transport Safety Scores</li>
-                </ul>
-            </div>
-
-            <div class="feature-card">
-                <div class="feature-title"><i class="fas fa-map-marker-alt"></i> 5. Marker Details</div>
-                <p>Click or tap on any map marker to access real-time reports, safety tips, and emergency contacts relevant to that location.</p>
-            </div>
-
-            <div class="feature-card">
-                <div class="feature-title"><i class="fas fa-sliders-h"></i> 6. Custom Filters</div>
-                <p>Use custom legend filters to highlight areas based on your safety preferences such as low-crime zones, night travel safety, or proximity to safe transport.</p>
-            </div>
-
-            <div class="feature-card">
-                <div class="feature-title"><i class="fas fa-info-circle"></i> 7. Safety Score Tooltip</div>
-                <p>Hovering over an area reveals a tooltip with numeric safety scores, trends over the past week, and recommended actions.</p>
-            </div>
-
         </div>
-    </div>
+    </section>
+
+<!-- Main Content Sections -->
+<div id="safety-factors" class="feature-card active">
+    <div class="feature-title"><i class="fas fa-shield-alt"></i> Safety Factors</div>
+    <p>View and understand the factors influencing the safety rating of an area, including crime rate, lighting, police presence, CCTV coverage, and emergency services.</p>
+    <ul>
+        <li><strong>Articles / Research:</strong>
+            <ul>
+                <li><a href="https://www.unwomen.org/en/digital-library/publications/2011/12/safe-cities-free-of-violence-against-women" target="_blank">UN Women: Safe Cities Guide</a></li>
+                <li><a href="https://www.worldbank.org/en/topic/urbandevelopment/brief/safe-cities" target="_blank">World Bank: Urban Safety Index</a></li>
+                <li><a href="https://nij.ojp.gov/topics/crime-prevention" target="_blank">National Institute of Justice – Crime Prevention</a></li>
+            </ul>
+        </li>
+        <li><strong>Local Data:</strong>
+            <ul>
+                <li><a href="https://www.dmp.gov.bd" target="_blank">Dhaka Metropolitan Police Crime Reports</a></li>
+                <li><a href="https://data.gov.bd/" target="_blank">Bangladesh Police Open Data</a></li>
+            </ul>
+        </li>
+        <li><strong>Tools / Apps:</strong>
+            <ul>
+                <li><a href="https://www.spotcrime.com/" target="_blank">SpotCrime</a></li>
+                <li><a href="https://nextdoor.com/" target="_blank">Nextdoor</a></li>
+                <li><a href="https://citizen.com/" target="_blank">Citizen</a></li>
+            </ul>
+        </li>
+        <li><strong>Videos / Guides:</strong>
+            <ul>
+                <li>YouTube: “Factors Affecting Urban Safety”</li>
+                <li>Online guide: “How to Assess Neighborhood Safety” (PDF)</li>
+            </ul>
+        </li>
+    </ul>
 </div>
 
-<!-- JS -->
+<div id="understanding-symbols" class="feature-card">
+    <div class="feature-title"><i class="fas fa-map"></i> Understanding Symbols</div>
+    <p>Icons help you quickly identify threats, facilities, and safety alerts on the map.</p>
+    <ul>
+        <li><strong>Icon/Map Guides:</strong>
+            <ul>
+                <li><a href="https://wiki.openstreetmap.org/wiki/Map_Features" target="_blank">OpenStreetMap Symbol Guide</a></li>
+                <li><a href="https://docs.mapbox.com/mapbox-gl-js/style-spec/layers/#symbol-layer" target="_blank">Mapbox Symbol Guide</a></li>
+            </ul>
+        </li>
+        <li><strong>Common Safety Symbols:</strong>
+            <ul>
+                <li>Red shield: High-crime area</li>
+                <li>CCTV icon: Surveillance cameras present</li>
+                <li>Streetlight icon: Well-lit streets</li>
+                <li>Police icon: Police station nearby</li>
+            </ul>
+        </li>
+        <li><strong>Interactive Learning:</strong>
+            <ul>
+                <li><a href="https://www.sporcle.com/" target="_blank">Safety Symbol Quizzes</a></li>
+                <li>YouTube: “Map Symbols Explained for Safety Apps”</li>
+            </ul>
+        </li>
+    </ul>
+</div>
+
+<div id="safety-news" class="feature-card">
+    <div class="feature-title"><i class="fas fa-newspaper"></i> Safety News</div>
+    <p>Stay informed with live updates, local incidents, and global safety alerts.</p>
+    <ul>
+        <li><strong>Local News:</strong>
+            <ul>
+                <li><a href="https://www.thedailystar.net/city/news" target="_blank">The Daily Star: Crime Section</a></li>
+                <li><a href="https://bangladeshchronicle.net/" target="_blank">Bangladesh Chronicle</a></li>
+                <li><a href="https://www.dhakatribune.com/bangladesh/crime" target="_blank">Dhaka Tribune: Crime Updates</a></li>
+            </ul>
+        </li>
+        <li><strong>Global Alerts:</strong>
+            <ul>
+                <li><a href="https://www.interpol.int/en/Crimes" target="_blank">Interpol Crime Reports</a></li>
+                <li><a href="https://www.unodc.org/unodc/en/frontpage.html" target="_blank">UNODC Crime News</a></li>
+            </ul>
+        </li>
+        <li><strong>Notifications:</strong>
+            <ul>
+                <li>Google Alerts: “Dhaka Crime”</li>
+                <li><a href="https://play.google.com/store/apps/details?id=com.bdp.police" target="_blank">Bangladesh Police App</a></li>
+            </ul>
+        </li>
+    </ul>
+</div>
+
+<div id="educational-videos" class="feature-card">
+    <div class="feature-title"><i class="fas fa-video"></i> Educational Videos</div>
+    <p>Learn important safety skills through video tutorials and demonstrations.</p>
+    <ul>
+        <li><strong>YouTube Channels:</strong>
+            <ul>
+                <li><a href="https://www.youtube.com/results?search_query=self+defense+for+women" target="_blank">Self Defense Tutorials</a></li>
+                <li><a href="https://www.youtube.com/user/redcross" target="_blank">Red Cross Emergency Training</a></li>
+                <li>Street Safety Tips (YouTube search)</li>
+            </ul>
+        </li>
+        <li><strong>Courses:</strong>
+            <ul>
+                <li>Coursera: “Personal & Community Safety”</li>
+                <li>Udemy: “Urban Safety and Awareness”</li>
+                <li>Khan Academy / TED-Ed videos on safety and preparedness</li>
+            </ul>
+        </li>
+        <li><strong>Local Programs:</strong>
+            <ul>
+                <li>Police-led safety workshops in Dhaka</li>
+                <li>University safety training programs</li>
+            </ul>
+        </li>
+    </ul>
+</div>
+
+<div id="resources-guides" class="feature-card">
+    <div class="feature-title"><i class="fas fa-book"></i> Resources & Guides</div>
+    <p>Access printable and quick-reference safety guides, checklists, and manuals.</p>
+    <ul>
+        <li><strong>PDF Guides:</strong>
+            <ul>
+                <li><a href="https://www.unwomen.org/en/digital-library/publications/2017/06/safe-city" target="_blank">UN Women: Safety Planning Guide</a></li>
+                <li><a href="https://www.fema.gov/emergency-managers/practitioners" target="_blank">FEMA Emergency Preparedness Guides</a></li>
+                <li><a href="https://www.brac.net/program/rights-safety/" target="_blank">BRAC Safety Manuals</a></li>
+            </ul>
+        </li>
+        <li><strong>Apps / Tools:</strong>
+            <ul>
+                <li><a href="https://www.redcross.org/get-help/how-to-prepare-for-emergencies/mobile-apps.html" target="_blank">Red Cross First Aid App</a></li>
+                <li>Emergency contact lists and GPS trackers</li>
+            </ul>
+        </li>
+        <li><strong>Checklists:</strong>
+            <ul>
+                <li>Daily safety checklist</li>
+                <li>Home safety checklist</li>
+                <li>Travel safety checklist</li>
+            </ul>
+        </li>
+    </ul>
+</div>
+
+<div id="interactive-learning" class="feature-card">
+    <div class="feature-title"><i class="fas fa-gamepad"></i> Interactive Learning</div>
+    <p>Test and improve your safety knowledge through games, quizzes, and simulations.</p>
+    <ul>
+        <li><strong>Quizzes & Games:</strong>
+            <ul>
+                <li><a href="https://www.cdc.gov/healthyschools/health-safety-quiz.html" target="_blank">CDC Safety Quiz</a></li>
+                <li><a href="https://www.who.int/roadsafety/game" target="_blank">WHO Road Safety Game</a></li>
+            </ul>
+        </li>
+        <li><strong>Simulations:</strong>
+            <ul>
+                <li>Virtual neighborhood safety assessments</li>
+                <li>Interactive “Escape & Safety Strategy” games</li>
+            </ul>
+        </li>
+        <li><strong>Apps / Platforms:</strong>
+            <ul>
+                <li>Kahoot! Safety Quizzes</li>
+                <li>Mobile safety gamification apps for students</li>
+                <li>VR simulations for personal safety (if available locally)</li>
+            </ul>
+        </li>
+    </ul>
+</div>
+
+<!-- Tab Switching Script -->
+<script>
+    document.querySelectorAll('.section-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+            // Remove active state from all buttons
+            document.querySelectorAll('.section-btn').forEach(b => b.classList.remove('active'));
+            this.classList.add('active');
+
+            // Hide all feature cards
+            document.querySelectorAll('.feature-card').forEach(card => card.classList.remove('active'));
+
+            // Show the selected one
+            const target = this.getAttribute('data-target');
+            document.getElementById(target).classList.add('active');
+        });
+    });
+</script>
+
+<!-- Scripts -->
 <script src="plugins/jquery/jquery.min.js"></script>
 <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <script src="dist/js/adminlte.min.js"></script>

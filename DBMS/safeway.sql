@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 28, 2025 at 12:01 AM
+-- Generation Time: Aug 13, 2025 at 08:59 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -460,6 +460,21 @@ INSERT INTO `incidents` (`id`, `category`, `area`, `date`, `description`, `latit
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `incident_reports`
+--
+
+CREATE TABLE `incident_reports` (
+  `id` int(11) NOT NULL,
+  `safety_location_id` int(11) NOT NULL,
+  `occurred_at` datetime NOT NULL,
+  `type` varchar(100) NOT NULL,
+  `severity` tinyint(4) DEFAULT 1,
+  `note` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `locations`
 --
 
@@ -497,6 +512,45 @@ INSERT INTO `locations` (`id`, `area_name`, `safety_score`, `hospitals`, `police
 (18, 'Gazipur', 7.9, 'Gazipur City Hospital', 'Gazipur Police Station', 'Moderate and fluctuating'),
 (19, 'Tongi', 6.9, 'Tongi General Hospital', 'Tongi Police Station', 'High and increasing'),
 (20, 'Ashulia', 7.4, 'Ashulia General Hospital', 'Ashulia Police Station', 'Moderate and decreasing');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `location_safety`
+--
+
+CREATE TABLE `location_safety` (
+  `id` int(11) NOT NULL,
+  `area_name` varchar(255) NOT NULL,
+  `lat` decimal(10,7) DEFAULT NULL,
+  `lon` decimal(10,7) DEFAULT NULL,
+  `safety_score` int(11) DEFAULT NULL,
+  `hospitals` text DEFAULT NULL,
+  `police_stations` text DEFAULT NULL,
+  `crime_trend` text DEFAULT NULL,
+  `weather_advisory` text DEFAULT NULL,
+  `crowd_density` varchar(50) DEFAULT NULL,
+  `incidents` text DEFAULT NULL,
+  `transport_scores` text DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `location_safety`
+--
+
+INSERT INTO `location_safety` (`id`, `area_name`, `lat`, `lon`, `safety_score`, `hospitals`, `police_stations`, `crime_trend`, `weather_advisory`, `crowd_density`, `incidents`, `transport_scores`, `created_at`, `updated_at`) VALUES
+(1, 'Gulshan', 23.7925000, 90.4078000, 85, 'United Hospital, Praava Health, Evercare Hospital', 'Gulshan Police Station', '↓ declining', 'Sunny with light breeze', 'Low', 'Pickpocket case at Gulshan-2 Circle, Minor traffic accident near Gulshan Lake', '{\"Bus\":65,\"Metro\":90,\"Ride-share\":88}', '2025-08-13 16:24:31', '2025-08-13 16:24:31'),
+(2, 'Banani', 23.7933000, 90.4042000, 78, 'Ibn Sina Diagnostic, Banani Clinic', 'Banani Police Outpost', '→ stable', 'Humid and cloudy', 'Moderate', 'Motorbike theft near Banani Road 11, Harassment complaint filed', '{\"Bus\":70,\"Metro\":85,\"Ride-share\":80}', '2025-08-13 16:24:31', '2025-08-13 16:24:31'),
+(3, 'Dhanmondi', 23.7465000, 90.3742000, 74, 'Square Hospital, Popular Diagnostic Centre', 'Dhanmondi Police Station', '↑ rising', 'Scattered showers expected', 'High', 'Snatching incident at Dhanmondi 27, Shoplifting at Dhanmondi Hawkers Market', '{\"Bus\":80,\"Metro\":60,\"Ride-share\":75}', '2025-08-13 16:24:31', '2025-08-13 16:24:31'),
+(4, 'Mirpur', 23.8067000, 90.3681000, 65, 'Mirpur General Hospital, Islami Bank Hospital', 'Mirpur Model Police Station', '↑ rising', 'Thunderstorm advisory', 'High', 'Road accident at Mirpur-10, Mobile snatching at Mirpur-1', '{\"Bus\":85,\"Metro\":55,\"Ride-share\":68}', '2025-08-13 16:24:31', '2025-08-13 16:24:31'),
+(5, 'Uttara', 23.8766000, 90.3798000, 82, 'Ahsania Mission Cancer Hospital, Labaid Diagnostic', 'Uttara West Police Station', '↓ declining', 'Clear skies', 'Low', 'Lost wallet complaint, Minor altercation at Sector 7 park', '{\"Bus\":78,\"Metro\":92,\"Ride-share\":85}', '2025-08-13 16:24:31', '2025-08-13 16:24:31'),
+(6, 'Mohakhali', 23.7784000, 90.4051000, 68, 'Mohakhali General Hospital, DNCC Hospital', 'Tejgaon Industrial Police Station', '→ stable', 'Light rain forecast', 'Moderate', 'Traffic congestion causing delays, Purse snatching at Mohakhali Bus Terminal', '{\"Bus\":88,\"Metro\":75,\"Ride-share\":72}', '2025-08-13 16:24:31', '2025-08-13 16:24:31'),
+(7, 'Motijheel', 23.7322000, 90.4179000, 60, 'Ibn Sina Hospital, Islami Bank Hospital Motijheel', 'Motijheel Police Station', '↑ rising', 'Heat advisory issued', 'High', 'ATM fraud attempt, Bag snatching at Shapla Chattar', '{\"Bus\":90,\"Metro\":65,\"Ride-share\":60}', '2025-08-13 16:24:31', '2025-08-13 16:24:31'),
+(8, 'Khilgaon', 23.7556000, 90.4308000, 67, 'Khilgaon General Hospital, Al-Manar Hospital', 'Khilgaon Police Station', '→ stable', 'Possible light drizzle', 'Moderate', 'Pickpocket caught at Khilgaon flyover, Minor bus accident', '{\"Bus\":85,\"Metro\":68,\"Ride-share\":70}', '2025-08-13 16:24:31', '2025-08-13 16:24:31'),
+(9, 'Farmgate', 23.7571000, 90.3915000, 62, 'Shahid Suhrawardy Medical College Hospital', 'Tejgaon Police Station', '↑ rising', 'Heavy traffic due to rally', 'High', 'Snatching case reported near Kazi Nazrul Islam Ave, Protest causing roadblocks', '{\"Bus\":88,\"Metro\":58,\"Ride-share\":65}', '2025-08-13 16:24:31', '2025-08-13 16:24:31'),
+(10, 'Bashundhara R/A', 23.8140000, 90.4317000, 88, 'Evercare Hospital, Bashundhara Eye Hospital', 'Bhatara Police Station', '↓ declining', 'Pleasant and breezy', 'Low', 'Lost phone at Jamuna Future Park, Bicycle theft in Block D', '{\"Bus\":60,\"Metro\":88,\"Ride-share\":90}', '2025-08-13 16:24:31', '2025-08-13 16:24:31');
 
 -- --------------------------------------------------------
 
@@ -808,6 +862,75 @@ INSERT INTO `safety_distribution` (`id`, `category`, `label`, `value`, `weightag
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `safety_incidents`
+--
+
+CREATE TABLE `safety_incidents` (
+  `id` int(11) NOT NULL,
+  `category` varchar(100) DEFAULT NULL,
+  `area` varchar(100) DEFAULT NULL,
+  `latitude` double DEFAULT NULL,
+  `longitude` double DEFAULT NULL,
+  `incident_count` int(11) NOT NULL DEFAULT 1,
+  `incident_date` date DEFAULT NULL,
+  `description` text DEFAULT NULL,
+  `area_type` varchar(50) DEFAULT NULL,
+  `reported_incidents` int(11) DEFAULT 0,
+  `safety_rating` varchar(10) DEFAULT NULL,
+  `notes` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `safety_incidents`
+--
+
+INSERT INTO `safety_incidents` (`id`, `category`, `area`, `latitude`, `longitude`, `incident_count`, `incident_date`, `description`, `area_type`, `reported_incidents`, `safety_rating`, `notes`) VALUES
+(1, 'Theft', 'Gulshan-2', 23.7925, 90.4078, 3, '2025-08-05', 'Multiple phone snatching cases reported near Gulshan Circle 2.', 'urban', 5, 'High', 'Increased patrolling requested by residents.'),
+(2, 'Harassment', 'Banani', 23.7933, 90.4042, 2, '2025-08-07', 'Street harassment incidents reported at Banani Road 11.', 'urban', 4, 'Moderate', 'Awareness programs scheduled by NGOs.'),
+(3, 'Traffic Accident', 'Dhanmondi 27', 23.7465, 90.3742, 1, '2025-08-06', 'Minor bus-motorbike collision; no fatalities reported.', 'urban', 1, 'Low', 'Traffic police deployed for crowd control.'),
+(4, 'Robbery', 'Mirpur-10', 23.8067, 90.3681, 4, '2025-08-08', 'Armed robbery in a local shop; cash and goods stolen.', 'urban', 6, 'High', 'Shopkeepers urged to install CCTV cameras.'),
+(5, 'Pickpocketing', 'Farmgate', 23.7571, 90.3915, 5, '2025-08-09', 'Multiple pickpocket cases during peak rush hours.', 'urban', 8, 'High', 'Extra plainclothes officers deployed in the area.'),
+(6, 'Vandalism', 'Motijheel', 23.7322, 90.4179, 2, '2025-08-03', 'Damage to ATM booth and nearby shop during protest.', 'urban', 3, 'Moderate', 'Businesses advised to close early during demonstrations.'),
+(7, 'Assault', 'Khilgaon', 23.7556, 90.4308, 1, '2025-08-04', 'Physical altercation between two groups at local market.', 'urban', 2, 'Moderate', 'Community leaders mediating the conflict.'),
+(8, 'Fraud', 'Uttara Sector 7', 23.8766, 90.3798, 2, '2025-08-02', 'Online scam traced to a small cybercafe.', 'urban', 2, 'Low', 'Cybercrime unit involved in investigation.'),
+(9, 'Eve-teasing', 'Mohakhali', 23.7784, 90.4051, 3, '2025-08-01', 'Reports of harassment near Mohakhali bus terminal.', 'urban', 4, 'Moderate', 'Awareness drive by women’s rights groups.'),
+(10, 'Burglary', 'Bashundhara R/A', 23.814, 90.4317, 1, '2025-08-05', 'House burglary in Block C during daytime.', 'suburban', 1, 'Low', 'Security guards instructed to enhance entry checks.');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `safety_locations`
+--
+
+CREATE TABLE `safety_locations` (
+  `id` int(11) NOT NULL,
+  `location` varchar(100) NOT NULL,
+  `latitude` float NOT NULL,
+  `longitude` float NOT NULL,
+  `area_type` varchar(100) DEFAULT NULL,
+  `reported_incidents` int(11) DEFAULT 0,
+  `safety_rating` enum('High','Moderate','Low') DEFAULT 'Moderate',
+  `notes` text DEFAULT NULL,
+  `patrolling` varchar(100) DEFAULT NULL,
+  `street_lighting` varchar(100) DEFAULT NULL,
+  `women_helpline` varchar(50) DEFAULT '109',
+  `transport_access` varchar(100) DEFAULT NULL,
+  `description` text DEFAULT NULL,
+  `last_updated` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `safety_locations`
+--
+
+INSERT INTO `safety_locations` (`id`, `location`, `latitude`, `longitude`, `area_type`, `reported_incidents`, `safety_rating`, `notes`, `patrolling`, `street_lighting`, `women_helpline`, `transport_access`, `description`, `last_updated`) VALUES
+(1, 'Gulshan 2', 23.7925, 90.4078, 'Commercial', 12, 'High', 'Business hub, embassies nearby.', 'Frequent', 'Good', '109', 'Good', 'Generally safe with visible security.', '2025-08-13 16:54:50'),
+(2, 'Mirpur 10', 23.8045, 90.3667, 'Residential', 35, 'Moderate', 'Dense area, mixed reports.', 'Occasional', 'Average', '109', 'Good', 'Crowded intersections; stay alert at night.', '2025-08-13 16:54:50'),
+(3, 'Old Dhaka', 23.7086, 90.406, 'Mixed', 52, 'Low', 'Narrow alleys, busy markets.', 'Occasional', 'Poor', '109', 'Limited', 'Avoid late-night alleys; prefer main roads.', '2025-08-13 16:54:50');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `safety_ratings`
 --
 
@@ -847,6 +970,23 @@ INSERT INTO `safety_ratings` (`id`, `location`, `latitude`, `longitude`, `area_t
 (18, 'Tongi', 23.8775, 90.3716, 'Suburban', 10, 'Low', 'Some isolated incidents, poor street lighting'),
 (19, 'Moghbazar', 23.7597, 90.3961, 'Commercial', 5, 'High', 'Generally safe with high police presence'),
 (20, 'Shyamoli', 23.7707, 90.3573, 'Residential', 6, 'Medium', 'Some petty crimes, better safety at night');
+
+-- --------------------------------------------------------
+
+--
+-- Stand-in structure for view `safety_ratings_view`
+-- (See below for the actual view)
+--
+CREATE TABLE `safety_ratings_view` (
+`id` int(11)
+,`location` varchar(100)
+,`latitude` float
+,`longitude` float
+,`area_type` varchar(100)
+,`reported_incidents` int(11)
+,`safety_rating` enum('High','Moderate','Low')
+,`notes` text
+);
 
 -- --------------------------------------------------------
 
@@ -963,6 +1103,15 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`id`, `full_name`, `email`, `password`, `role`) VALUES
 (9, 'Abdullah Shanto', 'abdullah@gmail.com', '$2y$10$gCQZEb1U5Dpy8gkQXZBfYe6dvXI5FnCVeQ0aTCHhAt5srBadIpypy', 'Students');
 
+-- --------------------------------------------------------
+
+--
+-- Structure for view `safety_ratings_view`
+--
+DROP TABLE IF EXISTS `safety_ratings_view`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `safety_ratings_view`  AS SELECT `safety_locations`.`id` AS `id`, `safety_locations`.`location` AS `location`, `safety_locations`.`latitude` AS `latitude`, `safety_locations`.`longitude` AS `longitude`, `safety_locations`.`area_type` AS `area_type`, `safety_locations`.`reported_incidents` AS `reported_incidents`, `safety_locations`.`safety_rating` AS `safety_rating`, `safety_locations`.`notes` AS `notes` FROM `safety_locations` ;
+
 --
 -- Indexes for dumped tables
 --
@@ -1016,10 +1165,19 @@ ALTER TABLE `incidents`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `locations`
+-- Indexes for table `incident_reports`
 --
-ALTER TABLE `locations`
-  ADD PRIMARY KEY (`id`);
+ALTER TABLE `incident_reports`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `idx_loc_time` (`safety_location_id`,`occurred_at`);
+
+--
+-- Indexes for table `location_safety`
+--
+ALTER TABLE `location_safety`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `uniq_area_name` (`area_name`),
+  ADD KEY `idx_area_name_like` (`area_name`);
 
 --
 -- Indexes for table `notifications`
@@ -1047,16 +1205,26 @@ ALTER TABLE `safety_checks`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `safety_data`
---
-ALTER TABLE `safety_data`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indexes for table `safety_distribution`
 --
 ALTER TABLE `safety_distribution`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `safety_incidents`
+--
+ALTER TABLE `safety_incidents`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `safety_locations`
+--
+ALTER TABLE `safety_locations`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `idx_coord` (`latitude`,`longitude`),
+  ADD KEY `idx_location` (`location`),
+  ADD KEY `idx_rating` (`safety_rating`),
+  ADD KEY `idx_area_type` (`area_type`);
 
 --
 -- Indexes for table `safety_ratings`
@@ -1130,10 +1298,16 @@ ALTER TABLE `incidents`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 
 --
--- AUTO_INCREMENT for table `locations`
+-- AUTO_INCREMENT for table `incident_reports`
 --
-ALTER TABLE `locations`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+ALTER TABLE `incident_reports`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `location_safety`
+--
+ALTER TABLE `location_safety`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `notifications`
@@ -1160,16 +1334,22 @@ ALTER TABLE `safety_checks`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
--- AUTO_INCREMENT for table `safety_data`
---
-ALTER TABLE `safety_data`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
-
---
 -- AUTO_INCREMENT for table `safety_distribution`
 --
 ALTER TABLE `safety_distribution`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+
+--
+-- AUTO_INCREMENT for table `safety_incidents`
+--
+ALTER TABLE `safety_incidents`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT for table `safety_locations`
+--
+ALTER TABLE `safety_locations`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `safety_ratings`
@@ -1192,6 +1372,12 @@ ALTER TABLE `users`
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `incident_reports`
+--
+ALTER TABLE `incident_reports`
+  ADD CONSTRAINT `incident_reports_ibfk_1` FOREIGN KEY (`safety_location_id`) REFERENCES `safety_locations` (`id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `notifications`
